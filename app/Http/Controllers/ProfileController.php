@@ -22,7 +22,7 @@ class ProfileController extends Controller
             'name' => $request->name,
             'email' => $request->email,
         ]);
-
-        return redirect()->back()->with('success', 'Profile updated.');
+        
+        return redirect()->back()->with('success', 'Profile updated. ');
     }
 }
