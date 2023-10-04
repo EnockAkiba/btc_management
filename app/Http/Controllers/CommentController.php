@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Apprenant;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 
-class ApprenantController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,8 @@ class ApprenantController extends Controller
      */
     public function index()
     {
-        //
+        return view('comment.index');
+        
     }
 
     /**
@@ -41,10 +42,10 @@ class ApprenantController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Apprenant  $apprenant
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function show(Apprenant $apprenant)
+    public function show(Comment $comment)
     {
         //
     }
@@ -52,22 +53,23 @@ class ApprenantController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Apprenant  $apprenant
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Apprenant $apprenant)
+    public function edit(Comment $comment)
     {
-        //
+        return view('comment.edit');
+        
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Apprenant  $apprenant
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Apprenant $apprenant)
+    public function update(Request $request, Comment $comment)
     {
         //
     }
@@ -75,10 +77,10 @@ class ApprenantController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Apprenant  $apprenant
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Apprenant $apprenant)
+    public function destroy(Comment $comment)
     {
         //
     }
