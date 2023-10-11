@@ -3,7 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>KongoPanoramique</title>
+    <link href="{{asset('images/logoCinema.png')}}" rel="shortcut icon" type="image/png">
+
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -14,11 +16,18 @@
     <link rel="stylesheet" href="{{ asset('css/icheck-bootstrap.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('css/adminlte.min.css') }}">
+
+    @vite('resources/css/app.css')
+
+    @yield('styles')
+
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
-    <div class="login-logo">
-        <a href="/">{{ config('app.name', 'Laravel') }}</a>
+    <div class="login-logo flex justify-center">
+        <a href="/"> <img src="{{ asset('images/logoCinema.png') }}" alt="Logo" class="brand-image "
+            style=" height: 40px;"> </a>
+            <span>KongoPanoramique</span>
     </div>
     <!-- /.login-logo -->
     <div class="card">

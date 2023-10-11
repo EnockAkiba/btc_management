@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.title{
+    @apply font-semibold text-green-500
+}
+
+.title-blue{
+    @apply font-semibold text-blue-500
+}
+
+/* LIKE STYLE */
+.liker-box{
+    @apply flex justify-between my-3
+}
+.liker-box .liker .loved{
+    @apply text-red-400
+}
+.liker-box .liker .comment{
+    @apply text-green-400 ml-2
+
+}
+/* LIKE STYLE */
+
+
+/* ALL */
+
+.border-bottom{
+    @apply  border-b-2 border-b-green-400
+}
+.border-top{
+    @apply  border-t-2 border-t-green-300
+}
+.required{
+    @apply text-red-500
+}
+ 
+.btn-valid{
+    @apply  p-2 bg-green-400 rounded-sm text-white
+}
+
+/* STYLE  HOVER IMAGE */
+.image{
+    position: relative;
+    transition: all 0.5s ease-in-out;
+}
+
+.image  .icone{
+    position: absolute;
+    z-index: 1111;
+    padding: 5px;
+    display: none;
+    height: 30px;
+    width: 30px;
+    border:2px solid red;
+    background: white; 
+     top: 45%;
+    right: 45%;
+
+}
+
+.image:hover{
+    opacity: 0.6;
+}
+
+.image:hover .icone{
+    transition: all 0.5s ease-in-out;
+    display: block;
+    opacity: 1;
+} 

@@ -18,14 +18,37 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
 Route::group(['prefix' => 'user'], function () {
+
+    // news
+    Route::get('/news', function () {
+        return view('news.index');
+    })->name('news');
+
+    Route::get('/news/show', function () {
+        return view('news.show');
+    })->name('news.show');
+
+    
+    Route::get('/news/create', function () {
+        return view('news.create');
+    })->name('news.create');
+
+    Route::get('/news/edit', function () {
+        return view('news.edit');
+    })->name('news.edit');
+    
+
+
     //login, Register, Forget password, reset link
     Auth::routes();
 
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     //User profile
     Route::group(['middleware' => ['auth']], function () {
 
-        Route::get('/homes', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
         Route::view('about', 'about')->name('about');
 
