@@ -61,9 +61,9 @@ class NewsController extends Controller
         $data['video']=$video;
         $data['slug']=\slug("NEW");
 
-        News::create([
+        News::create(
             $data
-        ]);
+        );
 
         return \redirect()->back()->with('success','Publié avec succès');
     }
@@ -112,6 +112,7 @@ class NewsController extends Controller
         if($request->video) $video=videoStatement('news',$request->video);
         else $video=$request->videoOld;
         
+
         $data['picture']=$picture;
         $data['video']=$video;
 
