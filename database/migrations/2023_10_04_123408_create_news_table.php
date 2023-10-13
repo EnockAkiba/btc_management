@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('type')->default('0');
             $table->string('picture')->nullable();
             $table->string('video')->nullable();
-            $table->string('description');
+            $table->text('description');
             $table->string('slug');
             $table->timestamps();
         });

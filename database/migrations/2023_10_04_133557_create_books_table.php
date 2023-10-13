@@ -16,9 +16,10 @@ return new class extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('description');
+            $table->text('description');
             $table->string('picture')->nullable();
             $table->string('file');
+            $table->string('slug');
             $table->timestamps();
         });
     }

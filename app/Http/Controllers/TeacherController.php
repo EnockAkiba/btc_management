@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Comment;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class CommentController extends Controller
+class TeacherController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,7 @@ class CommentController extends Controller
      */
     public function index()
     {
-        return view('comment.index');
-        
+        //
     }
 
     /**
@@ -37,55 +35,39 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-    
-
-        if(!$request->picture and !$request->content) return redirect()->back()->with('info','le champs est vide !');
-        
-        if($request->picture) $picture=\imageUsage('chat',$request->picture); 
-        else $picture=NULL;
-
-        if($request->content) $content=$request->content;
-        else $content=NULL;
-
-        Comment::create([
-            'new_id'=>$request->new_id,
-            'user_id'=> Auth::user()->id,
-            'content'=>$content,
-            'picture'=>$picture
-        ]);
-
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Comment  $comment
+     * @param  \App\Models\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function show(Comment $comment)
+    public function show(Teacher $teacher)
     {
-        
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Comment  $comment
+     * @param  \App\Models\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function edit(Comment $comment)
+    public function edit(Teacher $teacher)
     {
-        return view('comment.edit');
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Comment  $comment
+     * @param  \App\Models\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comment $comment)
+    public function update(Request $request, Teacher $teacher)
     {
         //
     }
@@ -93,12 +75,11 @@ class CommentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Comment  $comment
+     * @param  \App\Models\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Comment $comment)
+    public function destroy(Teacher $teacher)
     {
-        $comment->delete();
-        return with('success','Suppression réussie');
+        //
     }
 }

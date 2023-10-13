@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class MediaNews extends Model
 {
     use HasFactory;
+
+    protected $fillable=['new_id','picture'];
+
+    public function new(){
+        return $this->belongsTo(News::class);
+    }
 }
