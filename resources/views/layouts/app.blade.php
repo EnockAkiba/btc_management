@@ -191,7 +191,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </div>
                         <!-- /.col -->
                         <div class="col-md-9 content-box ">
-                            {{-- <div class="col-md-9 content-box bg-white rounded rounded-md shadow-md"> --}}
                             @yield('content')
                         </div>
                         <!-- /.col -->

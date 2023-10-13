@@ -31,11 +31,11 @@
 
                         </div>
                         <!-- /.card-header -->
-                        <form action="#" method="post" enctype="multipart/form-data">
+                        <form action="{{route('news.store')}}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="">Titre <span class="required"> *</span></label>
+                                    <label for="">Titre <span class="required"> *</span> </label>
                                     <input type="text" class="form-control" name="title">
                                 </div>
                                 <div class="form-group">
