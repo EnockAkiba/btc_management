@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>KongoPanoramique</title>
-    <link href="{{asset('images/logoCinema.png')}}" rel="shortcut icon" type="image/png">
+    <title>BTC/AGAPD</title>
+    <link href="{{asset('images/logo.png')}}" rel="shortcut icon" type="image/png">
 
 
     <!-- Google Font: Source Sans Pro -->
@@ -17,20 +17,23 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('css/adminlte.min.css') }}">
 
+    <script src="{{asset('assets/js/jquery.min.js')}}"></script>
+
     @vite('resources/css/app.css')
 
     @yield('styles')
 
 </head>
 <body class="hold-transition login-page">
-<div class="login-box">
-    <div class="login-logo flex justify-center">
-        <a href="/"> <img src="{{ asset('images/logoCinema.png') }}" alt="Logo" class="brand-image "
-            style=" height: 40px;"> </a>
-            <span>KongoPanoramique</span>
-    </div>
+<div class="login-box  md:w-2/4">
     <!-- /.login-logo -->
-    <div class="card">
+   
+        <div class="login-logo flex justify-center items-center m-6">
+            <a href="{{route('home')}}"> 
+      
+                <span class=" ">Brothely Training Center</span>
+        </div>
+        <div class="card border-t-2 border-t-green-400">
         @yield('content')
     </div>
 </div>

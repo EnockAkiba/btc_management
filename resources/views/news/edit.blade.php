@@ -64,7 +64,7 @@
                             <div class="card-footer flex justify-between items-center">
                                 <button type="submit" class="btn-valid">Valider la modification</button>
                                 <span class="required ml-auto bg-red p-2" data-toggle="modal" data-target="#delete"
-                                    href="#" role="button"> supprimer </span>
+                                    href="#" role="button"> <i class="fa fa-trash" aria-hidden="true"></i> </span>
                             </div>
                         </form>
                         <!-- /.card-footer -->
@@ -83,7 +83,7 @@
                             @for ($i = 0; $i < 8; $i++)
                                 <div class="col-md-6 mb-2 image">
                                   <a href="{{ asset('admin/images/photo2.png') }}"> <img class="img-fluid pad" src="{{ asset('admin/images/photo2.png') }}" alt="Photo"></a> 
-                                    <a href="" class="icone rounded-full shadow-lg"> su</a>
+                                    <a href="" class="icone rounded-full shadow-lg"> <i class="fa fa-trash" aria-hidden="true"></i></a>
                                 </div>
                             @endfor
                         </div>
@@ -102,7 +102,8 @@
         <div class="modal-dialog modal-sm">
             <div class="modal-content rounded-none shadow-none  border-t-2 border-t-green-300 p-3">
                 <div class="p-3">
-                    <h3 class="title mb-4"><i class="fa fa-question" aria-hidden="true"></i> Voulez-vous supprimer cette
+                    <h3 class="text-center"><i class="fa fa-question bg-black p-3 rounded-full" aria-hidden="true"></i></h3>
+                    <h3 class="title mb-4"> Voulez-vous supprimer cette
                         actualité ?</h3>
                     <a href="" class="bg-red-500 p-2 me-2 border rounded-sm text-white">Confirmer</a>
                     <button type="button" class="text-green-500 p-2 ml-auto border rounded-sm" data-dismiss="modal"><i
@@ -121,7 +122,7 @@
         <div class="modal-dialog modal-md">
             <div class="modal-content rounded-none shadow-none  border-t-2 border-t-green-300 p-3">
                 <div class="p-3">
-                    <h3 class="title mb-4"><i class="fa fa-question" aria-hidden="true"></i> Ajouter des images</h3>
+                    <h3 class="title mb-4">Ajouter des images</h3>
                     <p>
                         vous pouvez choisir ou sélectionner au maximum 10 par click
                     </p>

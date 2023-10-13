@@ -9,11 +9,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>BTC/AGAPED</title>
-    <link href="{{asset('images/logo.png')}}" rel="shortcut icon" type="image/png">
+    <link href="{{ asset('images/logo.png') }}" rel="shortcut icon" type="image/png">
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+
+    <link rel="stylesheet" href="{{ asset('css/fontawesome.min.css') }}">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
@@ -37,13 +39,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
             <div class="container flex">
-                <a href="{{route('home')}}" class="brand-link">
-                    <img src="{{asset('images/logo.png')}}" alt="Logo" class="brand-image "
-                        style="opacity:">
+                <a href="{{ route('home') }}" class="brand-link">
+                    <img src="{{ asset('images/logo.png') }}" alt="Logo" class="brand-image " style="opacity:">
                     <span class="title">BTC/AGAPD</span>
                 </a>
                 <li class="list-none d-lg-none d-md-none">
-                    <a class="nav-link text-black"  data-toggle="modal" data-target="#navigation" href="#" role="button">
+                    <a class="nav-link text-black" data-toggle="modal" data-target="#navigation" href="#"
+                        role="button">
                         <span class="navbar-toggler-icon"></span>
                     </a>
                 </li>
@@ -52,33 +54,34 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </nav>
         <!-- /.navbar -->
 
-         {{-- NAVIGATION MODAL  --}}
+        {{-- NAVIGATION MODAL  --}}
 
-    <div class="modal fade" id="navigation">
-        <div class="modal-dialog modal-md">
-            <div class="modal-content rounded-none shadow-none  border-t-2 border-t-green-300 p-3">
-                <div class="flex justify-between items-center">
-                    <h3 class="card-title text-orange"><a href="" class="brand-link">
-                        <img src="{{asset('images/logo.png')}}" alt="Logo" class="brand-image "
-                            style="opacity:">
-                        <span class="title">BTC/AGAPD</span>
-                    </a>
-                    </h3>
-                    <button type="button" class="btn-deleted p-2 ml-auto " data-dismiss="modal"><i
-                        class="fa-solid fa-x"></i></button>
-                </div>
-               
-                <!-- /.card-header -->
-                <!-- form start -->
-                <div class="mt-3">
-                    @include('layouts.navbar')
-                   
+        <div class="modal fade" id="navigation">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content rounded-none shadow-none  border-t-2 border-t-green-300 p-3">
+                    <div class="flex justify-between items-center">
+                        <h3 class="card-title text-blue">
+                            <a href="" class="brand-link">
+                                <img src="{{ asset('images/logo.png') }}" alt="Logo" class="brand-image "
+                                    style="opacity:">
+                                <span class="title">BTC/AGAPD</span>
+                            </a>
+                        </h3>
+                        <button type="button" class="btn-deleted p-2 ml-auto " data-dismiss="modal"><i
+                                class="fa-solid fa-x"></i></button>
+                    </div>
+
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <div class="mt-3">
+                        @include('layouts.navbar')
+
+                    </div>
                 </div>
             </div>
+            <!-- /.modal-dialog -->
         </div>
-        <!-- /.modal-dialog -->
-    </div>
-    <!-- NAVIGATION MODAL-->
+        <!-- NAVIGATION MODAL-->
 
 
         <!-- Content Wrapper. Contains page content -->
@@ -95,35 +98,40 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     </h3>
                                 </div>
                                 <div class="card-body p-2">
-                                    <h3 class=" font-bold mb-2"><i class="fa fa-box text-orange-300"></i> Actualités  </h3>
-                                    
+                                    <h3 class=" font-bold mb-2"><i class="fa fa-box text-blue-600"></i> Actualités </h3>
+
                                     <ul class="nav  flex-column">
                                         <li class="nav-item active">
-                                            <a href="{{route('news')}}" class="nav-link">
-                                                <i class="fas fa-inbox text-orange-300"></i>Actualité
+                                            <a href="{{ route('news') }}" class="nav-link">
+                                                <i class="fas fa-inbox text-blue-600"></i> Actualité
                                             </a>
                                         </li>
 
 
                                         <li class="nav-item">
-                                            <a href="{{route('news.create')}}" class="nav-link">
-                                                <i class="fa fa-filter text-orange-300"></i> Ajouter une Actualité 
+                                            <a href="{{ route('news.create') }}" class="nav-link">
+                                                <i class="fa fa-plus text-blue-600"></i> Ajouter une Actualité
                                             </a>
                                         </li>
-                                    <h3 class=" font-bold mb-2 mt-3"><i class="fa fa-users text-orange-300"></i>  </h3>
 
                                         <li class="nav-item">
-                                            <a href="" class="nav-link">
-                                              <i class="far fa-circle text-orange-300"></i>  Equipe
+                                            <a href="{{ route('message.index') }}" class="nav-link">
+                                            <i class="fa fa-comments text-blue-600" aria-hidden="true"></i>  Message
                                             </a>
                                         </li>
 
-                                        
-
+                                        <h3 class=" font-bold mb-2 mt-3"><i class="fa fa-users text-blue-600"></i> </h3>
 
                                         <li class="nav-item">
                                             <a href="" class="nav-link">
-                                              <i class="far fa-circle text-orange-300" ></i> Partenaires
+                                                <i class="far fa-circle text-blue-600"></i> Equipe
+                                            </a>
+                                        </li>
+
+
+                                        <li class="nav-item">
+                                            <a href="" class="nav-link">
+                                                <i class="far fa-circle text-blue-600"></i> Partenaires
                                             </a>
                                         </li>
                                     </ul>
@@ -133,7 +141,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <!-- /.card -->
                             <div class="card card px-3 py-2">
                                 <div class="card-header">
-                                    <h3 class=" font-bold"> <i class="fa-solid fa-gear text-orange-300"></i> Paramétre</h3>
+                                    <h3 class=" font-bold"> <i class="fa-solid fa-gear text-blue-600"></i> Paramétre
+                                    </h3>
 
                                 </div>
                                 <div class="card-body p-2">
@@ -141,35 +150,35 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                         <li class="nav-item">
                                             <a href="" class="nav-link">
-                                                <i class="far fa-circle text-orange-300"></i> A propos
+                                                <i class="far fa-circle text-blue-600"></i> A propos
                                             </a>
                                         </li>
 
                                         <li class="nav-item">
                                             <a href="" class="nav-link">
-                                                <i class="far fa-circle text-orange-300"></i>
+                                                <i class="far fa-circle text-blue-600"></i>
                                                 Slider
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a href="" class="nav-link">
-                                                <i class="far fa-circle text-orange-300"></i> Contact
+                                                <i class="far fa-circle text-blue-600"></i> Contact
                                             </a>
                                         </li>
-                                    <h3 class=" font-bold my-2"> <i class="far fa-user text-orange-300"></i> Utilisateur</h3>
+                                        <h3 class=" font-bold my-2"> Utilisateur</h3>
                                         <li class="nav-item">
-                                            <a href="" class="nav-link"> 
-
+                                            <a href="{{ route('profile.show') }}" class="nav-link">
+                                                <i class="fa fa-user text-blue-600" aria-hidden="true"></i> Mon profi
                                             </a>
 
                                         </li>
-                                        
+
                                         <li class="nav-item">
                                             <form method="POST" action="{{ route('logout') }}">
                                                 @csrf
                                                 <a href="{{ route('logout') }}" class="nav-link"
-                                                   onclick="event.preventDefault(); this.closest('form').submit();">
-                                                    <i class="mr-2 fa fa-sign-out-alt text-orange-300"></i>
+                                                    onclick="event.preventDefault(); this.closest('form').submit();">
+                                                    <i class="mr-2 fa fa-sign-out-alt text-blue-600"></i>
                                                     Se deconnecter
                                                 </a>
                                             </form>

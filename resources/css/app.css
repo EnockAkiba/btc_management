@@ -49,12 +49,11 @@
 .image  .icone{
     position: absolute;
     z-index: 1111;
-    padding: 5px;
+    padding: 8px;
     display: none;
-    height: 30px;
-    width: 30px;
     border:2px solid red;
     background: white; 
+    color: red;
      top: 45%;
     right: 45%;
 
