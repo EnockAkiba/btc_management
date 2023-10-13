@@ -20,13 +20,13 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('sex');
-            $table->string('adress');
+            $table->string('adress')->nullable();
             $table->string('phone');
             $table->string('slug');
             $table->string('picture')->nullable();
             $table->string('statut')->default('0');
             $table->string('roleUser')->default('0');
-            $table->dateTime('lastTimeLog');
+            $table->dateTime('lastTimeLog')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
