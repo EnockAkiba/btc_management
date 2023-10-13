@@ -39,6 +39,13 @@ Route::group(['prefix' => 'user'], function () {
     Route::get('/news/edit', function () {
         return view('news.edit');
     })->name('news.edit');
+
+    // 
+    Route::get('/chat/index', function () {
+        return view('message.index');
+    })->name('message.index');
+
+    
     
 
 
@@ -47,8 +54,7 @@ Route::group(['prefix' => 'user'], function () {
 
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     //User profile
-    Route::group(['middleware' => ['auth']], function () {
-
+    // Route::group(['middleware' => ['auth']], function () {
 
         Route::view('about', 'about')->name('about');
 
@@ -56,6 +62,6 @@ Route::group(['prefix' => 'user'], function () {
 
         Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
         Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
-    });
+    // });
 
 });
