@@ -18,6 +18,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/mailValidate', function () {
+    dd("toi");
+    return view('');
+});
+
 
 
 Route::group(['prefix' => 'user'], function () {
