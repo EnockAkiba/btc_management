@@ -13,14 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('messages', function (Blueprint $table) {
+        Schema::create('quizzes', function (Blueprint $table) {
             $table->id();
-            $table->string('slug');
-            $table->foreignId('user_id')->onDelete('cascade')->onUpdate('cascade');
-            $table->integer('destinator');
-            $table->string('picture')->nullable();
+            $table->foreignId('teacher_id')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('promotion_id')->onDelete('cascade')->onUpdate('cascade');
             $table->text('content')->nullable();
-            $table->string('isRead')->nullable();
+            $table->string('file')->nullable();
+            $table->dateTime('dateBigin');
+            $table->dateTime('dateEnd');
+            $table->string('slug');
             $table->timestamps();
         });
     }
@@ -32,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('messages');
+        Schema::dropIfExists('quizzes');
     }
 };

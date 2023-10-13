@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Departement extends Model
 {
     use HasFactory;
+
+    protected $fillable=['slug','title','description','picture'];
+
+    public function promotion(){
+        return $this->belongs(promotion::class);
+    }
 }

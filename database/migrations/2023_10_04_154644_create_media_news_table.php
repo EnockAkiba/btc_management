@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('new_id')->onDelete('cascade')->onUpdate('cascade');
             $table->string('picture');
+            $table->string('slug');
             $table->timestamps();
         });
     }

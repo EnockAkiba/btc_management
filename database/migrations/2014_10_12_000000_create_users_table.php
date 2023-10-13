@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('picture')->nullable();
             $table->string('statut')->default('0');
             $table->string('roleUser')->default('0');
+            $table->dateTime('lastTimeLog');
             $table->rememberToken();
             $table->timestamps();
         });

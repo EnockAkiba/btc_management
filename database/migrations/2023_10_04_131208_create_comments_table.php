@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('slug');
             $table->foreignId('new_id')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('user_id')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('content')->nullable();
+            $table->text('content')->nullable();
             $table->string('picture')->nullable();
             $table->timestamps();
         });
