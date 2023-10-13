@@ -53,20 +53,25 @@ Route::group(['prefix' => 'user'], function () {
     
     
 
-
     //login, Register, Forget password, reset link
     Auth::routes();
 
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    
+    
     //User profile
-    // Route::group(['middleware' => ['auth']], function () {
+    Route::group(['middleware' => ['auth']], function () {
+        
+    Route::post('/store', [App\Http\Controllers\NewsController::class, 'store'])->name('news.store');
 
+        
         Route::view('about', 'about')->name('about');
-
+        
         Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
-
+        
         Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
         Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
-    // });
-
-});
+        });
+        
+    });
+    
