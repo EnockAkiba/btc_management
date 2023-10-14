@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Message;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MessageController extends Controller
 {
@@ -36,9 +37,39 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
+        if(! isset($request->picture) AND !isset($request->content)){
+            return \redirect()->back()->with('success','Vous ne pouvez pas envoyer un message vide');
+        }
+        elseif($request->picture and $request->content){
+            $content=$request->content;
+            $picture=\imageConvert("chat/",$request->picture);
+        }
+        elseif($request->picture){
+            $content=NULL;
+            $picture=\imageConvert("chat/",$request->picture);
+        }
+        else 
+        {
+            $content=$request->content;
+            $picture=NULL;
+        }
+
+
         $data=$request->validate([
-            
+            'destinator'=>'required',
         ]);
+
+        $data['User_id']=Auth::user()->id;
+        $data['slug']=\slug('MS');
+        $data['content']=$content;
+        $data['picture']=$picture;
+
+        Message::create(
+            $data
+        );
+
+        return with('success','message envoyé');
+
     }
 
     /**
@@ -73,7 +104,20 @@ class MessageController extends Controller
      */
     public function update(Request $request, Message $message)
     {
-        //
+    
+        if ($request->content) $content=$request->content;
+        else $content=$request->contentOld;
+
+        if($request->picture) $picture=\imageConvert("chat/",$request->picture);
+        else $picture=$request->pictureOld;
+
+        $data['content']=$content;
+        $data['picture']=$picture;
+
+        $message->update(
+            $data
+        );
+        return \redirect()->back()->with('success','Modifié avec succès');
     }
 
     /**
@@ -84,6 +128,13 @@ class MessageController extends Controller
      */
     public function destroy(Message $message)
     {
-        //
+        $message->delete();
+        return \redirect()->back()->with('success','message supprimé avec succès');
+    }
+
+    public function setIsRead(Message $message){
+        $message->update([
+            'isRead'=>'1'
+        ]);
     }
 }

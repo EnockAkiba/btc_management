@@ -35,7 +35,15 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $data['slug']=\slug('TEA');
+
+        Teacher::updateOrCreate(
+            ['user_id'=>$request->user_id],
+            $data
+        );
+
+        return \redirect()->back()->with('success','Teacher nommé');
     }
 
     /**
@@ -69,7 +77,19 @@ class TeacherController extends Controller
      */
     public function update(Request $request, Teacher $teacher)
     {
-        //
+        if($request->picture) $picture=\imageConvert('teacher/', $request->picture);
+        else $picture=$request->pictureOld;
+
+
+        $data=$request->validate([
+            'biography'=>'required'
+        ]);
+
+        $data['picture']=$picture;
+        $data['gmail']=$request->gmail;
+
+        $teacher->update($data);
+        return \redirect()->back()->with('success','Profil Modifié');
     }
 
     /**
@@ -80,6 +100,7 @@ class TeacherController extends Controller
      */
     public function destroy(Teacher $teacher)
     {
-        //
+        $teacher->delete();
+        return \redirect()->back()->with('success','Teacher supprimé');
     }
 }

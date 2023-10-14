@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Message extends Model
 {
     use HasFactory;
-    protected $fillable=['slug','destinator','picture','content','isRead'];
+    protected $fillable=['slug','user_id','destinator','picture','content','isRead'];
 
 }

@@ -44,16 +44,16 @@ class NewsController extends Controller
         ]);
 
         if($request->picture==NULL and $request->video==NULL){
-            \redirect()->back()->with('info','Veuillez inserer un fichier photo ou vidéo');
+            return \redirect()->back()->with('info','Veuillez inserer un fichier photo ou vidéo');
         }
-        elseif($request->picture){
-            $picture=\imageUsage("news",$request->picture);
-            $video=NULL;
+        elseif($request->video){
+            $picture=NULL;
+            $video=videoStatement('news/',$request->video);
+
         }
         else{
-            $picture=NULL;
-            $video=videoStatement('news',$request->video);
-            
+            $picture=\imageUsage("news/",$request->picture);
+            $video=NULL;
         }
         
         $data['user_id']=Auth::user()->id;
@@ -112,7 +112,6 @@ class NewsController extends Controller
         if($request->video) $video=videoStatement('news',$request->video);
         else $video=$request->videoOld;
         
-
         $data['picture']=$picture;
         $data['video']=$video;
 
