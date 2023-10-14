@@ -63,9 +63,13 @@
 
                             <div class="card-comment">
                                 <!-- User image -->
-                                <div class="flex">
-                                    <img class="img-circle img-sm" src="{{asset('/'.$comment->user->picture)}}" alt="User Image">
-                                    
+                                <div class="flex justify-between items-center">
+                                    <img class="img-circle img-sm" src="{{asset('/'.$comment->user->picture)}}" alt="user">
+                                    @if(Auth::user()->id === $comment->user->id)
+                                    <a class=" text-green-400" data-toggle="modal" data-target="#deleteComment" href="#"
+                                    role="button"> <i class="fa fa-trash" aria-hidden="true"></i>
+                                    </a>
+                                    @endif
                                 </div>
 
                                 <div class="comment-text">
@@ -77,6 +81,26 @@
                                 </div>
                                 <!-- /.comment-text -->
                             </div>
+
+                              {{-- DELETE Comment  --}}
+
+    <div class="modal fade" id="deleteComment" style="top:40%">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content rounded-none shadow-none  border-t-2 border-t-green-300 p-3">
+                <h1 class=" p-2 text-orange border-b">Voulez-vous supprimer ?</h1>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <div class="mt-3">
+                    <a href="" class="btn-saved p-2"><i
+                            class="fa-solid fa-check"></i> Oui</a>
+                    <button type="button" class="btn-deleted p-1 ml-2" data-dismiss="modal"><i
+                            class="fa-solid fa-x"></i> Non</button>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- DELETE modal -->
                             @endforeach
 
                             <!-- /.card-comment -->
