@@ -26,54 +26,59 @@
                     <div class="card card-widget">
                         <div class="card-header">
                             <div class="user-block">
-                                <img class="img-circle" src="{{ asset('admin/images/user.jpg') }}" alt="User Image">
-                                <span class="username"><a href="#">Jonathan Burke Jr.</a></span>
+                                <img class="img-circle" src="{{ asset('/'.$news->user->picture) }}" alt="User Image">
+                                <span class="username"><a href="#">{{$news->user->name}}</a></span>
                                 <span class="description"><i class="fa fa-calendar" aria-hidden="true"></i> <span
-                                        class="text-green-500"> {{ date('d.M.Y') }} </span> </span>
+                                        class="text-green-500"> {{ $news->created_at->format('d.M.Y H:i') }} </span> </span>
                             </div>
 
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <img class="img-fluid pad" src="{{ asset('admin/images/photo2.png') }}" alt="Photo">
+                            @if($news->video)
+                            <video src="{{asset('/').$news->video}}" controls></video>
+                            @endif
+                            @if ($news->picture)
+                            <img src="{{asset('/'.$news->picture)}}"
+                            class="" alt="..." style="max-height: 250px; object-fit: fill;" >
+                            @endif
+                            {{-- <img class="img-fluid pad" src="{{ asset('admin/images/photo2.png') }}" alt="Photo"> --}}
                             <a class="text-blue-500 d-lg-none d-md-none" data-toggle="modal" data-target="#media"
                                 href="#" role="button">
                                 <i class="fa fa-image" aria-hidden="true"></i> Voir plus d'image
                             </a>
-                            <span class="float-right text-muted">127 likes - 3 comments</span>
-                            <p>I took this photo this morning. What do you guys think?</p>
+                            <div class="liker flex justify-end my-2">
+                                <span class="loved">
+                                  43  <i class="fa fa-heart text-red-600" aria-hidden="true"></i>
+                                </span>
+                                <span class="comment mx-2">
+                                 {{count($news->comment)}} <i class=" fa fa-comment text-green-400" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                            <p>{{$news->description}}</p>
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer card-comments">
+                            @foreach ($news->comment as $comment)
+
                             <div class="card-comment">
                                 <!-- User image -->
-                                <img class="img-circle img-sm" src="../dist/img/user3-128x128.jpg" alt="User Image">
+                                <div class="flex">
+                                    <img class="img-circle img-sm" src="{{asset('/'.$comment->user->picture)}}" alt="User Image">
+                                    
+                                </div>
 
                                 <div class="comment-text">
                                     <span class="username">
-                                        Maria Gonzales
-                                        <span class="text-muted float-right">8:03 PM Today</span>
+                                       {{$comment->user->name}}
+                                        <span class="text-muted float-right"></span>
                                     </span><!-- /.username -->
-                                    It is a long established fact that a reader will be distracted
-                                    by the readable content of a page when looking at its layout.
+                                    {{$comment->content}}
                                 </div>
                                 <!-- /.comment-text -->
                             </div>
-                            <!-- /.card-comment -->
-                            <div class="card-comment">
-                                <!-- User image -->
-                                <img class="img-circle img-sm" src="../dist/img/user4-128x128.jpg" alt="User Image">
+                            @endforeach
 
-                                <div class="comment-text">
-                                    <span class="username">
-                                        Luna Stark
-                                        <span class="text-muted float-right">8:03 PM Today</span>
-                                    </span><!-- /.username -->
-                                    It is a long established fact that a reader will be distracted
-                                    by the readable content of a page when looking at its layout.
-                                </div>
-                                <!-- /.comment-text -->
-                            </div>
                             <!-- /.card-comment -->
                         </div>
                         <!-- /.card-footer -->

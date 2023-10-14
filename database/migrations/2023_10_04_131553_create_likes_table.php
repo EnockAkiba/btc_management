@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('likes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('new_id')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('new_id')-> onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('user_id')->onDelete('cascade')->onUpdate('cascade');
             $table->string('slug');
             $table->timestamps();

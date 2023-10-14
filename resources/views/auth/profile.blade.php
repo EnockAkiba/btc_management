@@ -80,7 +80,7 @@
                                         <div class="col-12 col-md-6">
                                             <div class="form-group">
                                                 <label for="" class="text-blue-400">Postnom</label>
-                                                <input type="text" name="name" class="form-control" value="{{Auth::user()->name}}" disabled>
+                                                <input type="text" name="lastName" class="form-control" value="{{Auth::user()->name}}" disabled>
                                             </div>
                                          
                                         </div>
@@ -153,7 +153,7 @@
                                         <div class="col-12 col-md-6">
                                             <div class="form-group">
                                                 <label for="" class="text-blue-400">Postnom</label>
-                                                <input type="text" name="name" class="form-control" value="{{Auth::user()->name}}" >
+                                                <input type="text" name="lastName" class="form-control" value="{{Auth::user()->name}}" >
                                             </div>
                                          
                                         </div>
