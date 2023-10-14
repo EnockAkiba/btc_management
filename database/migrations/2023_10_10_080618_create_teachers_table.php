@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('teachers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->onDelete('cascade')->onPdate('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade')->onPdate('cascade');
             $table->string('picture')->nullable();
             $table->text('biography')->nullable();
             $table->string('gmail');

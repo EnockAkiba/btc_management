@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('applays', function (Blueprint $table) {
             $table->id();        
-            $table->foreignId('quiz_id')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('register_id')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('quiz_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('register_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->text('content')->nullable();
             $table->string('file')->nullable();
             $table->string('slug');

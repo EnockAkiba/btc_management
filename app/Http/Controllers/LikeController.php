@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Like;
+use App\Models\News;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LikeController extends Controller
 {
@@ -35,7 +37,16 @@ class LikeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $like=Like::Where('news_id',$request->news_id)->Where('user_id',Auth::user()->id)->first();
+
+        if($like){
+            $like->delete();
+        }
+        else{
+            News::create(['news_id'=>$request->news_id, 'user_id'=>Auth::user()->id]);
+        }
+
     }
 
     /**

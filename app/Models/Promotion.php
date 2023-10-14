@@ -14,7 +14,7 @@ class Promotion extends Model
         return $this->belongsTo(Departement::class);
     }
 
-    public function inscrire(){
+    public function register(){
         return $this->hasMany(Inscrire::class);
     }
 }
