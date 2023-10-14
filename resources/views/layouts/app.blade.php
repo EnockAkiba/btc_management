@@ -18,6 +18,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="{{ asset('css/fontawesome.min.css') }}">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <script src="{{asset('assets/js/jquery.min.js')}}"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -37,10 +39,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div class="wrapper">
 
         <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
+        <nav class="main-header navbar navbar-expand-md navbar-light navbar-white p-0">
             <div class="container flex">
-                <a href="{{ route('home') }}" class="brand-link">
-                    <img src="{{ asset('images/logo.png') }}" alt="Logo" class="brand-image " style="opacity:">
+                <a href="{{ route('home') }}" class="brand-link flex items-center">
+                    <img src="{{ asset('images/logo.png') }}" alt="Logo" class="brand-image">
                     <span class="title">BTC/AGAPD</span>
                 </a>
                 <li class="list-none d-lg-none d-md-none">
@@ -58,12 +60,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         <div class="modal fade" id="navigation">
             <div class="modal-dialog modal-md">
-                <div class="modal-content rounded-none shadow-none  border-t-2 border-t-green-300 p-3">
+                <div class="modal-content rounded-none shadow-none  border-t-2 border-t-green-300 p-2">
                     <div class="flex justify-between items-center">
                         <h3 class="card-title text-blue">
-                            <a href="" class="brand-link">
-                                <img src="{{ asset('images/logo.png') }}" alt="Logo" class="brand-image "
-                                    style="opacity:">
+                            <a href="" class="brand-link flex items-center">
+                                <img src="{{ asset('images/logo.png') }}" alt="Logo" class="brand-image ">
                                 <span class="title">BTC/AGAPD</span>
                             </a>
                         </h3>
@@ -94,7 +95,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="col-md-3 d-none d-lg-block d-md-block mt-3">
                             <div class="card px-3 py-2">
                                 <div class="card-header">
-                                    <h3 class="card-title title"><a href="">userOnline </a>
+                                    <h3 class="flex title items-center">
+                                        <div class="img relative">
+                                            <img src="{{ asset('/' . Auth::user()->picture) }}"
+                                                class="rounded-full mx-2" style="width:40px; height:40px">
+                                            <span class="bg-green-500 w-4 h-4 absolute rounded-full top-0 right-1 border-2 border-white"></span>
+                                        </div>
+                                        <span> {{ Auth::user()->name }}</span>
                                     </h3>
                                 </div>
                                 <div class="card-body p-2">
@@ -115,8 +122,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         </li>
 
                                         <li class="nav-item">
-                                            <a href="{{ route('message.index') }}" class="nav-link">
-                                            <i class="fa fa-comments text-blue-600" aria-hidden="true"></i>  Message
+                                            <a href="{{ route('message') }}" class="nav-link">
+                                                <i class="fa fa-comments text-blue-600" aria-hidden="true"></i> Message
                                             </a>
                                         </li>
 

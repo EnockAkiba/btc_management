@@ -68,3 +68,12 @@
     display: block;
     opacity: 1;
 } 
+#profilePicture{
+    position: relative;
+    background: #000;
+}
+#profilePicture #onligne{
+    width: 200px;
+    height: 200px;
+    background: red;
+}
