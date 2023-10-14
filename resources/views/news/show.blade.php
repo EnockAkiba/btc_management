@@ -26,8 +26,8 @@
                     <div class="card card-widget">
                         <div class="card-header">
                             <div class="user-block">
-                                <img class="img-circle" src="{{ asset('/'.$news->user->picture) }}" alt="User Image">
-                                <span class="username"><a href="#">{{$news->user->name}}</a></span>
+                                <img class="img-circle" src="{{ asset('/' . $news->user->picture) }}" alt="User Image">
+                                <span class="username"><a href="#">{{ $news->user->name }}</a></span>
                                 <span class="description"><i class="fa fa-calendar" aria-hidden="true"></i> <span
                                         class="text-green-500"> {{ $news->created_at->format('d.M.Y H:i') }} </span> </span>
                             </div>
@@ -35,12 +35,12 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            @if($news->video)
-                            <video src="{{asset('/').$news->video}}" controls></video>
+                            @if ($news->video)
+                                <video src="{{ asset('/') . $news->video }}" controls></video>
                             @endif
                             @if ($news->picture)
-                            <img src="{{asset('/'.$news->picture)}}"
-                            class="" alt="..." style="max-height: 250px; object-fit: fill;" >
+                                <img src="{{ asset('/' . $news->picture) }}" class="" alt="..."
+                                    style="max-height: 250px; object-fit: fill;">
                             @endif
                             {{-- <img class="img-fluid pad" src="{{ asset('admin/images/photo2.png') }}" alt="Photo"> --}}
                             <a class="text-blue-500 d-lg-none d-md-none" data-toggle="modal" data-target="#media"
@@ -49,58 +49,61 @@
                             </a>
                             <div class="liker flex justify-end my-2">
                                 <span class="loved">
-                                  43  <i class="fa fa-heart text-red-600" aria-hidden="true"></i>
+                                    43 <i class="fa fa-heart text-red-600" aria-hidden="true"></i>
                                 </span>
                                 <span class="comment mx-2">
-                                 {{count($news->comment)}} <i class=" fa fa-comment text-green-400" aria-hidden="true"></i>
+                                    {{ count($news->comment) }} <i class=" fa fa-comment text-green-400"
+                                        aria-hidden="true"></i>
                                 </span>
                             </div>
-                            <p>{{$news->description}}</p>
+                            <p>{{ $news->description }}</p>
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer card-comments">
                             @foreach ($news->comment as $comment)
+                                <div class="card-comment">
+                                    <!-- User image -->
+                                    <div class="flex justify-between items-center">
+                                        <img class="img-circle img-sm" src="{{ asset('/' . $comment->user->picture) }}"
+                                            alt="user">
+                                        @if (Auth::user()->id === $comment->user->id)
+                                            <a class=" text-green-400" data-toggle="modal" data-target="#deleteComment"
+                                                href="#" role="button"> <i class="fa fa-trash"
+                                                    aria-hidden="true"></i>
+                                            </a>
+                                        @endif
+                                    </div>
 
-                            <div class="card-comment">
-                                <!-- User image -->
-                                <div class="flex justify-between items-center">
-                                    <img class="img-circle img-sm" src="{{asset('/'.$comment->user->picture)}}" alt="user">
-                                    @if(Auth::user()->id === $comment->user->id)
-                                    <a class=" text-green-400" data-toggle="modal" data-target="#deleteComment" href="#"
-                                    role="button"> <i class="fa fa-trash" aria-hidden="true"></i>
-                                    </a>
-                                    @endif
+                                    <div class="comment-text">
+                                        <span class="username">
+                                            {{ $comment->user->name }}
+                                            <span class="text-muted float-right"></span>
+                                        </span><!-- /.username -->
+                                        {{ $comment->content }}
+                                    </div>
+                                    <!-- /.comment-text -->
                                 </div>
 
-                                <div class="comment-text">
-                                    <span class="username">
-                                       {{$comment->user->name}}
-                                        <span class="text-muted float-right"></span>
-                                    </span><!-- /.username -->
-                                    {{$comment->content}}
+                                {{-- DELETE Comment  --}}
+
+                                <div class="modal fade" id="deleteComment" style="top:40%">
+                                    <div class="modal-dialog modal-sm">
+                                        <div
+                                            class="modal-content rounded-none shadow-none  border-t-2 border-t-green-300 p-3">
+                                            <h1 class=" p-2 text-green border-b">Voulez-vous supprimer ?</h1>
+                                            <!-- /.card-header -->
+                                            <!-- form start -->
+                                            <div class="mt-3">
+                                                <a href="" class="bg-blue-300  text-white p-2"><i
+                                                        class="fa-solid fa-check"></i> Oui</a>
+                                                <button type="button" class="bg-red-400 p-1 ml-2 text-white"
+                                                    data-dismiss="modal"><i class="fa-solid fa-x"></i> Non</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-dialog -->
                                 </div>
-                                <!-- /.comment-text -->
-                            </div>
-
-                              {{-- DELETE Comment  --}}
-
-    <div class="modal fade" id="deleteComment" style="top:40%">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content rounded-none shadow-none  border-t-2 border-t-green-300 p-3">
-                <h1 class=" p-2 text-orange border-b">Voulez-vous supprimer ?</h1>
-                <!-- /.card-header -->
-                <!-- form start -->
-                <div class="mt-3">
-                    <a href="" class="btn-saved p-2"><i
-                            class="fa-solid fa-check"></i> Oui</a>
-                    <button type="button" class="btn-deleted p-1 ml-2" data-dismiss="modal"><i
-                            class="fa-solid fa-x"></i> Non</button>
-                </div>
-            </div>
-        </div>
-        <!-- /.modal-dialog -->
-    </div>
-    <!-- DELETE modal -->
+                                <!-- DELETE modal -->
                             @endforeach
 
                             <!-- /.card-comment -->
@@ -130,7 +133,8 @@
                     <div class="row">
                         @for ($i = 0; $i < 10; $i++)
                             <div class="col-md-6 mb-2">
-                              <a href="{{ asset('admin/images/photo2.png') }}"> <img class="img-fluid pad" src="{{ asset('admin/images/photo2.png') }}" alt="Photo"></a> 
+                                <a href="{{ asset('admin/images/photo2.png') }}"> <img class="img-fluid pad"
+                                        src="{{ asset('admin/images/photo2.png') }}" alt="Photo"></a>
                             </div>
                         @endfor
                     </div>
@@ -149,7 +153,8 @@
             <div class="modal-content rounded-none shadow-none  border-t-2 border-t-green-300 p-3">
                 <div class="flex justify-between items-center">
                     <h3 class="card-title text-orange"><a href="" class="brand-link">
-                            <img src="{{ asset('images/logo.png') }}" alt="Logo" class="brand-image " style="opacity:">
+                            <img src="{{ asset('images/logo.png') }}" alt="Logo" class="brand-image "
+                                style="opacity:">
                             <span class="title">BTC/AGAPD </span>
                         </a>
                     </h3>
