@@ -1,12 +1,13 @@
 <?php
 
+use Faker\Core\File;
 use Intervention\Image\Facades\Image;
 use Illuminate\Http\UploadedFile;
 
-function imageUsage($folder, UploadedFile $image)
+function imageConvert($folder, UploadedFile $image)
 {
 
-    $path=public_path('images'. $folder);
+    $path=public_path('images/'. $folder);
     // Assurez-vous que le répertoire "public/images" existe, sinon, créez-le
     if (!file_exists($path)) {
         mkdir($path, 0777, true);
@@ -39,7 +40,7 @@ function imageUsage($folder, UploadedFile $image)
 
 
 
-function imagesUsage($folder, array $images)
+function imagesConvert($folder, array $images)
 {
     $imagePaths = [];
 
@@ -89,14 +90,18 @@ function imagesUsage($folder, array $images)
 }
 
 
- function videoStatement($emplacement,$video){
+ function videoStatement($folder,$video){
     // ici file est le nom de l'input
-    if(isset($_FILES[$video])){
-        $tmpName = $_FILES[$video]['tmp_name'];
 
-        $name = $_FILES[$video]['name'];
-        $size = $_FILES[$video]['size'];
-        $error = $_FILES[$video]['error'];
+    $emplacement=public_path('videos/').$folder;
+
+    if(isset($video)){
+        // $tmpName = $_FILES[$video]['tmp_name'];
+
+        $name = $video->getClientOriginalName();
+        $size =$video->getSize();
+        $error = $video->getError();
+
         $tabExtension = explode('.', $name);
         $extension = strtolower(end($tabExtension));
     
@@ -109,19 +114,20 @@ function imagesUsage($folder, array $images)
             $uniqueName = uniqid('Vid', true);
             //uniqid génère quelque chose comme ca : 5f586bf96dcd38.73540086
             $file = $uniqueName.".".$extension;
-            while(file_exists(public_path('videos/').$emplacement.$file)){
+            while(file_exists($emplacement.$file)){
                 $file = $uniqueName.".".$extension;
             }
 
             // A cet androit ./photo/ est l'emplacement de ma photo
-            move_uploaded_file($tmpName, public_path('videos/')."$emplacement".$file);
+            $video->move($emplacement, $emplacement.$file);
+            $imagePaths='videos/'.$folder.$file;
             // echo "Image bien convertie";
         }
         else{
             // echo "Une erreur est survenue";
-            $file=NULL;
+            $imagePaths=NULL;
         }
-        return $file;
+        return $imagePaths;
     }
 }
 

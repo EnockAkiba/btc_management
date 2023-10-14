@@ -64,7 +64,7 @@ class UserController extends Controller
         ]);
         
         // ici je vais envoyer le path et l'image a compresser
-        $picture=imageUsage('profilUser',$request->picture);
+        $picture=\imageConvert('profilUser',$request->picture);
 
         $user->update([
             'picture' =>$picture
