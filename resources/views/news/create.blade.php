@@ -20,10 +20,49 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-6" style="max-height: 80vh; overflow:auto">
-                    <!-- Box Comment -->
+               
+                <div class="card col-md-12 " style="max-height: 80vh; overflow:auto">
+                    <div class="card-header">
+                        <div class=" flex items-center justify-between">
+                            <h2 class="title">Les actualités</h2>
+                            <a class="bg-blue-400 text-white p-2 ml-auto" data-toggle="modal" data-target="#addNew" href="#"
+                            role="button">Add News
+                            </a>
+                        </div>
+                    </div>
+                     <div class="card-body overflow-auto mt-1 py-0">
+                        <table class="table table-hover">
+                            <thead class="bg-green-100">
+                                <th>#</th>
+                                <th>titre d'actualité</th>
+                                <th>Date</th>
+                                <th>Type</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    @for ($i =1 ; $i <10 ; $i++)
+                                        <td>{{$i}}</td>
+                                        <td> <a href="{{route('news.edit')}}" class="text-blue-800">Defense public </a></td>
+                                        <td>{{date('d.M.Y')}}</td>
+                                        <td> <span class="bg-blue-50 py-2 px-1 rounded-sm">interne</span></td>
+                                </tr>
+                                @endfor
+                            </tbody>
+                        </table>
+                     </div>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+    </section><!-- /.container-fluid -->
+    <!-- /.content -->
+    
+        {{-- NAVIGATION MODAL  --}}
 
-                    <div class="card card-widget">
+        <div class="modal fade" id="addNew">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content rounded-none shadow-none  border-t-2 border-t-green-300 p-2">
+                    <div class="">
                         <div class="card-header">
                             <div class="user-block">
                                 <h3 class="text-green-500">Veuilez remplir les informations d'actualité</h3>
@@ -57,47 +96,21 @@
                             <!-- /.card-body -->
 
                             <!-- /.card-footer -->
-                            <div class="card-footer flex justify-between">
+                            <div class="m-3 flex justify-between">
                                 <button type="submit" class="btn-valid">Valider</button>
                                 <span class="required ml-auto"> * sont obligatoire </span>
                             </div>
                         </form>
                         <!-- /.card-footer -->
                     </div>
-                    <!-- /.card -->
-                </div>
-                <div class="card col-md-6 " style="max-height: 80vh; overflow:auto">
-                    <div class="card-header">
-                        <div class="user-block">
-                            <h2 class="title">Les actualités</h2>
-                        </div>
-                    </div>
-                     <div class="card-body overflow-auto mt-1 py-0">
-                        <table class="table table-hover">
-                            <thead class="bg-green-100">
-                                <th>#</th>
-                                <th>titre d'actualité</th>
-                                <th>Date</th>
-                                <th>Type</th>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    @for ($i =1 ; $i <10 ; $i++)
-                                        <td>{{$i}}</td>
-                                        <td> <a href="{{route('news.edit')}}" class="text-blue-800">Defense public </a></td>
-                                        <td>{{date('d.M.Y')}}</td>
-                                        <td> <span class="bg-blue-50 py-2 px-1 rounded-sm">interne</span></td>
-                                </tr>
-                                @endfor
-                            </tbody>
-                        </table>
-                     </div>
+
+                   
                 </div>
             </div>
-            <!-- /.row -->
+            <!-- /.modal-dialog -->
         </div>
-    </section><!-- /.container-fluid -->
-    <!-- /.content -->
+        <!-- NAVIGATION MODAL-->
+
 
 
     {{-- IMAGES MODAL  --}}

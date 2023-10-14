@@ -48,10 +48,10 @@ Route::group(['prefix' => 'user'], function () {
             Route::get("news/index", "index")->name("news");
             Route::get("news/create", "create")->name("news.create");
             Route::post("news/store", "store")->name("news.store");
-            Route::get("news/show", "show")->name("news.show");
-            Route::get("news/edit", "edit")->name("news.edit");
-            Route::put("news/update", "update")->name("news.update");
-            Route::get("news/destroy", "destroy")->name("news.destroy");
+            Route::get("news/{news:slug}/show", "show")->name("news.show");
+            Route::get("news/{news:slug}/edit", "edit")->name("news.edit");
+            Route::put("news/{news:slug}/update", "update")->name("news.update");
+            Route::get("news/{news:slug}/destroy", "destroy")->name("news.destroy");
         });
 
         // MESSAGES

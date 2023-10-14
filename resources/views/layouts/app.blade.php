@@ -97,48 +97,50 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <div class="card-header">
                                     <h3 class="flex title items-center">
                                         <div class="img relative">
+                                            @if(Auth::user()->picture)
                                             <img src="{{ asset('/' . Auth::user()->picture) }}"
                                                 class="rounded-full mx-2" style="width:40px; height:40px">
                                             <span class="bg-green-500 w-4 h-4 absolute rounded-full top-0 right-1 border-2 border-white"></span>
+                                            @endif
                                         </div>
                                         <span> {{ Auth::user()->name }}</span>
                                     </h3>
                                 </div>
                                 <div class="card-body p-2">
-                                    <h3 class=" font-bold mb-2"><i class="fa fa-box text-blue-600"></i> Actualités </h3>
+                                    <h3 class=" font-bold mb-2"><i class="fa fa-box text-blue-600 "></i> Actualités & Chat</h3>
 
                                     <ul class="nav  flex-column">
                                         <li class="nav-item active">
                                             <a href="{{ route('news') }}" class="nav-link">
-                                                <i class="fas fa-inbox text-blue-600"></i> Actualité
+                                                <i class="fas fa-inbox text-blue-600 text-sm"></i> Actualité
                                             </a>
                                         </li>
 
 
                                         <li class="nav-item">
                                             <a href="{{ route('news.create') }}" class="nav-link">
-                                                <i class="fa fa-plus text-blue-600"></i> Ajouter une Actualité
+                                                <i class="fa fa-plus text-blue-600 text-sm"></i> Ajouter une Actualité
                                             </a>
                                         </li>
 
                                         <li class="nav-item">
                                             <a href="{{ route('message') }}" class="nav-link">
-                                                <i class="fa fa-comments text-blue-600" aria-hidden="true"></i> Message
+                                                <i class="fa fa-comments text-blue-600 text-sm" aria-hidden="true"></i> Message
                                             </a>
                                         </li>
 
-                                        <h3 class=" font-bold mb-2 mt-3"><i class="fa fa-users text-blue-600"></i> </h3>
+                                        <h3 class=" font-bold mb-2 mt-3"><i class="fa fa-users text-blue-600 text-sm"></i> </h3>
 
                                         <li class="nav-item">
                                             <a href="" class="nav-link">
-                                                <i class="far fa-circle text-blue-600"></i> Equipe
+                                                <i class="far fa-circle text-blue-600 text-sm"></i> Equipe
                                             </a>
                                         </li>
 
 
                                         <li class="nav-item">
                                             <a href="" class="nav-link">
-                                                <i class="far fa-circle text-blue-600"></i> Partenaires
+                                                <i class="far fa-circle text-blue-600 text-sm"></i> Partenaires
                                             </a>
                                         </li>
                                     </ul>
@@ -148,7 +150,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <!-- /.card -->
                             <div class="card card px-3 py-2">
                                 <div class="card-header">
-                                    <h3 class=" font-bold"> <i class="fa-solid fa-gear text-blue-600"></i> Paramétre
+                                    <h3 class=" font-bold"> <i class="fa-solid fa-gear text-blue-600 text-sm"></i> Paramétre
                                     </h3>
 
                                 </div>
@@ -157,25 +159,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                         <li class="nav-item">
                                             <a href="" class="nav-link">
-                                                <i class="far fa-circle text-blue-600"></i> A propos
+                                                <i class="far fa-circle text-blue-600 text-sm"></i> A propos
                                             </a>
                                         </li>
 
                                         <li class="nav-item">
                                             <a href="" class="nav-link">
-                                                <i class="far fa-circle text-blue-600"></i>
+                                                <i class="far fa-circle text-blue-600 text-sm"></i>
                                                 Slider
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a href="" class="nav-link">
-                                                <i class="far fa-circle text-blue-600"></i> Contact
+                                                <i class="far fa-circle text-blue-600 text-sm"></i> Contact
                                             </a>
                                         </li>
                                         <h3 class=" font-bold my-2"> Utilisateur</h3>
                                         <li class="nav-item">
                                             <a href="{{ route('profile.show') }}" class="nav-link">
-                                                <i class="fa fa-user text-blue-600" aria-hidden="true"></i> Mon profi
+                                                <i class="fa fa-user text-blue-600 text-sm" aria-hidden="true"></i> Mon profi
                                             </a>
 
                                         </li>
@@ -185,7 +187,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 @csrf
                                                 <a href="{{ route('logout') }}" class="nav-link"
                                                     onclick="event.preventDefault(); this.closest('form').submit();">
-                                                    <i class="mr-2 fa fa-sign-out-alt text-blue-600"></i>
+                                                    <i class="mr-2 fa fa-sign-out-alt text-blue-600 text-sm"></i>
                                                     Se deconnecter
                                                 </a>
                                             </form>
