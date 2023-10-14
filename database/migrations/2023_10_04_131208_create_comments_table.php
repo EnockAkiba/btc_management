@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->string('slug');
-            $table->foreignId('new_id')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('user_id')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('news_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->text('content')->nullable();
             $table->string('picture')->nullable();
             $table->timestamps();

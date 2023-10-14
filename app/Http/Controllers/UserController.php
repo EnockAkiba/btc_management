@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationData;
 
 class UserController extends Controller
@@ -57,8 +58,9 @@ class UserController extends Controller
         return \redirect()->back()->with('success','Compte supprimé succès');
     }
 
-    public function setProfilePicture(Request $request, User $user){
-
+    public function setProfilePicture(Request $request){
+    
+        $user=Auth::user()->first();
         $request->validate([
             'picture'=>'required'
         ]);

@@ -30,11 +30,10 @@ function imageConvert($folder, UploadedFile $image)
         // Enregistrez l'image avec la nouvelle qualité
     }
 
-    
-    
+        
     $img->save($path . '/' . $filename, $quality);
     
-    return 'images/'. $filename;
+    return 'images/'.$folder .'/'. $filename;
     // Retourner le chemin complet de l'image compressée
 }
 
@@ -120,7 +119,7 @@ function imagesConvert($folder, array $images)
 
             // A cet androit ./photo/ est l'emplacement de ma photo
             $video->move($emplacement, $emplacement.$file);
-            $imagePaths='videos/'.$folder.$file;
+            $imagePaths='videos/'.$folder.'/'.$file;
             // echo "Image bien convertie";
         }
         else{

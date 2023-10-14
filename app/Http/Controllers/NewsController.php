@@ -27,7 +27,8 @@ class NewsController extends Controller
      */
     public function create()
     {
-        return \view('news.create');
+        $news=News::paginate(8);
+        return \view('news.create', \compact('news'));
     }
 
     /**
@@ -48,11 +49,11 @@ class NewsController extends Controller
         }
         elseif($request->video){
             $picture=NULL;
-            $video=videoStatement('news/',$request->video);
+            $video=videoStatement('news',$request->video);
 
         }
         else{
-            $picture=\imageUsage("news/",$request->picture);
+            $picture=\imageConvert("news",$request->picture);
             $video=NULL;
         }
         
@@ -106,7 +107,7 @@ class NewsController extends Controller
         ]);
 
         
-        if($request->picture)  $picture=\imageUsage("news",$request->picture);
+        if($request->picture)  $picture=\imageConvert("news",$request->picture);
         else $picture=$request->pictureOld;
 
         if($request->video) $video=videoStatement('news',$request->video);
