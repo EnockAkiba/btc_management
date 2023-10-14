@@ -13,7 +13,7 @@ class News extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
-    public function aime(){
+    public function like(){
         return $this->hasMany(Like::class);
     }
     public function comment(){

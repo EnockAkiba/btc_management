@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     use HasFactory;
-    protected $fillable=['slug','new_id','user_id','content','picture'];
+    protected $fillable=['slug','news_id','user_id','content','picture'];
 
-    public function new(){
+    public function news(){
         return $this->belongsTo(News::class);
     }
 

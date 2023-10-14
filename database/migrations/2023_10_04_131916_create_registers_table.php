@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('registers', function (Blueprint $table) {
             $table->id();
             $table->string('slug');
-            $table->foreignId('user_id')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('promotion_id')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('promotion_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->string('index');
             $table->string('extension');
             $table->string('vacation')->nullable();
