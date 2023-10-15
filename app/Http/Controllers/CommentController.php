@@ -48,7 +48,8 @@ class CommentController extends Controller
         else $content=NULL;
 
         Comment::create([
-            'new_id'=>$request->new_id,
+            'news_id'=>$request->news_id,
+            'slug'=>\slug("COM"),
             'user_id'=> Auth::user()->id,
             'content'=>$content,
             'picture'=>$picture

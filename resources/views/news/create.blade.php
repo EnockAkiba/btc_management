@@ -39,8 +39,16 @@
                                 <th>Type</th>
                             </thead>
                             <tbody>
-                                
-                                    
+
+                                <tr>
+                                    @for ($i =1 ; $i <10 ; $i++)
+                                        <td>{{$i}}</td>
+                                        <td> <a href="" class="text-blue-800">Defense public </a></td>
+                                        <td>{{date('d.M.Y')}}</td>
+                                        <td> <span class="bg-blue-50 py-2 px-1 rounded-sm">interne</span></td>
+                                </tr>
+                                @endfor
+
                             </tbody>
                         </table>
                      </div>
@@ -137,4 +145,8 @@
         <!-- /.modal-dialog -->
     </div>
     <!-- IMAGES MODAL-->
+
+
+    
+  
 @endsection

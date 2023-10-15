@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Auth;
@@ -53,6 +54,14 @@ Route::group(['prefix' => 'user'], function () {
             Route::put("news/{news:slug}/update", "update")->name("news.update");
             Route::get("news/{news:slug}/destroy", "destroy")->name("news.destroy");
         });
+
+        // COMMENTS
+        Route::controller(CommentController::class)->group(function () {
+            Route::post("comment/store", "store")->name("comment.store");
+            Route::get("comment/{comment:slug}/destroy", "destroy")->name("comment.destroy");
+        });
+
+
 
         // MESSAGES
 
