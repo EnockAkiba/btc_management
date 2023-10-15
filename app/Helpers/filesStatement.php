@@ -92,7 +92,7 @@ function imagesConvert($folder, array $images)
  function videoStatement($folder,$video){
     // ici file est le nom de l'input
 
-    $emplacement=public_path('videos/').$folder;
+    $emplacement=public_path('videos/'.$folder);
 
     if(isset($video)){
         // $tmpName = $_FILES[$video]['tmp_name'];
@@ -130,19 +130,21 @@ function imagesConvert($folder, array $images)
     }
 }
 
-function DocStatement($doc, $emplacement){
-    // ici file est le nom de l'input
-    if(isset($_FILES[$doc])){
-        $tmpName = $_FILES[$doc]['tmp_name'];
+function docStatement($folder, $doc){
+    
+    $emplacement=public_path('docs/'.$folder);
 
-        $name = $_FILES[$doc]['name'];
-        $size = $_FILES[$doc]['size'];
-        $error = $_FILES[$doc]['error'];
+    if($doc){
+        
+        $name = $doc->getName();
+        $size = $doc->getSize();
+        $error = $doc->getError();
+
         $tabExtension = explode('.', $name);
         $extension = strtolower(end($tabExtension));
     
         $extensions = ['pdf', 'txt', 'doc', 'docx'];
-        $maxSize = 20000000;
+        $maxSize = 1000000000;
     
         if(in_array($extension, $extensions) && $size <= $maxSize && $error == 0){
     
@@ -152,10 +154,10 @@ function DocStatement($doc, $emplacement){
             while(file_exists($emplacement.$file)){
                 $file = $uniqueName.".".$extension;
             }
-
-            // A cet androit ./photo/ est l'emplacement de ma photo
-            move_uploaded_file($tmpName, "$emplacement".$file);
-            // echo "Image bien convertie";
+            // le premier argument de move prend la provenances et le second la destination
+            $doc->move($emplacement,$emplacement.$file);
+            $file='docs/'.$folder.'/'.$file;
+            // echo "document bien deplace ";
         }
         else{
             // echo "Une erreur est survenue";

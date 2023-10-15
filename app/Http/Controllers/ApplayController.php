@@ -35,7 +35,28 @@ class ApplayController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data=$request->validate([
+            'quiz_id'=>'required',
+            'register_id'=>'required',
+        ]);
+
+        if(! $request->file() AND !$request->content){
+            return \redirect()->back()->with('error','Veillez repondre par un fichier pdf/commentaire');
+        }
+
+        if($request->file) $file=\docStatement('quiz/applay',$request->file);
+        else $file=NULL;
+
+        if($request->content) $content=$request->file;
+        else $content=NULL;
+        
+        $data['content']=$content;
+        $data['file']=$file;
+        $data['slug']=\slug('Ap');
+
+        Applay::create($data);
+        return \redirect()->back()->with('success','Travail remis avec succès');
+
     }
 
     /**
@@ -80,6 +101,8 @@ class ApplayController extends Controller
      */
     public function destroy(Applay $applay)
     {
-        //
+        $applay->delete();
+
+        return \redirect()->back()->with('success','Evaluation supprimée avec succès');
     }
 }
