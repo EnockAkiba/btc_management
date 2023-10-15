@@ -30,9 +30,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="{{ asset('admin/toastify/toastify.css') }}">
 
     @yield('styles')
-    @livewireStyles
     @vite('resources/css/app.css')
-
+    
+    @livewireStyles
 </head>
 
 <body class="hold-transition layout-top-nav">
@@ -214,6 +214,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- ./wrapper -->
 
     <!-- REQUIRED SCRIPTS -->
+    @livewireScripts
 
     <!-- jQuery -->
     <script src="{{ asset('admin/asset/plugins/jquery/jquery.min.js') }}"></script>
@@ -226,7 +227,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="{{ asset('admin/asset/dist/js/adminlte.min.js') }}"></script>
 
     {{-- @vite('resources/js/app.js') --}}
-    @livewireScripts
+    
 
     <script src="{{ asset('admin/toastify/toastify.js') }}"></script>
 
