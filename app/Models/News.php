@@ -19,4 +19,8 @@ class News extends Model
     public function comment(){
         return $this->hasMany(Comment::class);
     }
+
+    public function mediaNews(){
+        return $this->hasMany(MediaNews::class);
+    }
 }

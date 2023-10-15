@@ -15,8 +15,7 @@
     </div>
     <!-- /.content-header -->
 
-    <!-- Main content -->
-    <div class="content" style="max-height: 80vh; overflow:auto">
+<div class="content" style="max-height: 80vh; overflow:auto">
         <div class="container-fluid">
             <div class="row">
                 @foreach ($news as $new)
@@ -57,12 +56,16 @@
                             </div>
                         </div>
                     </div>
+
+                </div>
                 @endforeach
             </div>
 
-            {{-- <button class="w-full bg-green-500 text-white py-1">Charger plus</button> --}}
+            <button class="w-full bg-green-500 text-white py-1">Charger plus</button>
+
             <!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
+
     <!-- /.content -->
 @endsection

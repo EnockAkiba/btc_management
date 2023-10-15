@@ -11,7 +11,7 @@ class MediaNews extends Model
 
     protected $fillable=['new_id','picture'];
 
-    public function new(){
+    public function news(){
         return $this->belongsTo(News::class);
     }
 }

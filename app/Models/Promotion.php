@@ -17,4 +17,8 @@ class Promotion extends Model
     public function register(){
         return $this->hasMany(Inscrire::class);
     }
+
+    public function quiz(){
+        return $this->hasMany(Quiz::class);
+    }
 }
