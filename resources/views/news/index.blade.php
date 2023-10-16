@@ -35,7 +35,7 @@
                                             aria-hidden="true"></i>{{ $new->created_at->format('d.M.Y') }} </span>
                                     <div class="liker">
                                         <span class="loved">
-                                            {{ count($new->like) }} <i class="fa fa-heart" aria-hidden="true"></i>
+                                             <i class="fa fa-heart" aria-hidden="true"></i>
                                         </span>
                                         <span class="comment">
                                             {{ count($new->comment) }} <i class="fa fa-comment" aria-hidden="true"></i>

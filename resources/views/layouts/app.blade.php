@@ -33,6 +33,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     @vite('resources/css/app.css')
 
+    @livewireStyles
 </head>
 
 <body class="hold-transition layout-top-nav">
@@ -214,6 +215,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- ./wrapper -->
 
     <!-- REQUIRED SCRIPTS -->
+    @livewireScripts
 
     <!-- jQuery -->
     <script src="{{ asset('admin/asset/plugins/jquery/jquery.min.js') }}"></script>
