@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Quiz extends Model
 {
     use HasFactory;
+    protected $fillable=['teacher_id','promotion_id','content','file','dateBigin','dateEnd','slug'];
+
+    public function teacher(){
+        return $this->belongsTo(Teacher::class);
+    }
+    public function promotion(){
+        return $this->belongsTo(Promotion::class);
+    }
+    public function appley(){
+        return $this->hasMany(Applay::class);
+    }
 }
