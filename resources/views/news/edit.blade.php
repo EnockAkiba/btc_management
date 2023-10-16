@@ -8,7 +8,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-left">
                         <li class="breadcrumb-item title"><a href="{{ route('news') }}">Accueil</a></li>
-                        <li class="breadcrumb-item active"> Modifier l'actualité</li>
+                        <li class="breadcrumb-item active"> {{$news->title}}</li>
                     </ol>
                 </div><!-- /.col -->
                 <div class="col-sm-6 flex justify-end items-start">
@@ -35,26 +35,30 @@
 
                         </div>
                         <!-- /.card-header -->
-                        <form action="#" method="post" enctype="multipart/form-data">
+                        <form action="{{route('news.update', $news)}}" method="post" enctype="multipart/form-data">
                             @csrf
+                            @method('put')
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="">Titre </label>
-                                    <input type="text" class="form-control" name="title">
+                                    <input type="text" class="form-control" name="title" value="{{$news->title}}">
                                 </div>
                                 <div class="form-group">
                                     <label for="">Photo </label>
                                     <input type="file" class="form-control" name="picture">
+                                    <input type="hidden" name="pictureOld" value="{{$news->picture}}">
                                 </div>
                                 <div class="form-group">
                                     <label for="">video</label>
                                     <input type="file" class="form-control" name="video">
+                                    <input type="hidden" name="videoOld" value="{{$news->video}}">
                                 </div>
 
 
                                 <div class="form-group">
                                     <label for="">Description</label>
                                     <textarea name="description" id="" cols="30" rows="5" class="form-control">
+                                        {{$news->description}}
                                     </textarea>
                                 </div>
                             </div>
@@ -105,7 +109,7 @@
                     <h3 class="text-center"><i class="fa fa-question bg-black p-3 rounded-full" aria-hidden="true"></i></h3>
                     <h3 class="title mb-4"> Voulez-vous supprimer cette
                         actualité ?</h3>
-                    <a href="" class="bg-red-500 p-2 me-2 border rounded-sm text-white">Confirmer</a>
+                    <a href="{{route('news.destroy', $news)}}" class="bg-red-500 p-2 me-2 border rounded-sm text-white">Confirmer</a>
                     <button type="button" class="text-green-500 p-2 ml-auto border rounded-sm" data-dismiss="modal"><i
                             class="fa-solid fa-x"></i>Non</button>
                 </div>

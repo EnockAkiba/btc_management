@@ -88,7 +88,7 @@ class NewsController extends Controller
      */
     public function edit(News $news)
     {
-        return view('promotion.edit', \compact('news'));
+        return view('news.edit', \compact('news'));
         
     }
 
