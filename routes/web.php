@@ -53,6 +53,7 @@ Route::group(['prefix' => 'user'], function () {
             Route::get("news/{news:slug}/edit", "edit")->name("news.edit");
             Route::put("news/{news:slug}/update", "update")->name("news.update");
             Route::get("news/{news:slug}/destroy", "destroy")->name("news.destroy");
+            Route::get("news/{news:slug}/setType", "setType")->name("news.setType");
         });
 
         // COMMENTS
@@ -64,12 +65,17 @@ Route::group(['prefix' => 'user'], function () {
 
 
         // MESSAGES
+        Route::get('/message/show', function () {
+            return view('message.show');
+        })->name('message.show');
+        
 
         Route::controller(MessageController::class)->group(function () {
             Route::get("message/index", "index")->name("message");
             Route::get("message/create", "create")->name("message.create");
             Route::post("message/store", "store")->name("message.store");
-            Route::get("message/{message:slug}/show", "show")->name("message.show");
+            Route::post("message/store", "store")->name("message.store");
+            // Route::get("message/{message:slug}/show", "show")->name("message.show");
             Route::get("message/{message:slug}/edit", "edit")->name("message.edit");
             Route::put("message/{message:slug}/update", "update")->name("message.update");
             Route::get("message/{message:slug}/destroy", "destroy")->name("message.destroy");

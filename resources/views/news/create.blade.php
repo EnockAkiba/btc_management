@@ -41,13 +41,15 @@
                             <tbody>
 
                                 <tr>
-                                    @for ($i =1 ; $i <10 ; $i++)
-                                        <td>{{$i}}</td>
-                                        <td> <a href="" class="text-blue-800">Defense public </a></td>
-                                        <td>{{date('d.M.Y')}}</td>
-                                        <td> <span class="bg-blue-50 py-2 px-1 rounded-sm">interne</span></td>
+                                    @foreach ($news as $new)
+                                        
+                                        <td>{{$loop->index +1}}</td>
+                                        <td> <a href="{{route('news.edit', $new)}}" class="text-blue-800">{{$new->title}} </a></td>
+                                        <td>{{$new->created_at->format('d.M.Y H:i')}}</td>
+                                        <td> <span class="{{$new->type==0?'bg-red-400': 'bg-blue-300'}}  text-white py-2 px-1 rounded-sm">{{$new->type==0?'private': 'Public'}}</span></td>
                                 </tr>
-                                @endfor
+                                @endforeach 
+
 
                             </tbody>
                         </table>

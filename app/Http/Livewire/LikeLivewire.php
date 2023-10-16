@@ -9,18 +9,18 @@ use Livewire\Component;
 
 class LikeLivewire extends Component
 {
-
-    public $ids = null;
-    public $count;
-
-
+    
     public function mount(){
-
+        $news=News::paginate(8);
+        return $news;
     }
 
     public function render()
     {
-        return view('livewire.like-livewire' );
+      
+        return view('livewire.like-livewire' , [
+            "news"=>  $this->mount()
+        ]);
     }
 
     public function like($news_id){
@@ -30,9 +30,21 @@ class LikeLivewire extends Component
             $news->delete();
         }
         else{
-            News::create(['news_id'=>$news_id, 'user_id'=>Auth::user()->id]);
+            Like::create([
+                'slug'=>\slug("Like"),
+                'news_id'=>$news_id, 
+                'user_id'=>Auth::user()->id
+            ]);
         }
-        $this->count=\count($news->like);
+        // $this->count=\count($news->like);
+    }
+    public function setType($news_id){
+        $news=News::Where('id' , $news_id)->first();
+        
+        $type=($news->type==0)? 1 : 0;
+        $news->update(
+            ['type'=>$type]
+        );
     }
 
 }

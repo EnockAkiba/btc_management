@@ -31,8 +31,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     @yield('styles')
     @vite('resources/css/app.css')
-    
-    @livewireStyles
+
 </head>
 
 <body class="hold-transition layout-top-nav">
