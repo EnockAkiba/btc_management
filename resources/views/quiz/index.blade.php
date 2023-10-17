@@ -8,7 +8,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-left">
                         <li class="breadcrumb-item title"><a href="{{ route('news') }}">Actualité</a></li>
-                        <li class="breadcrumb-item active"> Ajouter une actualité</li>
+                        <li class="breadcrumb-item active"> Ajouter un devoir</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -21,12 +21,12 @@
         <div class="container-fluid">
             <div class="row">
                
-                <div class="card p-0 col-md-12 " style="max-height: 80vh; overflow:auto">
+                <div class="card col-md-12 p-0" style="max-height: 80vh; overflow:auto">
                     <div class="card-header">
                         <div class=" flex items-center justify-between">
-                            <h2 class="title">Les actualités</h2>
+                            <h2 class="title">Les devoirs</h2>
                             <a class="bg-blue-400 text-white p-2 ml-auto" data-toggle="modal" data-target="#addNew" href="#"
-                            role="button">Add News
+                            role="button">Add Devoir
                             </a>
                         </div>
                     </div>
@@ -34,23 +34,16 @@
                         <table class="table table-hover">
                             <thead class="bg-green-100">
                                 <th>#</th>
-                                <th>titre d'actualité</th>
-                                <th>Date</th>
-                                <th>Type</th>
+                                <th>Teacher</th>
+                                <th>promotion</th>
+                                <th>Contenu</th>
+                                <th>Date d'envoie</th>
+                                <th>Date d'envoie</th>
+                                <th>Date remis</th>
                             </thead>
                             <tbody>
 
-                                <tr>
-                                    @foreach ($news as $new)
-                                        
-                                        <td>{{$loop->index +1}}</td>
-                                        <td> <a href="{{route('news.edit', $new)}}" class="text-blue-800">{{$new->title}} </a></td>
-                                        <td>{{$new->created_at->format('d.M.Y H:i')}}</td>
-                                        <td> <span class="{{$new->type==0?'bg-red-400': 'bg-blue-300'}}  text-white py-2 px-1 rounded-sm">{{$new->type==0?'private': 'Public'}}</span></td>
-                                </tr>
-                                @endforeach 
-
-
+                                
                             </tbody>
                         </table>
                      </div>
@@ -69,31 +62,57 @@
                     <div class="">
                         <div class="card-header">
                             <div class="user-block">
-                                <h3 class="text-green-500">Veuilez remplir les informations d'actualité</h3>
+                                <h3 class="text-green-500">Veuilez remplir les informations du devoir</h3>
                             </div>
 
                         </div>
                         <!-- /.card-header -->
-                        <form action="{{route('news.store')}}" method="post" enctype="multipart/form-data">
+                        <form action="" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
-                                <div class="form-group">
-                                    <label for="">Titre <span class="required"> *</span> </label>
-                                    <input type="text" class="form-control" name="title">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="">Teachers <span class="required"> *</span> </label>
+                                            <select name="teacher_id" id="" class="form-control">
+                                                <option >---Choisir un enseignant--</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="">Promotion <span class="required"> *</span> </label>
+                                            <select name="promotion_id" id="" class="form-control">
+                                                <option >---Choisir une promotion--</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
+                            
                                 <div class="form-group">
-                                    <label for="">Photo <span class="required"> *</span></label>
-                                    <input type="file" class="form-control" name="picture">
-                                </div>
-                                <div class="form-group">
-                                    <label for="">video</label>
-                                    <input type="file" class="form-control" name="video">
+                                    <label for="">Attachez un fichier pdf/doc</label>
+                                    <input type="file" class="form-control" name="file">
                                 </div>
                                
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="">Date d'envoie du devoir <span class="required"> *</span> </label>
+                                            <input type="datetime-local" name="dateBigin" id="" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="">Date finale  <span class="required"> *</span> </label>
+                                            <input type="datetime-local" name="dateEnd" id="" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                            
 
                                 <div class="form-group">
-                                    <label for="">Description <span class="required"> *</span></label>
-                                    <textarea name="description" id="" cols="30" rows="5" class="form-control">
+                                    <label for="">Contenues<span class="required"> *</span></label>
+                                    <textarea name="content" id="" cols="30" rows="5" class="form-control">
                                     </textarea>
                                 </div>
                             </div>
@@ -116,10 +135,9 @@
         <!-- NAVIGATION MODAL-->
 
 
-
     {{-- IMAGES MODAL  --}}
 
-    <div class="modal fade" id="media">
+    {{-- <div class="modal fade" id="media">
         <div class="modal-dialog modal-md">
             <div class="modal-content rounded-none shadow-none  border-t-2 border-t-green-300 p-3">
                 <div class="flex justify-between items-center">
@@ -145,7 +163,7 @@
             </div>
         </div>
         <!-- /.modal-dialog -->
-    </div>
+    </div> --}}
     <!-- IMAGES MODAL-->
 
 

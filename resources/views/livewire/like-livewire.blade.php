@@ -57,7 +57,7 @@
         @endforeach
     </div>
 
-    <button class="w-full bg-green-500 text-white py-1">Charger plus</button>
+    {{-- <button class="w-full bg-green-500 text-white py-1">Charger plus</button> --}}
 
     <!-- /.row -->
 </div>
