@@ -3,6 +3,7 @@
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\QuizController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -80,6 +81,54 @@ Route::group(['prefix' => 'user'], function () {
             Route::put("message/{message:slug}/update", "update")->name("message.update");
             Route::get("message/{message:slug}/destroy", "destroy")->name("message.destroy");
         });
+
+
+        // QUIZ CRUD
+
+        Route::get('/Devoirs', function () {
+            return view('quiz.index');
+        })->name('quiz');
+
+        Route::get('/Devoir/show', function () {
+            return view('quiz.show');
+        })->name('quiz.show');
+
+        Route::get('/MesDevoirs', function () {
+            return view('quiz.myQuizzes');
+        })->name('myQuizzes');
+
+        Route::get('/remettre', function () {
+            return view('applay.create');
+        })->name('applay.create');
+        
+
+
+        // departements
+        Route::get('/departement', function () {
+            return view('departement.index');
+        })->name('departement');
+
+        Route::get('/departement/show', function () {
+            return view('departement.show');
+        })->name('departement.show');
+
+        Route::get('/promotion/show', function () {
+            return view('promotion.show');
+        })->name('promotion.show');
+
+        
+        // Route::controller(QuizController::class)->group(function () {
+        //     Route::get("quiz/index", "index")->name("quiz");
+        //     Route::get("quiz/create", "create")->name("quiz.create");
+        //     Route::post("quiz/store", "store")->name("quiz.store");
+        //     Route::post("quiz/store", "store")->name("quiz.store");
+        //     // Route::get("quiz/{quiz:slug}/show", "show")->name("quiz.show");
+        //     Route::get("quiz/{quiz:slug}/edit", "edit")->name("quiz.edit");
+        //     Route::put("quiz/{quiz:slug}/update", "update")->name("quiz.update");
+        //     Route::get("quiz/{quiz:slug}/destroy", "destroy")->name("message.destroy");
+        // });
+
+        
 
     });
 
