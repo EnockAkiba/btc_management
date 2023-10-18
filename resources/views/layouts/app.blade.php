@@ -158,8 +158,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     
                                     <ul class="nav nav-pills flex-column">
                                         <li class="nav-item">
-                                            <a href="" class="nav-link">
-                                                <i class="far fa-circle text-blue-600 text-sm"></i> Les formateurs & Departements
+                                            <a href="{{route('departement')}}" class="nav-link">
+                                                <i class="far fa-circle text-blue-600 text-sm"></i> Les  Departements & Extensions
                                             </a>
                                         </li>
 

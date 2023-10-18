@@ -118,8 +118,10 @@
                                 <th>Date de remit</th>
                             </thead>
                             <tbody>
-
-
+                                <tr>
+                                    <td>{{1}}</td>
+                                    <td><a href="{{route('applay.show')}}" class="text-blue-500">Paul</a></td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>

@@ -100,11 +100,13 @@ Route::group(['prefix' => 'user'], function () {
         Route::get('/remettre', function () {
             return view('applay.create');
         })->name('applay.create');
-        
 
-
+        Route::get('/reponse', function () {
+            return view('applay.show');
+        })->name('applay.show');
+    
         // departements
-        Route::get('/departement', function () {
+        Route::get('/departements', function () {
             return view('departement.index');
         })->name('departement');
 
@@ -115,6 +117,8 @@ Route::group(['prefix' => 'user'], function () {
         Route::get('/promotion/show', function () {
             return view('promotion.show');
         })->name('promotion.show');
+
+
 
         
         // Route::controller(QuizController::class)->group(function () {
