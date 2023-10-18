@@ -128,18 +128,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             </a>
                                         </li>
 
-                                        <h3 class=" font-bold mb-2 mt-3"><i class="fa fa-users text-blue-600 text-sm"></i> </h3>
+                                        <h3 class=" font-bold mb-2 mt-3"> <i class="fa fa-question-circle text-blue-600 text-sm" ></i>  Evaluations</h3>
 
                                         <li class="nav-item">
-                                            <a href="" class="nav-link">
-                                                <i class="far fa-circle text-blue-600 text-sm"></i> Equipe
+                                            <a href="{{route('quiz')}}" class="nav-link">
+                                                <i class="fa fa-plus text-blue-600 text-sm"></i>
+                                                Ajouter un devoir
                                             </a>
                                         </li>
 
 
                                         <li class="nav-item">
-                                            <a href="" class="nav-link">
-                                                <i class="far fa-circle text-blue-600 text-sm"></i> Partenaires
+                                            <a href="{{route('myQuizzes')}}" class="nav-link">
+                                                <i class="far fa-circle text-blue-600 text-sm"></i> Mes devoirs
                                             </a>
                                         </li>
                                     </ul>
@@ -149,31 +150,33 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <!-- /.card -->
                             <div class="card card px-3 py-2">
                                 <div class="card-header">
-                                    <h3 class=" font-bold"> <i class="fa-solid fa-gear text-blue-600 text-sm"></i> Paramétre
+                                    <h3 class=" font-bold"><i class="fa fa-users text-blue-600 text-sm" aria-hidden="true"></i>  Gestion Utilisateurs
                                     </h3>
-
                                 </div>
+
                                 <div class="card-body p-2">
+                                    
                                     <ul class="nav nav-pills flex-column">
-
                                         <li class="nav-item">
                                             <a href="" class="nav-link">
-                                                <i class="far fa-circle text-blue-600 text-sm"></i> A propos
+                                                <i class="far fa-circle text-blue-600 text-sm"></i> Les formateurs & Departements
                                             </a>
                                         </li>
 
                                         <li class="nav-item">
                                             <a href="" class="nav-link">
-                                                <i class="far fa-circle text-blue-600 text-sm"></i>
-                                                Slider
+                                                <i class="far fa-circle text-blue-600 text-sm"></i> Inscription & les apprenants
                                             </a>
                                         </li>
+
+                                        
+                                        <h3 class=" font-bold my-2"> <i class="fa-solid fa-gear text-blue-600 text-sm"></i> Parametres</h3>
+
                                         <li class="nav-item">
                                             <a href="" class="nav-link">
-                                                <i class="far fa-circle text-blue-600 text-sm"></i> Contact
+                                                <i class="far fa-circle text-blue-600 text-sm"></i> Les utilisateurs
                                             </a>
                                         </li>
-                                        <h3 class=" font-bold my-2"> Utilisateur</h3>
                                         <li class="nav-item">
                                             <a href="{{ route('profile.show') }}" class="nav-link">
                                                 <i class="fa fa-user text-blue-600 text-sm" aria-hidden="true"></i> Mon profi

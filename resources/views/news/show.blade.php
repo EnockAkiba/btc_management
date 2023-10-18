@@ -168,7 +168,7 @@
                                             <!-- /.card-header -->
                                             <!-- form start -->
                                             <div class="mt-3">
-                                                <a href="" class="bg-blue-300  text-white p-2"><i
+                                                <a href="{{route('comment.destroy', $comment)}}" class="bg-blue-300  text-white p-2"><i
                                                         class="fa-solid fa-check"></i> Oui</a>
                                                 <button type="button" class="bg-red-400 p-1 ml-2 text-white"
                                                     data-dismiss="modal"><i class="fa-solid fa-x"></i> Non</button>
