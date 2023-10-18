@@ -37,7 +37,8 @@ Route::group(['prefix' => 'user'], function () {
 
         // PROFILE USER
         Route::view('about', 'about')->name('about');
-        Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
+        Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users');
+        // Route::get('user', [\App\Http\Controllers\UserController::class, 'index'])->name('user.show');
         Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
         // Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
         Route::put('profile/update/{user:slug}', [\App\Http\Controllers\UserController::class, 'update'])->name('profile.update');
@@ -130,6 +131,9 @@ Route::group(['prefix' => 'user'], function () {
             return view('student.show');
         })->name('student.show');
         
+        Route::get('/user/show', function () {
+            return view('users.show');
+        })->name('user.show');
 
 
 
