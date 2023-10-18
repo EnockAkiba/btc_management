@@ -19,6 +19,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'lastName',
         'email',
         'password',
         'sex',
@@ -52,5 +53,12 @@ class User extends Authenticatable
 
     public function register(){
         return $this->hasMany(Register::class);
+    }
+
+    public function teacher(){
+        return $this->hasMany(Teacher::class);
+    }
+    public function quizzes(){
+        return $this->hasManyThrough(Teacher::class, Quiz::class);
     }
 }

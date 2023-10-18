@@ -54,7 +54,7 @@ class CommentController extends Controller
             'content'=>$content,
             'picture'=>$picture
         ]);
-
+        return \redirect()->back()->with('success','Commentaire envoyer aves succes');
     }
 
     /**
@@ -100,6 +100,6 @@ class CommentController extends Controller
     public function destroy(Comment $comment)
     {
         $comment->delete();
-        return with('success','Suppression réussie');
+        return \redirect()->back()->with('success','Suppression réussie');
     }
 }
