@@ -173,7 +173,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <h3 class=" font-bold my-2"> <i class="fa-solid fa-gear text-blue-600 text-sm"></i> Parametres</h3>
 
                                         <li class="nav-item">
-                                            <a href="" class="nav-link">
+                                            <a href="{{route('users')}}" class="nav-link">
                                                 <i class="far fa-circle text-blue-600 text-sm"></i> Les utilisateurs
                                             </a>
                                         </li>
