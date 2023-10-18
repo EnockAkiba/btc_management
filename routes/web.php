@@ -114,9 +114,22 @@ Route::group(['prefix' => 'user'], function () {
             return view('departement.show');
         })->name('departement.show');
 
+        Route::get('/extension/show', function () {
+            return view('extension.show');
+        })->name('extension.show');
+
         Route::get('/promotion/show', function () {
             return view('promotion.show');
         })->name('promotion.show');
+
+        Route::get('/students', function () {
+            return view('student.index');
+        })->name('student');
+
+        Route::get('/student/show', function () {
+            return view('student.show');
+        })->name('student.show');
+        
 
 
 

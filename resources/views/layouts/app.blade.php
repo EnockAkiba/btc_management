@@ -164,7 +164,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         </li>
 
                                         <li class="nav-item">
-                                            <a href="" class="nav-link">
+                                            <a href="{{route('student')}}" class="nav-link">
                                                 <i class="far fa-circle text-blue-600 text-sm"></i> Inscription & les apprenants
                                             </a>
                                         </li>
