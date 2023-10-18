@@ -39,7 +39,8 @@ class UserController extends Controller
         $request->validate([
             'name'=>'required',
             'phone'=>'required',
-            'adress'=>'required'
+            'adress'=>'required',
+            'lastName'=>'required'
         ]);
 
         $user->update([
@@ -47,6 +48,7 @@ class UserController extends Controller
             'sex'=>$request->sex,
             'adress'=>$request->adress,
             'phone'=>$request->phone,
+            'lastName'=>$request->lastName
         ]);
         
         return \redirect()->back()->with('success','Profile modifié avec succès');
