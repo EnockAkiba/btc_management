@@ -27,7 +27,7 @@
                             <div class="col-12 col-md-6">
                                 <div class="form-group">
                                     <label for="">Postnom</label>
-                                    <input type="text" name="name" class="form-control" required>
+                                    <input type="text" name="lastName" class="form-control" required>
                                 </div>
                                 @error('name')
                                     <span class="error invalid-feedback">
