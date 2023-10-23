@@ -2,117 +2,78 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-    font-family: 'poppins';
-    src: url('../../public/webfonts/poppins/poppins1.ttf');
+.title{
+    @apply font-semibold text-green-500
 }
 
-* {
-    font-family: 'poppins';
-    text-decoration: none;
-}
-
-.title {
-    @apply font-semibold text-black
-}
-
-.title-blue {
+.title-blue{
     @apply font-semibold text-blue-500
 }
 
 /* LIKE STYLE */
-.liker-box {
+.liker-box{
     @apply flex justify-between my-3
 }
-
-.liker-box .liker .loved {
+.liker-box .liker .loved{
     @apply text-red-400
 }
+.liker-box .liker .comment{
+    @apply text-green-400 
 
-.liker-box .liker .comment {
-    @apply text-green-400
 }
-
 /* LIKE STYLE */
 
 
 /* ALL */
 
-
-/* nav link */
-.content {
-    z-index: 1;
+.border-bottom{
+    @apply  border-b-2 border-b-green-400
 }
-
-.nav-link {
-    @apply text-xl text-green-400 font-bold hover:translate-y-0.5 hover:transition-all hover:text-blue-400 mt-4;
+.border-top{
+    @apply  border-t-2 border-t-green-300
 }
-
-.date {
-    font-size: 0.7rem;
-    padding-right: 30px;
-}
-
-/*  */
-
-.border-bottom {
-    @apply border-b-2 border-b-green-400
-}
-
-.border-top {
-    @apply border-t-2 border-t-green-300
-}
-
-.required {
+.required{
     @apply text-red-500
 }
-
-.btn-valid {
-    @apply p-2 bg-green-400 rounded-sm text-white
+ 
+.btn-valid{
+    @apply  p-2 bg-green-400 rounded-sm text-white
 }
 
 /* STYLE  HOVER IMAGE */
-.image {
+.image{
     position: relative;
     transition: all 0.5s ease-in-out;
 }
 
-.image .icone {
+.image  .icone{
     position: absolute;
     z-index: 1111;
     padding: 8px;
     display: none;
-    border: 2px solid red;
-    background: white;
+    border:2px solid red;
+    background: white; 
     color: red;
-    top: 45%;
+     top: 45%;
     right: 45%;
 
 }
 
-.image:hover {
+.image:hover{
     opacity: 0.6;
 }
 
-.image:hover .icone {
+.image:hover .icone{
     transition: all 0.5s ease-in-out;
     display: block;
     opacity: 1;
-}
-
-#profilePicture {
+} 
+#profilePicture{
     position: relative;
     background: #000;
 }
-
-#profilePicture #onligne {
+#profilePicture #onligne{
     width: 200px;
     height: 200px;
     background: red;
 }
-
-.main {
-    background: #d2d2e42e;
-    border-radius: 20px; 
-}
-
