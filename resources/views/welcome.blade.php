@@ -328,7 +328,7 @@
 									<a href="JavaScript:Void(0);" data-bs-toggle="modal" data-bs-target="#login"><i class="fas fa-sign-in-alt me-2"></i>Sign In</a>
 								</li>
 								<li class="list-buttons light ms-2">
-									<a href="{{route('login')}}">login<i class="fa-regular fa-circle-right ms-2"></i></a>
+									<a href="{{route('login')}}">Se connecter<i class="fa-regular fa-circle-right ms-2"></i></a>
 								</li>
 							</ul>
 						</div>
