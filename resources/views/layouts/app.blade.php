@@ -12,13 +12,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link href="{{ asset('images/logo.png') }}" rel="shortcut icon" type="image/png">
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 
     <link rel="stylesheet" href="{{ asset('css/fontawesome.min.css') }}">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    
+
     <script src="{{asset('assets/js/jquery.min.js')}}"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -29,25 +30,31 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <link rel="stylesheet" href="{{ asset('admin/toastify/toastify.css') }}">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css">
+
     @yield('styles')
     @vite('resources/css/app.css')
 
 </head>
+<style>
+    a {
+        text-decoration: none;
+    }
+</style>
 
-<body class="hold-transition layout-top-nav">
+<body class="hold-transition layout-top-nav ">
     <div class="wrapper">
 
         <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand-md navbar-light navbar-white p-0">
-            <div class="container flex">
-                <a href="{{ route('home') }}" class="brand-link flex items-center">
-                    <img src="{{ asset('images/logo.png') }}" alt="Logo" class="brand-image">
-                    <span class="title">BTC/AGAPD</span>
+        <nav class="main-header navbar navbar-expand-md  p-0 border-none">
+            <div class="flex justify-betweens w-full ">
+                <a href="{{ route('home') }}" class="ml-4 brand-link flex items-start">
+                    <img src="{{ asset('images/logo.png') }}" alt="Logo" style="height: 40px;">
+                    <!-- <span class="title text-sm">BTC</span> -->
                 </a>
-                <li class="list-none d-lg-none d-md-none">
-                    <a class="nav-link text-black" data-toggle="modal" data-target="#navigation" href="#"
-                        role="button">
-                        <span class="navbar-toggler-icon"></span>
+                <li class="ml-auto list-none d-lg-none d-md-none text-dark">
+                    <a class="nav-link text-black ml-auto" data-toggle="modal" data-target="#navigation" href="#" role="button">
+                        <i class="fa-solid fa-bars"></i>
                     </a>
                 </li>
 
@@ -61,21 +68,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="modal-dialog modal-md">
                 <div class="modal-content rounded-none shadow-none  border-t-2 border-t-green-300 p-2">
                     <div class="flex justify-between items-center">
-                        <h3 class="card-title text-blue">
-                            <a href="" class="brand-link flex items-center">
-                                <img src="{{ asset('images/logo.png') }}" alt="Logo" class="brand-image ">
+                        <h3 class=" card-title text-blue">
+                            <a href="" class=" brand-link flex items-center">
+                                <img src="{{ asset('images/logo.png') }}" alt="Logo" class="brand-image">
                                 <span class="title">BTC/AGAPD</span>
                             </a>
                         </h3>
-                        <button type="button" class="btn-deleted p-2 ml-auto " data-dismiss="modal"><i
-                                class="fa-solid fa-x"></i></button>
+                        <button type="button" class="btn-deleted p-2 ml-auto " data-dismiss="modal"><i class="fa-solid fa-x"></i></button>
                     </div>
 
                     <!-- /.card-header -->
                     <!-- form start -->
                     <div class="mt-3">
                         @include('layouts.navbar')
-
                     </div>
                 </div>
             </div>
@@ -87,121 +92,67 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Main content -->
-            <div class="container box-menu">
+            <div class="b box-menu" style=" min-height: auto; max-height:92vh; overflow:hidden;">
 
-                <section class="content">
+                <section class="content bg-white">
                     <div class="row">
-                        <div class="col-md-3 d-none d-lg-block d-md-block mt-3">
-                            <div class="card px-3 py-2">
-                                <div class="card-header">
-                                    <h3 class="flex title items-center">
-                                        <div class="img relative">
-                                            @if(Auth::user()->picture)
-                                            <img src="{{ asset('/' . Auth::user()->picture) }}"
-                                                class="rounded-full mx-2" style="width:40px; height:40px">
-                                            <span class="bg-green-500 w-4 h-4 absolute rounded-full top-0 right-1 border-2 border-white"></span>
-                                            @endif
-                                        </div>
-                                        <span> {{ Auth::user()->name }}</span>
-                                    </h3>
+                        <div class="bg-white items-center px-4 col-md-1 d-none d-lg-flex d-md-flex mt-0" style="height:92vh; overflow:hidden">
+
+                            <div class="content">
+
+                                <div class="img relative mx-2 mb-4">
+                                    @if(Auth::user()->picture)
+                                    <a href="{{route('profile.show')}}">
+                                        <img src="{{ asset('/' . Auth::user()->picture) }}" class="rounded-full mx-2 border-2 " style="width:40px; height:40px">
+                                        <span class="bg-green-500 w-4 h-4 absolute rounded-full top-0 right-1 border-2 border-white"></span>
+                                    </a>
+                                    @endif
                                 </div>
-                                <div class="card-body p-2">
-                                    <h3 class=" font-bold mb-2"><i class="fa fa-box text-blue-600 "></i> Actualités & Chat</h3>
+                                <div class="mx-2 py-4 border-2 border-green-600 bg-white rounded-full shadow-sm hover:translate-x-1 hover:transition-all">
 
                                     <ul class="nav  flex-column">
                                         <li class="nav-item active">
                                             <a href="{{ route('news') }}" class="nav-link">
-                                                <i class="fas fa-inbox text-blue-600 text-sm"></i> Actualité
-                                            </a>
-                                        </li>
-
-
-                                        <li class="nav-item">
-                                            <a href="{{ route('news.create') }}" class="nav-link">
-                                                <i class="fa fa-plus text-blue-600 text-sm"></i> Ajouter une Actualité
+                                                <i class="fas fa-home" title="Actualités"></i>
                                             </a>
                                         </li>
 
                                         <li class="nav-item">
                                             <a href="{{ route('message') }}" class="nav-link">
-                                                <i class="fa fa-comments text-blue-600 text-sm" aria-hidden="true"></i> Message
+                                                <i class="fas fa-message" title="messages"></i>
                                             </a>
                                         </li>
 
-                                        <h3 class=" font-bold mb-2 mt-3"> <i class="fa fa-question-circle text-blue-600 text-sm" ></i>  Evaluations</h3>
-
-                                        <li class="nav-item">
-                                            <a href="{{route('quiz')}}" class="nav-link">
-                                                <i class="fa fa-plus text-blue-600 text-sm"></i>
-                                                Ajouter un devoir
+                                        <li class="nav-item ">
+                                            <a href="{{ route('quiz') }}" class="nav-link">
+                                                <i class="fas fa-book" title="Devoirs"></i>
                                             </a>
                                         </li>
 
-
-                                        <li class="nav-item">
-                                            <a href="{{route('myQuizzes')}}" class="nav-link">
-                                                <i class="far fa-circle text-blue-600 text-sm"></i> Mes devoirs
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- /.card-body -->
-                            </div>
-                            <!-- /.card -->
-                            <div class="card card px-3 py-2">
-                                <div class="card-header">
-                                    <h3 class=" font-bold"><i class="fa fa-users text-blue-600 text-sm" aria-hidden="true"></i>  Gestion Utilisateurs
-                                    </h3>
-                                </div>
-
-                                <div class="card-body p-2">
-                                    
-                                    <ul class="nav nav-pills flex-column">
-                                        <li class="nav-item">
-                                            <a href="{{route('departement')}}" class="nav-link">
-                                                <i class="far fa-circle text-blue-600 text-sm"></i> Les  Departements & Extensions
+                                        <li class="nav-item ">
+                                            <a href="{{ route('quiz') }}" class="nav-link">
+                                                <i class="fas fa-users" title="Devoirs"></i>
                                             </a>
                                         </li>
 
-                                        <li class="nav-item">
-                                            <a href="{{route('student')}}" class="nav-link">
-                                                <i class="far fa-circle text-blue-600 text-sm"></i> Inscription & les apprenants
+                                        <li class="nav-item ">
+                                            <a href="{{ route('myQuizzes') }}" class="nav-link">
+                                                <i class="fas fa-circle" title="Devoirs"></i>
                                             </a>
                                         </li>
 
-                                        
-                                        <h3 class=" font-bold my-2"> <i class="fa-solid fa-gear text-blue-600 text-sm"></i> Parametres</h3>
-
-                                        <li class="nav-item">
-                                            <a href="{{route('users')}}" class="nav-link">
-                                                <i class="far fa-circle text-blue-600 text-sm"></i> Les utilisateurs
-                                            </a>
-                                        </li>
                                         <li class="nav-item">
                                             <a href="{{ route('profile.show') }}" class="nav-link">
-                                                <i class="fa fa-user text-blue-600 text-sm" aria-hidden="true"></i> Mon profi
+                                                <i class="fas fa-user" title="Profil"></i>
                                             </a>
-
-                                        </li>
-
-                                        <li class="nav-item">
-                                            <form method="POST" action="{{ route('logout') }}">
-                                                @csrf
-                                                <a href="{{ route('logout') }}" class="nav-link"
-                                                    onclick="event.preventDefault(); this.closest('form').submit();">
-                                                    <i class="mr-2 fa fa-sign-out-alt text-blue-600 text-sm"></i>
-                                                    Se deconnecter
-                                                </a>
-                                            </form>
                                         </li>
                                     </ul>
+
                                 </div>
-                                <!-- /.card-body -->
                             </div>
-                            <!-- /.card -->
                         </div>
                         <!-- /.col -->
-                        <div class="col-md-9 content-box ">
+                        <div class=" col-md-11 sm:pe-0 md:pe-4 lg:pe-4 main">
                             @yield('content')
                         </div>
                         <!-- /.col -->
@@ -229,16 +180,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="{{ asset('admin/asset/dist/js/adminlte.min.js') }}"></script>
 
     {{-- @vite('resources/js/app.js') --}}
-    
+
 
     <script src="{{ asset('admin/toastify/toastify.js') }}"></script>
 
-    <!-- Inclure jQuery (avant Bootstrap JavaScript) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-
-    <script
-        src="https://mdbcdn.b-cdn.net/wp-content/themes/mdbootstrap4/docs-app/js/dist/mdb5/plugins/standard/multi-carousel.min.js">
+    <script src="https://mdbcdn.b-cdn.net/wp-content/themes/mdbootstrap4/docs-app/js/dist/mdb5/plugins/standard/multi-carousel.min.js">
     </script>
 
     @yield('scripts')
@@ -257,49 +207,40 @@ scratch. This page gets rid of all links and provides the needed markup only.
             }).showToast();
         })
 
-        @if (session('success'))
-            Toastify({
-                text: "{{ session('success') }}",
-                close: true,
-                backgroundColor: "#4CAF50",
-                duration: 3000
-            }).showToast();
+        @if(session('success'))
+        Toastify({
+            text: "{{ session('success') }}",
+            close: true,
+            backgroundColor: "#4CAF50",
+            duration: 3000
+        }).showToast();
         @endif
 
-        @if (session('error'))
-            Toastify({
-                text: "{{ session('error') }}",
-                close: true,
-                backgroundColor: "#f44336",
-                duration: 3000
-            }).showToast();
+        @if(session('error'))
+        Toastify({
+            text: "{{ session('error') }}",
+            close: true,
+            backgroundColor: "#f44336",
+            duration: 3000
+        }).showToast();
         @endif
 
-        @if (session('info'))
-            Toastify({
-                text: "{{ session('message') }}",
-                close: true,
-                backgroundColor: "#2196F3",
-                duration: 3000
-            }).showToast();
+        @if(session('info'))
+        Toastify({
+            text: "{{ session('message') }}",
+            close: true,
+            backgroundColor: "#2196F3",
+            duration: 3000
+        }).showToast();
         @endif
 
-        @if (session('warning'))
-            Toastify({
-                text: "{{ session('warning') }}",
-                close: true,
-                backgroundColor: "#ffeb3b",
-                duration: 3000
-            }).showToast();
-        @endif
-
-        @if ($errors->any())
-            Toastify({
-                text: "{{ $errors->first() }}",
-                close: true,
-                backgroundColor: "#f44336",
-                duration: 3000
-            }).showToast();
+        @if(session('warning'))
+        Toastify({
+            text: "{{ session('warning') }}",
+            close: true,
+            backgroundColor: "#ffeb3b",
+            duration: 3000
+        }).showToast();
         @endif
     </script>
 </body>
