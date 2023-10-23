@@ -44,5 +44,65 @@
 <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('js/adminlte.min.js') }}" defer></script>
+
+<script>
+        window.addEventListener('alert', ({
+            detail: {
+                success
+            }
+        }) => {
+            Toastify({
+                text: success,
+                close: true,
+                backgroundColor: "#4CAF50",
+                duration: 3000
+            }).showToast();
+        })
+
+        @if (session('success'))
+            Toastify({
+                text: "{{ session('success') }}",
+                close: true,
+                backgroundColor: "#4CAF50",
+                duration: 3000
+            }).showToast();
+        @endif
+
+        @if (session('error'))
+            Toastify({
+                text: "{{ session('error') }}",
+                close: true,
+                backgroundColor: "#f44336",
+                duration: 3000
+            }).showToast();
+        @endif
+
+        @if (session('info'))
+            Toastify({
+                text: "{{ session('message') }}",
+                close: true,
+                backgroundColor: "#2196F3",
+                duration: 3000
+            }).showToast();
+        @endif
+
+        @if (session('warning'))
+            Toastify({
+                text: "{{ session('warning') }}",
+                close: true,
+                backgroundColor: "#ffeb3b",
+                duration: 3000
+            }).showToast();
+        @endif
+
+        @if ($errors->any())
+            Toastify({
+                text: "{{ $errors->first() }}",
+                close: true,
+                backgroundColor: "#f44336",
+                duration: 3000
+            }).showToast();
+        @endif
+    </script>
 </body>
 </html>

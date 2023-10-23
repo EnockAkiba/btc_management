@@ -21,12 +21,12 @@ function imageConvert($folder, UploadedFile $image)
 
     // Compression itérative en ajustant la qualité
     $quality = 90; // Valeur de qualité initiale
-    $maxFileSize = 1024 * 1024; // 1 Mo en octets
+    $maxFileSize = 1024 * 1024 * 2 ; //  Mo en octets
 
     // Tant que la taille de l'image compressée est supérieure à 1 Mo, réduisez la qualité
     while ($img->filesize() > $maxFileSize && $quality >= 10) {
         // Diminuez la qualité de 10 unités
-        $quality -= 10;
+        $quality -= 0.5;
         // Enregistrez l'image avec la nouvelle qualité
     }
 

@@ -11,7 +11,7 @@ class Teacher extends Model
 
     protected $fillable=['user_id','picture','biography','gmail','slug'];
 
-    public function quiz(){
+    public function quizzes(){
         return $this->hasMany(Quiz::class);
     }
 

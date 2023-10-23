@@ -51,18 +51,18 @@ class UserController extends Controller
             'lastName'=>$request->lastName
         ]);
         
-        return \redirect()->back()->with('success','Profile modifié avec succès');
+        return \redirect()->back()->with('success','Profile modifié');
     }
 
     public function destroy(User $user)
     {
         $user->delete();
-        return \redirect()->back()->with('success','Compte supprimé succès');
+        return \redirect()->back()->with('success','Compte supprimé !');
     }
 
     public function setProfilePicture(Request $request){
     
-        $user=Auth::user()->first();
+        $user=Auth::user();
         $request->validate([
             'picture'=>'required'
         ]);
@@ -73,7 +73,7 @@ class UserController extends Controller
         $user->update([
             'picture' =>$picture
         ]);
-
-        return \redirect()->back()->with('success','Photo modifiée avec succès');
+        
+        return \redirect()->back()->with('success','Photo modifiée');
     }
 }

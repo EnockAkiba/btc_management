@@ -7,6 +7,7 @@ use App\Models\Teacher;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class MessageController extends Controller
 {
@@ -27,9 +28,10 @@ class MessageController extends Controller
      */
     public function create()
     {
-        $data =User::first();
         
-        \dd($data->quiz);
+        $data=Auth::user()->register;
+        
+        \dd($data);
     }
 
     /**
@@ -41,7 +43,7 @@ class MessageController extends Controller
     public function store(Request $request)
     {
         if (!isset($request->picture) and !isset($request->content)) {
-            return \redirect()->back()->with('success', 'Vous ne pouvez pas envoyer un message vide');
+            return \redirect()->back()->with('error', 'Vous ne pouvez pas envoyer un message vide');
         } elseif ($request->picture and $request->content) {
             $content = $request->content;
             $picture = \imageConvert("chat/", $request->picture);
@@ -52,7 +54,6 @@ class MessageController extends Controller
             $content = $request->content;
             $picture = NULL;
         }
-
 
         $data = $request->validate([
             'destinator' => 'required',
@@ -67,7 +68,7 @@ class MessageController extends Controller
             $data
         );
 
-        return with('success', 'message envoyé');
+        return back()->with('success', 'message envoyé');
     }
 
     /**
