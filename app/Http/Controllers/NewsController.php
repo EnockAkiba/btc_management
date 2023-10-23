@@ -45,7 +45,7 @@ class NewsController extends Controller
         ]);
 
         if($request->picture==NULL and $request->video==NULL){
-            return \redirect()->back()->with('info','Veuillez inserer un fichier photo ou vidéo');
+            return back()->with('error','Veuillez inserer un fichier photo ou vidéo');
         }
         elseif($request->video){
             $picture=NULL;
