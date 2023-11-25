@@ -7,7 +7,10 @@ use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
+
+use function PHPUnit\Framework\isNull;
 
 class RegisterController extends Controller
 {
@@ -69,7 +72,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        // \dd("merde");
+        $slug=\slug('US');
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -77,9 +81,32 @@ class RegisterController extends Controller
             'sex'=>$data['sex'],
             'phone'=>$data['phone'],
             'password' => Hash::make($data['password']),
-            'slug'=> \slug('US')
+            'slug'=> $slug
         ]);
         
+
+        // Sending verification mail
+        Mail::send('email.send',['slug'=>$slug], function ($message) use($data){
+            $message->to($data['email']);
+            $message->subject('Email Verification Mail');
+        });
     }
+
+    public function verifyAccount($slug){
+        $user=User::where('slug',$slug)->first();
+        $message = 'Sorry your email cannot be identified.';
+
+        if(!is_null($user)){
+            if(! $user->email_verified_at){
+                $user->email_verified_at=\date('d/m/Y H:i:s');
+                $user->save();
+                $message = "Your e-mail is verified. You can now login.";
+            } else {
+                $message = "Your e-mail is already verified. You can now login.";
+            }
+        }
+        return redirect()->route('login')->with('success', $message);
+    }
+    
     
 }
