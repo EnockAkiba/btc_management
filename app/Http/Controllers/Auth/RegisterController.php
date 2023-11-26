@@ -75,7 +75,7 @@ class RegisterController extends Controller
     {
         $slug=\slug('US');
 
->>>>>>>>> Temporary merge branch 2
+
         return User::create([
             'name' => $data['name'],
             'lastName' => $data['lastName'],
@@ -86,9 +86,6 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'slug'=> $slug
         ]);
-<<<<<<<<< Temporary merge branch 1
-        
-=========
 
         // Sending verification mail
         Mail::send('email.emailVerificationEmail',['slug'=>$slug], function ($message) use($data){
@@ -111,7 +108,7 @@ class RegisterController extends Controller
             }
         }
         return redirect()->route('login')->with('success', $message);
->>>>>>>>> Temporary merge branch 2
+
     }
     
     
