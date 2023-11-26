@@ -18,9 +18,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory(10)->create();
+        // \App\Models\User::factory(10)->create();
 
-        \App\Models\Message::factory(10)->create();
+        // \App\Models\Message::factory(10)->create();
         
 
 
@@ -29,15 +29,15 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        // DB::table('users')->insert([
-        //     'name' => 'paul',
-        //     'lastName'=> 'BTC',
-        //     'slug'=>'User01',
-        //     'phone'=>'4894734',
-        //     'sex'=>'H',
-        //     'email' => 'paul@gmail.com',
-        //     'password' => Hash::make('paul@gmail.com'),
-        // ]);
+        DB::table('users')->insert([
+            'name' => 'paul',
+            'lastName'=> 'BTC',
+            'slug'=>'User01',
+            'phone'=>'4894734',
+            'sex'=>'H',
+            'email' => 'paul@gmail.com',
+            'password' => Hash::make('paul@gmail.com'),
+        ]);
 
     }
 }
