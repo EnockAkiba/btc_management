@@ -46,3 +46,4 @@
 <script src="{{ asset('js/adminlte.min.js') }}" defer></script>
 </body>
 </html>
+    

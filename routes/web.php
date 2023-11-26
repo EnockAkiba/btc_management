@@ -22,6 +22,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/sendEmail', function(){
+    return view('sendEmail');
+})->name('sendEmail');
+
+Route::get('/page404', function(){
+    return view('page404');
+})->name('page404');
+
+
 
 Route::group(['prefix' => 'user'], function () {
 
@@ -29,11 +38,12 @@ Route::group(['prefix' => 'user'], function () {
     //login, Register, Forget password, reset link
     Auth::routes();
 
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
     //User profile
-    Route::group(['middleware' => ['auth']], function () {
+    Route::group(['middleware' => ['auth','userRoles']], function () {
+
+        Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
         // PROFILE USER
         Route::view('about', 'about')->name('about');
