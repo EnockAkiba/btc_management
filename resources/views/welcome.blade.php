@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 		
-        <title>BTC/Agapd</title>
+        <title>BTC/Agapdsdf</title>
 		<link rel="icon" type="image/x-icon" href="{{asset('images/logo.png')}}">
 		
         <!-- Custom CSS -->
