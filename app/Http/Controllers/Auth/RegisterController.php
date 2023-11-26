@@ -84,9 +84,8 @@ class RegisterController extends Controller
             'slug'=> $slug
         ]);
         
-
         // Sending verification mail
-        Mail::send('email.send',['slug'=>$slug], function ($message) use($data){
+        Mail::send('email.emailVerificationEmail',['slug'=>$slug], function ($message) use($data){
             $message->to($data['email']);
             $message->subject('Email Verification Mail');
         });
