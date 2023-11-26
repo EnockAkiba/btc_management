@@ -56,6 +56,7 @@ class RegisterController extends Controller
     
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
+            'lastName' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'lastName'=>['required', 'string'],
@@ -74,8 +75,10 @@ class RegisterController extends Controller
     {
         $slug=\slug('US');
 
+>>>>>>>>> Temporary merge branch 2
         return User::create([
             'name' => $data['name'],
+            'lastName' => $data['lastName'],
             'email' => $data['email'],
             'lastName'=>$data['lastName'],
             'sex'=>$data['sex'],
@@ -83,7 +86,10 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'slug'=> $slug
         ]);
+<<<<<<<<< Temporary merge branch 1
         
+=========
+
         // Sending verification mail
         Mail::send('email.emailVerificationEmail',['slug'=>$slug], function ($message) use($data){
             $message->to($data['email']);
@@ -105,6 +111,7 @@ class RegisterController extends Controller
             }
         }
         return redirect()->route('login')->with('success', $message);
+>>>>>>>>> Temporary merge branch 2
     }
     
     
