@@ -25,7 +25,7 @@ class QuizController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -36,7 +36,32 @@ class QuizController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data=$request->validate([
+            'promotion_id'=>'required',
+            'dateBigin'=>'required',
+            'dateEnd'
+        ]);
+
+        if(!$request->content and ! $request->file) {
+            return back()->with('error','Veuillez inserer le contenu ou un doc');
+        } 
+
+        if($request->content) $content=$request->content ;
+        else $content=null;
+
+        if($request->file) $file=$request->file ;
+        else $file=null;
+
+        $data['slug']=\slug('Qz');
+        $data['teacher_id']= Auth::user()->teacher->id;
+        $data['content']=$content;
+        $data['file']=$file;
+
+        Quiz::create(
+            $data
+        );
+
+        return \redirect()->back()->with('success','success');
     }
 
     /**
