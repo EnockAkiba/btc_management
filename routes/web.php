@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\NewsController;
@@ -29,7 +30,6 @@ Route::get('/sendEmail', function(){
 Route::get('/page404', function(){
     return view('page404');
 })->name('page404');
-
 
 
 Route::group(['prefix' => 'user'], function () {

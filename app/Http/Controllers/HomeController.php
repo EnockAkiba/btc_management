@@ -28,6 +28,7 @@ class HomeController extends Controller
     }
 
     public function welcome(){
+
         $promotions=Promotion::get();
         $news=News::where('type','1')->orderBy('id','DESC')->take(10)->get();
 
@@ -39,13 +40,13 @@ class HomeController extends Controller
         return \view('welcome.blog', \compact('blogs'));
     }
 
-    public function show($news){
+    public function show(News $news){
         return \view('welcome.show', \compact('news'));
     }
 
     public function teachers(){
         $teachers=Teacher::get();
-        
+
         return \view('welcome.teachers',\compact('teachers'));
     }
 }

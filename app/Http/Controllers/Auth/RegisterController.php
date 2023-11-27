@@ -75,7 +75,16 @@ class RegisterController extends Controller
     {
         $slug=\slug('US');
 
+        try {
+            Mail::send('mails.emailVerificationEmail',['slug'=>$slug], function ($message) use($data){
+            $message->to($data['email']);
+            $message->subject('Email Verification Mail');
+        });
 
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+        
         return User::create([
             'name' => $data['name'],
             'lastName' => $data['lastName'],
@@ -87,14 +96,15 @@ class RegisterController extends Controller
             'slug'=> $slug
         ]);
 
+        
         // Sending verification mail
-        Mail::send('email.emailVerificationEmail',['slug'=>$slug], function ($message) use($data){
-            $message->to($data['email']);
-            $message->subject('Email Verification Mail');
-        });
+    
+        // return \redirect()->route('sendEmail');
+
     }
 
     public function verifyAccount($slug){
+        \dd("Mourir");
         $user=User::where('slug',$slug)->first();
         $message = 'Sorry your email cannot be identified.';
 
