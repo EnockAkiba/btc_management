@@ -23,6 +23,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Route::get('/', [App\Http\Controllers\HomeController::class, 'welcome'])->name('welcome');
+
 Route::get('/sendEmail', function(){
     return view('sendEmail');
 })->name('sendEmail');
