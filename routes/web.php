@@ -33,6 +33,8 @@ Route::get('/page404', function(){
     return view('page404');
 })->name('page404');
 
+Route::get('account/verify/{slug}', [RegisterController::class, 'verifyAccount'])->name('user.verify');
+
 
 Route::group(['prefix' => 'user'], function () {
 
