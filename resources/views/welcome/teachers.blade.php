@@ -55,8 +55,8 @@
                             <nav class="navbar navbar-expand-lg">
 
                                 <div class="container gx-4">
-                                    <a class="navbar-brand" href="{{route('welcome')}}">
 
+                                    <a class="navbar-brand" href="{{route('welcome')}}">
                                         <img src="{{asset('images/logo.png')}}" alt="Bason" class="normal" height="50px">
                                     </a>
 
@@ -117,7 +117,7 @@
                                         <div class="section-title-body">
 
                                             <div class="section-title-heading">
-                                                <h2>BTC Actualites</h2>
+                                                <h2>BTC Equipe</h2>
                                             </div>
 
                                             <div class="hr-divider hr-divider-layout-1 accent-color"></div>
@@ -126,64 +126,38 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="main-section pt-72 pb-72">
-                                    <div class="container gx-4">
-                                        <div class="row gx-36">
-                                            <div class="col-lg-12">
-                                                <div class="blog-block-wrapper blog-block-small-image blog-block-front blog-block-cols-1">
-                                                    <div class="row gx-36 gy-0 row-cols-1 grid-wrapper">
-                                                        @foreach($blogs as $new)
-
-                                                        <div class="grid-item">
-                                                            <article class="main-block blog-block format-standard">
-                                                                <div class="main-block-container blog-block-container">
-                                                                    <div class="main-block-header blog-block-header">
-                                                                        <div class="bg-dark" style="height: 300px;">
-                                                                            @if ($new->video)
-                                                                            <video src="{{ asset('/videos/news/Vid652a6538973954.44074558.mp4')}}" controls style="height: 300px; width:100%"></video>
-                                                                            @endif
-                                                                            @if ($new->picture)
-                                                                            <img src="{{ asset('/' . $new->picture) }}" class="" alt="..." style="height: 300px; width:100% ;">
-                                                                            @endif
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="main-block-body blog-block-body">
-                                                                        <div class="main-block-heading blog-block-heading">
-                                                                            <h2 class="h5 title">
-                                                                                <a href="#" style="text-decoration: none;">{{ substr($new->title, 0, 45) }}</a>
-                                                                            </h2>
-                                                                            <ul class="meta-block">
-
-                                                                                <li class="meta-block-date">
-                                                                                    <span>{{ $new->created_at->format('d.M.Y H:i') }}</span>
-                                                                                </li>
-
-
-                                                                            </ul>
-                                                                        </div>
-
-                                                                        <div class="main-block-content blog-block-content">
-                                                                            <p>
-                                                                                {{ substr($new->description, 0, 650) }}...<a href="{{ route('blog.show', $new) }}" class="text-primary">Lire plus</a>
-                                                                            </p>
-                                                                        </div>
-
-
-                                                                    </div>
-                                                                </div>
-                                                            </article>
-                                                        </div>
-                                                        @endforeach
-
+                                <!--  equipes  -->
+                                <div class="container">
+                                    <div class="row">
+                                        @foreach($teachers as $teacher)
+                                        <div class="col-lg-3">
+                                            <div class="main-block boxed-block-2y testimonials-block white-color-bg grey-2-color-border text-center">
+                                                <div class="main-block-container testimonials-block-container">
+                                                    <div class="main-block-header testimonials-block-header">
+                                                        <img src="{{asset('images/team/belin.jpg')}}" alt="Client image" />
                                                     </div>
 
+                                                    <div class="main-block-body testimonials-block-body">
+                                                        <div class="main-block-heading testimonials-block-heading">
+                                                            <h5 class="name">Belin Mpanga</h5>
+                                                            <h6 class="role font-weight-500 accent-color">
+                                                                Formateur d'anglais de BTC
+                                                            </h6>
+                                                        </div>
 
+                                                        <div class="main-block-footer testimonials-block-footer">
+                                                            <span class="rate rate-5 rate-2x"></span>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        @endforeach
                                     </div>
                                 </div>
+
+                                <!--  equipes  -->
+
                             </div>
 
 

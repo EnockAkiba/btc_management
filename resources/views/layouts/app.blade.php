@@ -127,7 +127,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             <a href="{{ route('quiz') }}" class="nav-link">
                                                 <i class="fas fa-book" title="Devoirs"></i>
 
-                                                
+
                                             </a>
                                         </li>
 
@@ -147,6 +147,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             <a href="{{ route('profile.show') }}" class="nav-link">
                                                 <i class="fas fa-user" title="Profil"></i>
                                             </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <form method="POST" action="{{ route('logout') }}">
+                                                @csrf
+                                                <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault(); this.closest('form').submit();">
+                                                    <i class="mr-2 fa fa-sign-out-alt "></i>
+                                                </a>
+                                            </form>
                                         </li>
                                     </ul>
 

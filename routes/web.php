@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\QuizController;
@@ -22,10 +23,14 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'welcome'])->name('welcome');
-Route::get('/actualites', [App\Http\Controllers\HomeController::class, 'blog'])->name('blog');
+// welcome page 
 
-
+Route::controller(HomeController::class)->group(function () {
+    Route::get("/", "welcome")->name("welcome");
+    Route::get("/actualites", "blog")->name("blog");
+    Route::get("/actualite/{new:slug}", "show")->name("blog.show");
+    Route::get("/equipes", "teachers")->name("teachers");
+});
 
 Route::get('/sendEmail', function(){
     return view('sendEmail');

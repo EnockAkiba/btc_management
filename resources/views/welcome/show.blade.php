@@ -2,7 +2,6 @@
 <html lang="en-US">
 
 <head>
-
     <title>Btc/Agpd</title>
     <meta name="author" content="Graphicfort">
     <meta name="robots" content="index follow">
@@ -55,6 +54,7 @@
                             <nav class="navbar navbar-expand-lg">
 
                                 <div class="container gx-4">
+
                                     <a class="navbar-brand" href="{{route('welcome')}}">
 
                                         <img src="{{asset('images/logo.png')}}" alt="Bason" class="normal" height="50px">
@@ -132,18 +132,18 @@
                                             <div class="col-lg-12">
                                                 <div class="blog-block-wrapper blog-block-small-image blog-block-front blog-block-cols-1">
                                                     <div class="row gx-36 gy-0 row-cols-1 grid-wrapper">
-                                                        @foreach($blogs as $new)
+
 
                                                         <div class="grid-item">
                                                             <article class="main-block blog-block format-standard">
                                                                 <div class="main-block-container blog-block-container">
                                                                     <div class="main-block-header blog-block-header">
                                                                         <div class="bg-dark" style="height: 300px;">
-                                                                            @if ($new->video)
-                                                                            <video src="{{ asset('/videos/news/Vid652a6538973954.44074558.mp4')}}" controls style="height: 300px; width:100%"></video>
+                                                                            @if ($news->video)
+                                                                            <video src="{{ asset('/videos/newss/Vid652a6538973954.44074558.mp4')}}" controls style="height: 300px; width:100%"></video>
                                                                             @endif
-                                                                            @if ($new->picture)
-                                                                            <img src="{{ asset('/' . $new->picture) }}" class="" alt="..." style="height: 300px; width:100% ;">
+                                                                            @if ($news->picture)
+                                                                            <img src="{{ asset('/' . $news->picture) }}" class="" alt="..." style="height: 300px; width:100% ;">
                                                                             @endif
                                                                         </div>
                                                                     </div>
@@ -151,12 +151,12 @@
                                                                     <div class="main-block-body blog-block-body">
                                                                         <div class="main-block-heading blog-block-heading">
                                                                             <h2 class="h5 title">
-                                                                                <a href="#" style="text-decoration: none;">{{ substr($new->title, 0, 45) }}</a>
+                                                                                <a href="#" style="text-decoration: none;">{{ substr($news->title, 0, 45) }}</a>
                                                                             </h2>
                                                                             <ul class="meta-block">
 
                                                                                 <li class="meta-block-date">
-                                                                                    <span>{{ $new->created_at->format('d.M.Y H:i') }}</span>
+                                                                                    <span>{{ $news->created_at->format('d.M.Y H:i') }}</span>
                                                                                 </li>
 
 
@@ -165,7 +165,7 @@
 
                                                                         <div class="main-block-content blog-block-content">
                                                                             <p>
-                                                                                {{ substr($new->description, 0, 650) }}...<a href="{{ route('blog.show', $new) }}" class="text-primary">Lire plus</a>
+                                                                                {{ substr($news->description, 0, 650) }}...<a href="{{ route('news.show', $new) }}" class="text-primary">Lire plus</a>
                                                                             </p>
                                                                         </div>
 
@@ -174,7 +174,6 @@
                                                                 </div>
                                                             </article>
                                                         </div>
-                                                        @endforeach
 
                                                     </div>
 

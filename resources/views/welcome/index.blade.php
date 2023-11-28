@@ -80,8 +80,8 @@
                             <nav class="navbar navbar-expand-lg">
 
                                 <div class="container gx-4">
+                                    <a class="navbar-brand" href="{{route('welcome')}}">
 
-                                    <a class="navbar-brand" href="index.html">
                                         <img src="{{asset('images/logo.png')}}" alt="Bason" class="normal" height="50px">
                                     </a>
 
@@ -444,12 +444,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="main-section pt-72 pb-72">
+                                <div class="main-section pt-72 pb-70">
                                     <div class="container gx-4">
                                         <div class="row gx-36">
                                             <div class="col-lg-12">
                                                 <div class="blog-block-wrapper blog-block-small-image blog-block-front blog-block-cols-1">
-                                                    <div class="row gx-36 gy-0 row-cols-1 grid-wrapper">
+                                                    <div class="row gx-36 gy-0 row-cols-1 grid-wrapper pt-2">
                                                         @foreach($news as $new)
 
                                                         <div class="grid-item">
@@ -483,7 +483,7 @@
 
                                                                         <div class="main-block-content blog-block-content">
                                                                             <p>
-                                                                                {{ substr($new->description, 0, 650) }}...<a href="{{ route('news.show', $new) }}" class="text-primary">Lire plus</a>
+                                                                                {{ substr($new->description, 0, 1000) }}...<a href="{{ route('blog.show', $new) }}" class="text-primary">Lire plus</a>
                                                                             </p>
                                                                         </div>
 
@@ -741,7 +741,7 @@
                                             </div>
                                         </div>
                                         <div class="d-flex justify-content-center">
-                                            <a href="" class="bg-primary p-2 px-5 text-white rounded-sm"> Voir plus </a>
+                                            <a href="{{route('teachers')}}" class="bg-primary p-2 px-5 text-white rounded-sm"> Voir plus </a>
                                         </div>
                                     </div>
                                 </div>
