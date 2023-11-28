@@ -18,11 +18,14 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-// Route::get('/', [App\Http\Controllers\HomeController::class, 'welcome'])->name('welcome');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'welcome'])->name('welcome');
+Route::get('/actualites', [App\Http\Controllers\HomeController::class, 'blog'])->name('blog');
+
+
 
 Route::get('/sendEmail', function(){
     return view('sendEmail');
