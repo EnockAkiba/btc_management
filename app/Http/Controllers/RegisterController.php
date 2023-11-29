@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Promotion;
 use App\Models\Register;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class RegisterController extends Controller
@@ -14,8 +16,8 @@ class RegisterController extends Controller
      */
     public function index()
     {
-        //
-        return view('register.index');
+        $registers=Register::orderBy('id','DESC')->paginate(8);
+        return view('register.index',\compact('registers'));
     }
 
     /**
@@ -25,7 +27,9 @@ class RegisterController extends Controller
      */
     public function create()
     {
-        //
+        $users=User::get();
+        $promotions=Promotion::get();
+        return \view('register.create', \compact('users','promotions'));
     }
 
     /**
@@ -36,7 +40,25 @@ class RegisterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data=$request->validate([
+            'user_id'=>'required',
+            'promotion_id'=>'required',
+            'index'=>'required',
+            'vacation'=>'required',
+        ]);
+
+        if($request->respoName)  $respoName=$request->respoName;
+        else $respoName=NULL;
+
+        if($request->respoNumber)  $respoNumber=$request->respoNumber;
+        else $respoName=NULL;
+
+        $data['respoName']=$respoName;
+        $data['respoNumber']=$respoNumber;
+        $data['slug']=\slug('Re');
+        
+        Register::create($data);
+        return \redirect()->back()->with('success','Ajouté');
     }
 
     /**
@@ -47,7 +69,7 @@ class RegisterController extends Controller
      */
     public function show(Register $register)
     {
-        //
+        return \view('register.show', \compact('register'));
     }
 
     /**
@@ -58,8 +80,9 @@ class RegisterController extends Controller
      */
     public function edit(Register $register)
     {
-        //
-        return view('register.edit');
+        $users=User::get();
+        $promotions=Promotion::get();
+        return view('register.edit', \compact('register','users','promotions'));
 
     }
 
@@ -72,7 +95,23 @@ class RegisterController extends Controller
      */
     public function update(Request $request, Register $register)
     {
-        //
+        $data=$request->validate([
+            'user_id'=>'required',
+            'promotion_id'=>'required',
+            'index'=>'required',
+            'vacation'=>'required',
+        ]);
+
+        if($request->respoName)  $respoName=$request->respoName;
+        else $respoName=NULL;
+
+        if($request->respoNumber)  $respoNumber=$request->respoNumber;
+        else $respoName=NULL;
+        
+        $data['respoName']=$respoName;
+        $data['respoNumber']=$respoNumber;
+        $register->update($data);
+        return \redirect()->back()->with('success','Modifié');
     }
 
     /**
@@ -83,6 +122,7 @@ class RegisterController extends Controller
      */
     public function destroy(Register $register)
     {
-        //
+        $register->delete();
+        return \redirect()->back()->with('success','Supprimé');
     }
 }

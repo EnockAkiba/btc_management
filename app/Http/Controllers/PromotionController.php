@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Departement;
+use App\Models\Extension;
 use App\Models\Promotion;
 use Illuminate\Http\Request;
+
+use function PHPUnit\Framework\returnSelf;
 
 class PromotionController extends Controller
 {
@@ -14,7 +18,10 @@ class PromotionController extends Controller
      */
     public function index()
     {
-        return view('promotion.index');
+        $departements=Departement::get();
+        $extensions=Extension::get();
+
+        return view('promotion.index', \compact('departements','extensions'));
         
     }
 
@@ -25,7 +32,9 @@ class PromotionController extends Controller
      */
     public function create()
     {
-        //
+        $departements=Departement::get();
+        $extensions=Extension::get();
+        return \view('promotion.create',\compact('departements','extensions'));
     }
 
     /**
@@ -36,7 +45,19 @@ class PromotionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data=$request->validate([
+            'departement_id'=>'required',
+            'extension_id'=>'required',
+            'designation'=>'required',
+            'price'=>'required',
+            'dateBegin'=>'required',
+            'dateEnd'=>'required'
+        ]);
+        $data['slug']=\slug('pr');
+
+        Promotion::create($data);
+
+        return \redirect()->back()->with('success','Ajouté');
     }
 
     /**
@@ -47,7 +68,7 @@ class PromotionController extends Controller
      */
     public function show(Promotion $promotion)
     {
-        //
+        return \view('promotion.show', \compact('promotion'));
     }
 
     /**
@@ -58,8 +79,9 @@ class PromotionController extends Controller
      */
     public function edit(Promotion $promotion)
     {
-        return view('promotion.edit');
-        
+        $departements=Departement::get();
+        $extensions=Extension::get();
+        return view('promotion.edit', \compact('promotion','departements','extensions'));
     }
 
     /**
@@ -71,7 +93,19 @@ class PromotionController extends Controller
      */
     public function update(Request $request, Promotion $promotion)
     {
-        //
+        
+        $data=$request->validate([
+            'departement_id'=>'required',
+            'extension_id'=>'required',
+            'designation'=>'required',
+            'price'=>'required',
+            'dateBegin'=>'required',
+            'dateEnd'=>'required'
+        ]);
+
+        $promotion->update($data);
+
+        return \redirect()->back()->with('success','Modifié');
     }
 
     /**
@@ -82,6 +116,7 @@ class PromotionController extends Controller
      */
     public function destroy(Promotion $promotion)
     {
-        //
+        $promotion->delete();
+        return \redirect()->back()->with('success','Supprimé');
     }
 }

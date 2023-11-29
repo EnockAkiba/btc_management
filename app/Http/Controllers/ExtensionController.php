@@ -14,7 +14,8 @@ class ExtensionController extends Controller
      */
     public function index()
     {
-        //
+        $extensions=Extension::get();
+        return \view('extension.index', \compact('extension'));
     }
 
     /**
@@ -35,7 +36,14 @@ class ExtensionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data=$request->validate([
+            'designation'=>'required'
+        ]);
+
+        $data['slug']=\slug('Ex');
+        Extension::create($data);
+
+        return \redirect()->back()->with('success','Ajouté');
     }
 
     /**
@@ -46,7 +54,7 @@ class ExtensionController extends Controller
      */
     public function show(Extension $extension)
     {
-        //
+        return \view('extension.show', \compact('extension'));
     }
 
     /**
@@ -57,7 +65,7 @@ class ExtensionController extends Controller
      */
     public function edit(Extension $extension)
     {
-        //
+        return \view('extension.edit', \compact('extension'));
     }
 
     /**
@@ -69,7 +77,14 @@ class ExtensionController extends Controller
      */
     public function update(Request $request, Extension $extension)
     {
-        //
+        $data=$request->validate([
+            'designation'=>'required'
+        ]);
+
+        $data['slug']=\slug('Ex');
+        $extension->update($data);
+
+        return \redirect()->back()->with('success','Modifié');
     }
 
     /**
@@ -80,6 +95,7 @@ class ExtensionController extends Controller
      */
     public function destroy(Extension $extension)
     {
-        //
+        $extension->delete();
+        return \redirect()->back()->with('success','Supprimé');
     }
 }
