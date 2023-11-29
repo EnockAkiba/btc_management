@@ -9,7 +9,7 @@ class Promotion extends Model
 {
     use HasFactory;
      
-    protected $fillable=['departement_id','slug','designation','price','dateBegin','dateEnd'];
+    protected $fillable=['departement_id','extension_id','slug','designation','price','dateBegin','dateEnd'];
     public function departement(){
         return $this->belongsTo(Departement::class);
     }
@@ -21,4 +21,9 @@ class Promotion extends Model
     public function quiz(){
         return $this->hasMany(Quiz::class);
     }
+
+    public function extension(){
+        return $this->belongsTo(Extension::class);
+    }
+
 }

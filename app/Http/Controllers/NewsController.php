@@ -77,7 +77,8 @@ class NewsController extends Controller
      */
     public function show(News $news)
     {
-        return \view('news.show', \compact('news'));
+        $lastNews=News::ordreBy('id','DESC')->token(10)->get();
+        return \view('news.show', \compact('news','lastNews'));
     }
 
     /**
@@ -132,7 +133,7 @@ class NewsController extends Controller
     public function destroy(News $news)
     {
         $news->delete();
-        return \redirect()->route('news.create')->with('success','Suppression reussie');
+        return \redirect()->route('news.create')->with('success','Suppression réussie');
     }
 
     public function setType(News $news){
