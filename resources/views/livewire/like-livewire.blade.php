@@ -34,6 +34,18 @@
 
                             <div class=" mb-3">
                                 <div class="flex justify-end pr-3">
+                                    @if (Auth::user()->roleUser == 0)
+                                    @if ($new->type == 0)
+                                    <button class="btn" type="submit" wire:click="setType({{ $new->id }})">
+                                        <i class="fa fa-eye cursor-pointer text-green-600 " aria-hidden="true" title="Cette actualité est privée "></i>
+                                    </button>
+                                    @else
+                                    <button class="btn" type="submit" wire:click="setType({{ $new->id }})">
+                                        <i class="fa fa-eye-slash cursor-pointer text-red-600" aria-hidden="true" title="Cette actualité est publique "> </i>
+                                    </button>
+
+                                    @endif
+                                    @endif
                                     <div class=" cursor-pointer text-center  p-2 rounded-full" wire:click="like({{ $new->id }})">
                                         <span>{{ count($new->like) }} <i class="fa fa-heart text-red-300" aria-hidden="true"></i></span>
                                     </div>
