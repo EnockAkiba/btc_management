@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MessageController;
@@ -40,6 +41,7 @@ Route::get('/page404', function(){
     return view('page404');
 })->name('page404');
 
+Route::get('account/verify/{slug}', [RegisterController::class, 'verifyAccount'])->name('user.verify');
 
 
 Route::group(['prefix' => 'user'], function () {
