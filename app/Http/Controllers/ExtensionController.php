@@ -15,7 +15,7 @@ class ExtensionController extends Controller
     public function index()
     {
         $extensions=Extension::get();
-        return \view('extension.index', \compact('extension'));
+        return \view('extension.index', \compact('extensions'));
     }
 
     /**
@@ -80,8 +80,7 @@ class ExtensionController extends Controller
         $data=$request->validate([
             'designation'=>'required'
         ]);
-
-        $data['slug']=\slug('Ex');
+        
         $extension->update($data);
 
         return \redirect()->back()->with('success','Modifié');

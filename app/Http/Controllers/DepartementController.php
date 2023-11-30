@@ -49,7 +49,7 @@ class DepartementController extends Controller
         else $picture=NULL;
 
         $data['picture']=$picture;
-        $data['slug']=\slug('de');
+        $data['slug']=\slug('De');
 
         Departement::create($data);
 
