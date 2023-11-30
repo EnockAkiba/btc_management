@@ -142,7 +142,7 @@
             <div class="modal-content rounded-none shadow-none  border-t-2 border-t-green-300 p-3">
                 <div class="flex justify-between items-center">
                     <h3 class="card-title text-orange"><a href="" class="brand-link">
-                            <img src="{{ asset('images/logo.png') }}" alt="Logo" class="brand-image " style="opacity:">
+                            <img src="{{ asset('images/logo.png') }}" alt="Logo" class="brand-image ">
                             <span class="title">BTC/AGAPD </span>
                         </a>
                     </h3>
