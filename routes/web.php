@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\DepartementController;
+use App\Http\Controllers\ExtensionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\NewsController;
@@ -86,6 +88,43 @@ Route::group(['prefix' => 'user'], function () {
             Route::get("comment/{comment:slug}/destroy", "destroy")->name("comment.destroy");
         });
 
+        // EXTENSIONS
+        Route::controller(ExtensionController::class)->group(function () {
+            // Route::get("extension/index", "index")->name("extension");
+            Route::get("extension/create", "create")->name("extension.create");
+            Route::post("extension/store", "store")->name("extension.store");
+            // Route::get("extension/{extension:slug}/show", "show")->name("extension.show");
+            Route::get("extension/{extension:slug}/edit", "edit")->name("extension.edit");
+            Route::put("extension/{extension:slug}/update", "update")->name("extension.update");
+            Route::get("extension/{extension:slug}/destroy", "destroy")->name("extension.destroy");
+        });
+
+        Route::get('/extension/index', function () {
+            return view('extension.index');
+        })->name('extension');
+
+        Route::get('/extension/show', function () {
+            return view('extension.show');
+        })->name('extension.show');
+
+
+
+        // DEPARTEMENT
+        Route::controller(DepartementController::class)->group(function () {
+            Route::get("departement/index", "index")->name("departement");
+            Route::get("departement/create", "create")->name("departement.create");
+            Route::post("departement/store", "store")->name("departement.store");
+            Route::get("departement/{departement:slug}/show", "show")->name("departement.show");
+            Route::get("departement/{departement:slug}/edit", "edit")->name("departement.edit");
+            Route::put("departement/{departement:slug}/update", "update")->name("departement.update");
+            Route::get("departement/{departement:slug}/destroy", "destroy")->name("departement.destroy");
+        });
+
+    
+
+
+
+
 
 
         // MESSAGES
@@ -128,18 +167,16 @@ Route::group(['prefix' => 'user'], function () {
             return view('applay.show');
         })->name('applay.show');
     
-        // departements
-        Route::get('/departements', function () {
-            return view('departement.index');
-        })->name('departement');
+        // // departements
+        // Route::get('/departements', function () {
+        //     return view('departement.index');
+        // })->name('departement');
 
-        Route::get('/departement/show', function () {
-            return view('departement.show');
-        })->name('departement.show');
+        // Route::get('/departement/show', function () {
+        //     return view('departement.show');
+        // })->name('departement.show');
 
-        Route::get('/extension/show', function () {
-            return view('extension.show');
-        })->name('extension.show');
+      
 
         Route::get('/promotion/show', function () {
             return view('promotion.show');
