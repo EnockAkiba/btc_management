@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Promotion;
 use App\Models\Quiz;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
+use function PHPUnit\Framework\returnSelf;
 
 class QuizController extends Controller
 {
@@ -38,8 +41,8 @@ class QuizController extends Controller
     {
         $data=$request->validate([
             'promotion_id'=>'required',
-            'dateBigin'=>'required',
-            'dateEnd'
+            'dateBigin'=>'required|date',
+            'dateEnd'=>'required|date|after:dateBigin'
         ]);
 
         if(!$request->content and ! $request->file) {
@@ -72,7 +75,7 @@ class QuizController extends Controller
      */
     public function show(Quiz $quiz)
     {
-        //
+        return \view('quiz.show', \compact('quiz'));
     }
 
     /**
@@ -83,7 +86,8 @@ class QuizController extends Controller
      */
     public function edit(Quiz $quiz)
     {
-        //
+        $promotions=Promotion::get();
+        return \view('quiz.edit', \compact('quiz','promotions'));
     }
 
     /**
@@ -95,7 +99,30 @@ class QuizController extends Controller
      */
     public function update(Request $request, Quiz $quiz)
     {
-        //
+        $data=$request->validate([
+            'promotion_id'=>'required',
+            'dateBigin'=>'required|date',
+            'dateEnd'=>'required|date|after:dateBigin'
+        ]);
+
+        if(!$request->content and ! $request->file) {
+            return back()->with('error','Veuillez inserer le contenu ou un doc');
+        } 
+
+        if($request->content) $content=$request->content ;
+        else $content=$request->contentOld;
+
+        if($request->file) $file=$request->file ;
+        else $file=$request->fileOld;
+        
+        $data['teacher_id']= Auth::user()->teacher->id;
+        $data['content']=$content;
+        $data['file']=$file;
+
+        $quiz->update($data);
+
+        return \redirect()->back()->with('success','Modifié');
+        
     }
 
     /**
@@ -106,9 +133,11 @@ class QuizController extends Controller
      */
     public function destroy(Quiz $quiz)
     {
-        //
+        $quiz->delete();
+        return \redirect()->back()->with('success','Supprimé');
     }
+
     public function myQuizzes(){
-        $id=Auth::user()->register()->orderBy('regist');
+        // $id=Auth::user()->register()->orderBy('regist');
     }
 }

@@ -99,8 +99,8 @@ class PromotionController extends Controller
             'extension_id'=>'required',
             'designation'=>'required',
             'price'=>'required',
-            'dateBegin'=>'required',
-            'dateEnd'=>'required'
+            'dateBegin'=>'required|date',
+            'dateEnd'=>'required|date|after:dateBegin'
         ]);
 
         $promotion->update($data);
@@ -118,5 +118,11 @@ class PromotionController extends Controller
     {
         $promotion->delete();
         return \redirect()->back()->with('success','Supprimé');
+    }
+
+    public function messages(){
+        return [
+            'dateEnd.after' => "La date doit être supérieure à la date du début.",
+        ];
     }
 }

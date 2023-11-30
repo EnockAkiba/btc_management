@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Applay;
 use Illuminate\Http\Request;
 
+use function Ramsey\Uuid\v1;
+
 class ApplayController extends Controller
 {
     /**
@@ -14,7 +16,8 @@ class ApplayController extends Controller
      */
     public function index()
     {
-        //
+        $applays=Applay::orderBy('id','DESC')->paginate(8);
+        return \view('applay.index', \compact('applays'));
     }
 
     /**
@@ -24,7 +27,7 @@ class ApplayController extends Controller
      */
     public function create()
     {
-        //
+        // return \view('applay.create', \compact());
     }
 
     /**
@@ -67,7 +70,7 @@ class ApplayController extends Controller
      */
     public function show(Applay $applay)
     {
-        //
+        return \view('applay.show', \compact('applay'));
     }
 
     /**
@@ -102,7 +105,6 @@ class ApplayController extends Controller
     public function destroy(Applay $applay)
     {
         $applay->delete();
-
-        return \redirect()->back()->with('success','Evaluation supprimée avec succès');
+        return \redirect()->back()->with('success','supprimé avec succès');
     }
 }

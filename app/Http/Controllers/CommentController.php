@@ -38,7 +38,6 @@ class CommentController extends Controller
     public function store(Request $request)
     {
     
-
         if(!$request->picture and !$request->content) return redirect()->back()->with('info','le champs est vide !');
         
         if($request->picture) $picture=\imageConvert('chat',$request->picture); 

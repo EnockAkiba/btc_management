@@ -77,7 +77,7 @@ class NewsController extends Controller
      */
     public function show(News $news)
     {
-        $lastNews=News::ordreBy('id','DESC')->token(10)->get();
+        $lastNews=News::orderBy('id','DESC')->token(10)->get();
         return \view('news.show', \compact('news','lastNews'));
     }
 

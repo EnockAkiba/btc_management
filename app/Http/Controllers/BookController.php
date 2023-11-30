@@ -14,8 +14,8 @@ class BookController extends Controller
      */
     public function index()
     {
-        return view('book.index' );
-        
+        $books=Book::orderBy('id','DESC')->paginate(8);
+        return view('book.index',\compact('books'));
     }
 
     /**
@@ -25,7 +25,7 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+        return \view('book.create');
     }
 
     /**
@@ -36,7 +36,25 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data=$request->validate([
+            'title'=>'required',
+            'description'=>'required',
+            'file'=>'required'
+        ]);
+
+        if($request->file) $file=\docStatement('book',$request->file);
+        else $file=NULL;
+
+        if($request->picture) $picture=\imagesConvert('book',$request->picture);
+        else $picture=NULL;
+
+        $data['picture']=$picture;
+        $data['file']=$file;
+        $data['slug']=\slug('Bo');
+
+        Book::create($data);
+
+        return \redirect()->back()->with('success','Ajouté');
     }
 
     /**
@@ -47,7 +65,7 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        //
+        return \view('book.show', \compact('book'));
     }
 
     /**
@@ -58,7 +76,7 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        return view('book.edit');
+        return view('book.edit',\compact('book'));
         
     }
 
@@ -71,7 +89,24 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        //
+        $data=$request->validate([
+            'title'=>'required',
+            'description'=>'required',
+            'file'=>'required'
+        ]);
+
+        if($request->file) $file=\docStatement('book',$request->file);
+        else $file=$request->fileOld;
+
+        if($request->picture) $picture=\imagesConvert('book',$request->picture);
+        else $picture=$request->pictureOld;
+
+        $data['picture']=$picture;
+        $data['file']=$file;
+
+        $book->update($data);
+
+        return \redirect()->back()->with('success','Modifié');
     }
 
     /**
@@ -82,6 +117,7 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        //
+        $book->delete();
+        return \redirect()->back()->with('success','Supprimé');
     }
 }
