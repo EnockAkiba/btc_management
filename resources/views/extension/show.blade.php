@@ -8,7 +8,7 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-left">
                     <li class="breadcrumb-item title"><a href="{{ route('extension') }}">Extensions</a></li>
-                    <li class="breadcrumb-item active"> Title Extension</li>
+                    <li class="breadcrumb-item active"> {{$extension->designation}}</li>
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -25,7 +25,7 @@
                 <div class="card card-widget widget-user">
                     <!-- Add the bg color to the header using any of the bg-* classes -->
                     <div class="widget-user-header bg-blue-100">
-                        <h3 class="widget-user-username">English </h3>
+                        <h3 class="widget-user-username">{{$extension->designation}} </h3>
                         <h5 class="widget-user-desc mt-2">Extension</h5>
                     </div>
 
@@ -63,14 +63,15 @@
 
                 </div>
                 <!-- /.card-header -->
-                <form action="" method="post" enctype="multipart/form-data">
+                <form action="{{route('extension.update', $extension)}}" method="post" enctype="multipart/form-data">
                     @csrf
+                    @method('put')
                     <div class="card-body">
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group">
                                     <label for="">Titre/Designation <span class="required"> *</span> </label>
-                                    <input type="text" class="form-control" name="designation">
+                                    <input type="text" value="{{$extension->designation}}" class="form-control" name="designation">
                                 </div>
                             </div>
 
@@ -104,7 +105,7 @@
                 <!-- /.card-header -->
                 <!-- form start -->
                 <div class="mt-3">
-                    <a href="" class="bg-blue-300  text-white p-2"><i class="fa-solid fa-check"></i> Oui</a>
+                    <a href="{{route('extension.destroy', $extension)}}" class="bg-blue-300  text-white p-2"><i class="fa-solid fa-check"></i> Oui</a>
                     <button type="button" class="bg-red-400 p-1 ml-2 text-white" data-dismiss="modal"><i class="fa-solid fa-x"></i> Non</button>
                 </div>
             </div>

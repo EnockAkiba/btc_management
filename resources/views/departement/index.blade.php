@@ -9,7 +9,8 @@
                 <ol class="breadcrumb float-sm-left">
                     <li class="bg-blue-400 p-1 mx-1 rounded-sm text-white"><a href="{{ route('extension') }}">Extension</a></li>
                     <li class="bg-blue-400 p-1 mx-1 rounded-sm text-white"><a href="{{route('departement')}}">Departement</a> </li>
-                    <li class="bg-blue-400 p-1 mx-1 rounded-sm text-white">Promotion</li>
+                    <li class="bg-blue-400 p-1 mx-1 rounded-sm text-white"><a href="{{route('promotion')}}">Promotioin</a></li>
+                   
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
