@@ -7,6 +7,7 @@ use App\Http\Controllers\ExtensionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\QuizController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -35,11 +36,11 @@ Route::controller(HomeController::class)->group(function () {
     Route::get("/equipes", "teachers")->name("teachers");
 });
 
-Route::get('/sendEmail', function(){
+Route::get('/sendEmail', function () {
     return view('sendEmail');
 })->name('sendEmail');
 
-Route::get('/page404', function(){
+Route::get('/page404', function () {
     return view('page404');
 })->name('page404');
 
@@ -55,7 +56,7 @@ Route::group(['prefix' => 'user'], function () {
 
 
     //User profile
-    Route::group(['middleware' => ['auth','userRoles']], function () {
+    Route::group(['middleware' => ['auth', 'userRoles']], function () {
 
         Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -90,24 +91,14 @@ Route::group(['prefix' => 'user'], function () {
 
         // EXTENSIONS
         Route::controller(ExtensionController::class)->group(function () {
-            // Route::get("extension/index", "index")->name("extension");
+            Route::get("extension/index", "index")->name("extension");
             Route::get("extension/create", "create")->name("extension.create");
             Route::post("extension/store", "store")->name("extension.store");
-            // Route::get("extension/{extension:slug}/show", "show")->name("extension.show");
-            Route::get("extension/{extension:slug}/edit", "edit")->name("extension.edit");
-            Route::put("extension/{extension:slug}/update", "update")->name("extension.update");
-            Route::get("extension/{extension:slug}/destroy", "destroy")->name("extension.destroy");
+            Route::get("extension/show/{extension:id}", "show")->name("extension.show");
+            Route::get("extension/{extension:id}/edit", "edit")->name("extension.edit");
+            Route::put("extension/{extension:id}/update", "update")->name("extension.update");
+            Route::get("extension/{extension:id}/destroy", "destroy")->name("extension.destroy");
         });
-
-        Route::get('/extension/index', function () {
-            return view('extension.index');
-        })->name('extension');
-
-        Route::get('/extension/show', function () {
-            return view('extension.show');
-        })->name('extension.show');
-
-
 
         // DEPARTEMENT
         Route::controller(DepartementController::class)->group(function () {
@@ -120,7 +111,19 @@ Route::group(['prefix' => 'user'], function () {
             Route::get("departement/{departement:slug}/destroy", "destroy")->name("departement.destroy");
         });
 
-    
+
+        // PROMOTION
+        Route::controller(PromotionController::class)->group(function () {
+            Route::get("promotion/index", "index")->name("promotion");
+            Route::get("promotion/create", "create")->name("promotion.create");
+            Route::post("promotion/store", "store")->name("promotion.store");
+            Route::get("promotion/{promotion:slug}/show", "show")->name("promotion.show");
+            Route::get("promotion/{promotion:slug}/edit", "edit")->name("promotion.edit");
+            Route::put("promotion/{promotion:slug}/update", "update")->name("promotion.update");
+            Route::get("promotion/{promotion:slug}/destroy", "destroy")->name("promotion.destroy");
+        });
+
+
 
 
 
@@ -128,17 +131,13 @@ Route::group(['prefix' => 'user'], function () {
 
 
         // MESSAGES
-        Route::get('/message/show', function () {
-            return view('message.show');
-        })->name('message.show');
-        
 
         Route::controller(MessageController::class)->group(function () {
             Route::get("message/index", "index")->name("message");
             Route::get("message/create", "create")->name("message.create");
             Route::post("message/store", "store")->name("message.store");
             Route::post("message/store", "store")->name("message.store");
-            // Route::get("message/{message:slug}/show", "show")->name("message.show");
+            Route::get("message/{message:slug}/show", "show")->name("message.show");
             Route::get("message/{message:slug}/edit", "edit")->name("message.edit");
             Route::put("message/{message:slug}/update", "update")->name("message.update");
             Route::get("message/{message:slug}/destroy", "destroy")->name("message.destroy");
@@ -166,7 +165,7 @@ Route::group(['prefix' => 'user'], function () {
         Route::get('/reponse', function () {
             return view('applay.show');
         })->name('applay.show');
-    
+
         // // departements
         // Route::get('/departements', function () {
         //     return view('departement.index');
@@ -176,7 +175,7 @@ Route::group(['prefix' => 'user'], function () {
         //     return view('departement.show');
         // })->name('departement.show');
 
-      
+
 
         Route::get('/promotion/show', function () {
             return view('promotion.show');
@@ -189,14 +188,14 @@ Route::group(['prefix' => 'user'], function () {
         Route::get('/student/show', function () {
             return view('student.show');
         })->name('student.show');
-        
+
         Route::get('/user/show', function () {
             return view('users.show');
         })->name('user.show');
 
 
 
-        
+
         // Route::controller(QuizController::class)->group(function () {
         //     Route::get("quiz/index", "index")->name("quiz");
         //     Route::get("quiz/create", "create")->name("quiz.create");
@@ -208,9 +207,7 @@ Route::group(['prefix' => 'user'], function () {
         //     Route::get("quiz/{quiz:slug}/destroy", "destroy")->name("message.destroy");
         // });
 
-        
+
 
     });
-
-
 });

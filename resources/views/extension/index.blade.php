@@ -9,7 +9,8 @@
                 <ol class="breadcrumb float-sm-left">
                     <li class="bg-blue-400 p-1 mx-1 rounded-sm text-white"><a href="{{ route('extension') }}">Extension</a></li>
                     <li class="bg-blue-400 p-1 mx-1 rounded-sm text-white"><a href="{{route('departement')}}">Departement</a> </li>
-                    <li class="bg-blue-400 p-1 mx-1 rounded-sm text-white">Promotion</li>
+                    <li class="bg-blue-400 p-1 mx-1 rounded-sm text-white"><a href="{{route('promotion')}}">Promotioin</a></li>
+            
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -39,11 +40,11 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    @for($i=1;$i<10;$i++) <td>{{$i}}</td>
-                                        <td><a href="{{route('extension.show')}}">Afia bora extension</a> </td>
+                                    @foreach($extensions as $extension)
+                                    <td>{{$loop->index+1}}</td>
+                                    <td> <a href="{{route('extension.show', $extension)}}">{{$extension->designation}}</a> </td>
                                 </tr>
-                                @endfor
-
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -59,10 +60,9 @@
                         </div>
                     </div>
                     <div class="mt-3 p-2">
-                    @for($i=1;$i<10;$i++)
-                        <p class="my-2"> English l1B</p>
-                        <hr>
-                    @endfor
+                        @for($i=1;$i<10;$i++) <p class="my-2"> English l1B</p>
+                            <hr>
+                            @endfor
                     </div>
                 </div>
             </div>
@@ -88,7 +88,7 @@
                 <form action="{{route('extension.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
-                    
+
                         <div class="form-group">
                             <label for="">Designation de l'extension <span class="required">*</span></label>
                             <input type="text" class="form-control" name="designation">
