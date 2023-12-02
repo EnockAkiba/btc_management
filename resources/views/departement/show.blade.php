@@ -68,12 +68,14 @@
                             </thead>
                             <tbody>
                                 <tr>
+                                    @foreach($departement->promotion as $promotion)
                                     <td>1</td>
                                     <td><a href="{{route('promotion.show')}}" class="text-blue-500"> English </a></td>
                                     <td></td>
                                     <td>le 12.Oct 2023</td>
                                     <td>le 22.Dec 2023</td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
 
