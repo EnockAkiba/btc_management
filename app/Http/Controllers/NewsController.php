@@ -15,7 +15,7 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $news=News::paginate(8);
+        $news=News::orderByDesc('id')->paginate(8);
         return view('news.index', compact('news'));
 
     }
@@ -77,7 +77,7 @@ class NewsController extends Controller
      */
     public function show(News $news)
     {
-        $lastNews=News::orderBy('id','DESC')->token(10)->get();
+        $lastNews=News::orderByDesc('id')->take(10)->get();
         return \view('news.show', \compact('news','lastNews'));
     }
 
@@ -89,8 +89,7 @@ class NewsController extends Controller
      */
     public function edit(News $news)
     {
-        return view('news.edit', \compact('news'));
-        
+        return view('news.edit', \compact('news'));   
     }
 
     /**

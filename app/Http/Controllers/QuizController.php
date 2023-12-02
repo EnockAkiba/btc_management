@@ -28,7 +28,8 @@ class QuizController extends Controller
      */
     public function create()
     {
-        
+        $promotions=Promotion::whereDate('dateEnd','>=', now())->get();
+        return \view('quiz.create', \compact('promotions'));
     }
 
     /**
@@ -86,7 +87,9 @@ class QuizController extends Controller
      */
     public function edit(Quiz $quiz)
     {
-        $promotions=Promotion::get();
+        
+        $promotions=Promotion::whereDate('dateEnd','>=', now())->get();
+
         return \view('quiz.edit', \compact('quiz','promotions'));
     }
 
