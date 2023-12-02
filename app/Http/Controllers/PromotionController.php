@@ -18,10 +18,11 @@ class PromotionController extends Controller
      */
     public function index()
     {
-        $departements=Departement::get();
         $extensions=Extension::get();
+        $promotions=Promotion::orderBy('id','DESC')->paginate(8);
 
-        return view('promotion.index', \compact('departements','extensions'));
+        // $promotions=Promotion::whereDate('dateEnd','>=', now())->get();
+        return view('promotion.index', \compact('extensions','promotions'));
         
     }
 
@@ -50,8 +51,8 @@ class PromotionController extends Controller
             'extension_id'=>'required',
             'designation'=>'required',
             'price'=>'required',
-            'dateBegin'=>'required',
-            'dateEnd'=>'required'
+            'dateBegin'=>'required|date',
+            'dateEnd'=>'required|date|after:dateBegin'
         ]);
         $data['slug']=\slug('pr');
 

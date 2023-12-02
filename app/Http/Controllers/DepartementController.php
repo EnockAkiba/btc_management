@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Departement;
+use App\Models\Extension;
 use Illuminate\Http\Request;
 
 class DepartementController extends Controller
@@ -65,7 +66,8 @@ class DepartementController extends Controller
      */
     public function show(Departement $departement)
     {
-        return \view('departement.show',\compact('departement'));
+        $extensions=Extension::get();
+        return \view('departement.show',\compact('departement','extensions'));
     }
 
     /**
