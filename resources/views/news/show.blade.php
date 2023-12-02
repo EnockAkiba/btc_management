@@ -87,12 +87,14 @@
                                 </div>
 
 
-                                <div class="comment-text  text-black mb-3">
+                                <div class="comment-text  text-black mb-3 row">
                                     <!-- /.username -->
-                                    {{ $comment->content }}
+                                    <p class="col-md-7">
+                                        {{ $comment->content }}
+                                    </p>
                                     @if ($comment->picture)
-                                    <a href="{{ asset('/' . $comment->picture) }}">
-                                        <img src="{{ asset('/' . $comment->picture) }}" alt="" class=" rounded-md" style="min-height:250px; min-width:100%; object-fit:contain"></a>
+                                    <a href="{{ asset('/' . $comment->picture) }}" class="col-md-5">
+                                        <img src="{{ asset('/' . $comment->picture) }}" alt="" class=" rounded-md"></a>
                                     @endif
 
                                 </div>
@@ -118,6 +120,8 @@
                                 </div>
                                 <!-- /.modal-dialog -->
                             </div>
+                            <hr>
+
                             <!-- DELETE modal -->
                             @endforeach
 
@@ -125,7 +129,7 @@
                         </div>
                     </div>
                     <div class="w-full">
-                        <form action="{{route('comment.store')}}" method="post">
+                        <form action="{{route('comment.store')}}" method="post" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="news_id" value="{{$news->id}}">
                             <div class="flex justify-center items-center">
@@ -142,17 +146,23 @@
             <div class=" d-none d-lg-flex d-md-flex flex-col col-md-5 ">
                 <div class=" p-0">
                     <div class="row p-0">
-                        <div class="card col-md-11 ml-auto p-0 mr-3">
-                            <div class="card-header">
-                                Domaine d'intervation du centre
-                            </div>
-                            <div class="card-body p-0">
-                                <div class="bg-dark" style="height: 300px;">
-                                    <video src="{{ asset('/videos/news/Vid652a6538973954.44074558.mp4')}}" controls style="height: 300px; width:100%"></video>
+                        @foreach($lastNews as $data)
+                        <div class="card col-md-10 ml-auto p-0 mr-3">
+                            <a href="{{route('news.show', $data)}}">
+                                <div class="card-header">
+                                    {{$data->title}}
                                 </div>
-                            </div>
-
+                                <div class="card-body p-0">
+                                    @if ($data->video)
+                                    <video src="{{ asset('/') . $data->video }}" controls></video>
+                                    @endif
+                                    @if ($data->picture)
+                                    <img src="{{ asset('/' . $data->picture) }}" class="img-fluid bg-black mb-3" alt="..." style="max-height: 340px; width:100%;object-fit: fill;">
+                                    @endif
+                                </div>
+                            </a>
                         </div>
+                        @endforeach
 
                     </div>
                 </div>

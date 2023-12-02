@@ -119,7 +119,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                         <li class="nav-item">
                                             <a href="{{ route('message') }}" class="nav-link">
-                                                <i class="fas fa-message" title="messages"></i>
+                                                <i class="fa fa-comment" title="messages"></i>
                                             </a>
                                         </li>
 
