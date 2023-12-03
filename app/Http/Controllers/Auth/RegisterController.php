@@ -104,7 +104,6 @@ class RegisterController extends Controller
     }
 
     public function verifyAccount($slug){
-        \dd("Mourir");
         $user=User::where('slug',$slug)->first();
         $message = 'Sorry your email cannot be identified.';
 

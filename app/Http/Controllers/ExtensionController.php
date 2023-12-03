@@ -40,7 +40,7 @@ class ExtensionController extends Controller
             'designation'=>'required'
         ]);
 
-        $data['slug']=\slug('Ex');
+        // $data['slug']=\slug('Ex');
         Extension::create($data);
 
         return \redirect()->back()->with('success','Ajouté');

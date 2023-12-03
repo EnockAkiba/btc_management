@@ -44,6 +44,9 @@ Route::get('/page404', function () {
     return view('page404');
 })->name('page404');
 
+
+Route::get('/home', [HomeController::class, 'index'])->middleware(['auth', 'verify_email']);
+
 Route::get('account/verify/{slug}', [RegisterController::class, 'verifyAccount'])->name('user.verify');
 
 

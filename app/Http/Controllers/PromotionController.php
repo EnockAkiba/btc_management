@@ -19,10 +19,12 @@ class PromotionController extends Controller
     public function index()
     {
         $extensions=Extension::get();
+        $departements=Departement::get();
         $promotions=Promotion::orderBy('id','DESC')->paginate(8);
 
         // $promotions=Promotion::whereDate('dateEnd','>=', now())->get();
-        return view('promotion.index', \compact('extensions','promotions'));
+        
+        return view('promotion.index', \compact('extensions','promotions','departements'));
         
     }
 
