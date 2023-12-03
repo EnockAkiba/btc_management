@@ -18,8 +18,14 @@ class UserRoles
     public function handle(Request $request, Closure $next)
     {
         if(Auth::user()){
-            if(Auth::user()->statut	=="0")
-                return \redirect(route('sendEmail'));
+            if (!Auth::user()->email_verified_at) {
+                
+                auth()->logout();
+    
+                return redirect()->route('sendEmail')
+                ->with('message', 'You need to confirm your account. We have sent you an activation code, please check your email.');
+            }
+            
             if(Auth::user()->statut	=="2")
                 return \redirect(route('page404'));
         }
