@@ -117,11 +117,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             </a>
                                         </li>
 
-                                        <li class="nav-item">
+                                        <!-- <li class="nav-item">
                                             <a href="{{ route('message') }}" class="nav-link">
                                                 <i class="fa fa-comment" title="messages"></i>
                                             </a>
-                                        </li>
+                                        </li> -->
 
                                         <li class="nav-item ">
                                             <a href="{{ route('extension') }}" class="nav-link">
@@ -130,7 +130,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         </li>
 
 
-                                        <li class="nav-item ">
+                                        <!-- <li class="nav-item ">
                                             <a href="{{ route('quiz') }}" class="nav-link">
                                                 <i class="fas fa-book" title="Devoirs"></i>
 
@@ -142,13 +142,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             <a href="{{ route('quiz') }}" class="nav-link">
                                                 <i class="fas fa-users" title="Devoirs"></i>
                                             </a>
-                                        </li>
+                                        </li>    -->
 
                                         <li class="nav-item ">
                                             <a href="{{ route('myQuizzes') }}" class="nav-link">
                                                 <i class="fas fa-circle" title="Devoirs"></i>
                                             </a>
                                         </li>
+                                     
 
                                         <li class="nav-item">
                                             <a href="{{ route('profile.show') }}" class="nav-link">
