@@ -8,8 +8,8 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-left">
                         <li class="breadcrumb-item title"><a href="{{ route('news') }}">Actualité</a></li>
-                        <li class="breadcrumb-item title"><a href="{{ route('departement') }}">Departements</a></li>
-                        <li class="breadcrumb-item active"> Title promotion</li>
+                        <li class="breadcrumb-item title"><a href="{{ route('promotion') }}">Promotions</a></li>
+                        <li class="breadcrumb-item active"> {{$promotion->designation}}</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -19,22 +19,18 @@
 
     <!-- Main content -->
     <section class="content">
-        <div class="container-fluid">
+        <div class="container-fluid overflow-auto" style="height: 80vh;">
             <div class="row">
                 <div class="col-md-4">
                     <!-- Widget: user widget style 1 -->
                     <div class="card card-widget widget-user">
                         <!-- Add the bg color to the header using any of the bg-* classes -->
                         <div class="widget-user-header bg-blue-100">
-                            <h3 class="widget-user-username">promotion :  bbaabaala</h3>
-                            <h5 class="widget-user-desc mt-2">Departement : couture</h5>
+                            <h3 class="widget-user-username"> {{$promotion->designation}} </h3>
+                            <h5 class="widget-user-desc mt-2">Departement :  {{$promotion->departement->title}}</h5>
                         </div>
-                        <div class="widget-user-image mt-2">
-                            <img src="{{ asset('/' . Auth::user()->picture) }}" class="rounded-full mx-2"
-                                style="width:40px; height:40px">
-                        </div>
+                       
                         <div class="p-4">
-                            <h5 class="mb-1">Titre : <span class="title">blabla</span> </h5>
                             <h5 class="mb-1 text-lg font-bold"> Description :</h5>
                             <p class="border p-2 mb-2" style="min-height: 130px; max-height: 330px; overflow: auto;">nventore sed cupiditate cum libero quis delectus, quia alias, odio placeat eum fugit quibusdam aliquam magni modi.
                             </p>
@@ -72,7 +68,6 @@
                                     <tr>
                                         <td>1</td>
                                         <td>image</td>
-                                        <td><a href="{{route('departement.show')}}" class="text-blue-500"> English </a></td>
                                         <td>le 12.Oct 2023</td>
                                         <td>le 22.Dec 2023</td>
                                         <td>Actif/e</td>

@@ -89,7 +89,7 @@
 
                                 <div class="comment-text  text-black mb-3 row">
                                     <!-- /.username -->
-                                    <p class="col-md-7">
+                                    <p class="col-md-12">
                                         {{ $comment->content }}
                                     </p>
                                     @if ($comment->picture)

@@ -34,17 +34,24 @@
                         <table class="table table-hover">
                             <thead class="bg-green-100">
                                 <th>#</th>
-                                <th>Image</th>
-                                <th>Titre/ Designation</th>
-                                <th>Description</th>
+                                <th>Designation</th>
+                                <th>Extension</th>
+                                <th>Departement</th>
+                                <th>Prix</th>
+                                <th>Debut</th>
+                                <th>Fin</th>
                             </thead>
                             <tbody>
                                 <tr>
-                                    @foreach($departements as $departement)
+                                    @foreach($promotions as $promotion)
                                     <td>{{$loop->index +1}}</td>
-                                    <td><img src="{{asset('/').$departement->picture}}" alt="" width="40px" class="rounded-sm"></td>
-                                    <td><a href="{{route('departement.show', $departement)}}" class="text-blue-500"> {{$departement->title}} </a></td>
-                                    <td>{{substr($departement->description, 0,100) }}...</td>
+                                    <td><a href="{{route('promotion.show', $promotion)}}" class="text-blue-500"> {{$promotion->designation}} </a></td>
+                                    <td>{{$promotion->extension->designation}}</td>
+                                    <td>{{$promotion->departement->title}}</td>
+                                    <td>{{$promotion->price}}$</td>
+                                    <td>{{date_format(date_create($promotion->dateBegin),'d.M.Y')}}</td>
+                                    <td>{{date_format(date_create($promotion->dateEnd),'d.M.Y')}}</td>
+                                
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -76,9 +83,8 @@
                     <form action="{{route('promotion.store')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="card-body">
-                            <input type="hidden" name="departement_id" value="{{$departement->id}}">
 
-                            <div class="form-group mb-4">
+                              <div class="form-group mb-4">
                                 <label for="">Designation / Titre</label>
                                 <input type="text" class="form-control" name="designation">
                             </div>

@@ -129,10 +129,6 @@ Route::group(['prefix' => 'user'], function () {
 
 
 
-
-
-
-
         // MESSAGES
 
         Route::controller(MessageController::class)->group(function () {
@@ -180,9 +176,9 @@ Route::group(['prefix' => 'user'], function () {
 
 
 
-        Route::get('/promotion/show', function () {
-            return view('promotion.show');
-        })->name('promotion.show');
+        // Route::get('/promotion/show', function () {
+        //     return view('promotion.show');
+        // })->name('promotion.show');
 
         Route::get('/students', function () {
             return view('student.index');
