@@ -45,7 +45,7 @@
                                 <tr>
                                     @foreach($promotions as $promotion)
                                     <td>{{$loop->index +1}}</td>
-                                    <td><a href="{{route('promotion.show', $promotion)}}" class="text-blue-500"> {{$promotion->designation}} </a></td>
+                                    <td><a href="{{route('promotion.edit', $promotion)}}" class="text-blue-500"> {{$promotion->designation}} </a></td>
                                     <td>{{$promotion->extension->designation}}</td>
                                     <td>{{$promotion->departement->title}}</td>
                                     <td>{{$promotion->price}}$</td>
