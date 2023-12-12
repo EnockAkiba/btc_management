@@ -53,7 +53,7 @@ class CommentController extends Controller
             'content'=>$content,
             'picture'=>$picture
         ]);
-        return \redirect()->back()->with('success','Commentaire envoyer aves succes');
+        return \redirect()->back()->with('success','Commenté');
     }
 
     /**

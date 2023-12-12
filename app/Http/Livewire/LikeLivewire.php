@@ -11,7 +11,7 @@ class LikeLivewire extends Component
 {
     
     public function mount(){
-        $news=News::paginate(8);
+        $news=News::orderByDesc('id')->where('type','0')->paginate(8);
         return $news;
     }
 

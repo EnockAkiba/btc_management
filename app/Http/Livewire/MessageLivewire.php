@@ -14,7 +14,6 @@ class MessageLivewire extends Component
 
     use WithPagination;
 
-
     public $listDestinator;
 
     public $conversation;
@@ -34,7 +33,7 @@ class MessageLivewire extends Component
     {
         // je dois venir changer 
 
-        $this->getDestinators();
+        return $this->getDestinators();
     }
 
     public function render()

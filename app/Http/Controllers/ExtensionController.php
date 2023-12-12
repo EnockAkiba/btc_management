@@ -95,6 +95,6 @@ class ExtensionController extends Controller
     public function destroy(Extension $extension)
     {
         $extension->delete();
-        return \redirect()->back()->with('success','Supprimé');
+        return \redirect('extension')->with('success','Supprimé');
     }
 }
