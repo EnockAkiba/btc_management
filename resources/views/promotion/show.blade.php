@@ -50,9 +50,6 @@
                         <div class="card-header">
                             <div class=" flex items-center justify-between">
                                 <h2 class="title">Les apprenants</h2>
-                                {{-- <a class="bg-blue-400 text-white p-2 ml-auto" data-toggle="modal"
-                                    data-target="#addPromotion" href="#" role="button">Add promotion
-                                </a> --}}
                             </div>
                         </div>
                         <div class=" overflow-auto py-0">
@@ -67,12 +64,14 @@
                                 </thead>
                                 <tbody>
                                     <tr>
+                                        @foreach($students as $student)
                                         <td>1</td>
                                         <td>image</td>
                                         <td>le 12.Oct 2023</td>
                                         <td>le 22.Dec 2023</td>
                                         <td>Actif/e</td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
 
