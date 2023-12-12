@@ -54,7 +54,7 @@ class MessageLivewire extends Component
 
     public function searchUser()
     {
-        $this->this->listDestinator = User::where('name', 'like', '%' . $this->userName . '%')
+        $this->listDestinator = User::where('name', 'like', '%' . $this->userName . '%')
             ->orWhere('lastName', 'like', '%' . $this->userName . '%')->orderBy('name')->paginate(50);
     }
 

@@ -17,6 +17,7 @@ class RegisterController extends Controller
     public function index()
     {
         $registers=Register::orderBy('id','DESC')->paginate(8);
+        $promotions=Promotion::whereDate('dateEnd','>=', now())->get();
         return view('register.index',\compact('registers'));
     }
 
