@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Promotion;
 use App\Models\Quiz;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,6 +19,21 @@ class QuizController extends Controller
      */
     public function index()
     {
+        // $promotion_id=Auth::user()->
+        $promotionId=Auth::user()->register()->orderByDesc('id')->first()->promotion_id;
+        $myQuezzes=Quiz::where('promotion_id', $promotionId)
+        ->where('dateEnd','>', \now())
+        ->get();
+
+        // tp remis dans la dernieres promotion
+        // $myQuezzes=Auth::user()->register()->orderByDesc('id')->first()->applay;
+
+
+        $myQuezzes=Auth::user()->teacher()->quiz;
+        // orderByDesc('id')->first()->applay;
+
+
+        \dd($myQuezzes);
         return \view('quiz.index',\compact(''));
     }
 
@@ -47,7 +63,7 @@ class QuizController extends Controller
         ]);
 
         if(!$request->content and ! $request->file) {
-            return back()->with('error','Veuillez inserer le contenu ou un doc');
+            return back()->with('error','Le tp est vide');
         } 
 
         if($request->content) $content=$request->content ;
@@ -109,7 +125,7 @@ class QuizController extends Controller
         ]);
 
         if(!$request->content and ! $request->file) {
-            return back()->with('error','Veuillez inserer le contenu ou un doc');
+            return back()->with('error','le tp est vide');
         } 
 
         if($request->content) $content=$request->content ;
