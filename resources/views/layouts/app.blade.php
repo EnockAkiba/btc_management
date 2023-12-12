@@ -40,6 +40,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     a {
         text-decoration: none;
     }
+    .nav-link{
+        color: darkblue;
+    }
 </style>
 
 <body class="hold-transition layout-top-nav ">
@@ -54,7 +57,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="flex justify-between items-center d-lg-none d-md-none ">
                     <li class="ml-auto list-none mx-3 text-blue-500 bg-gray-50 p-2 rounded-full">
 
-                        <a class=" ml-auto"  href="#" >
+                        <a class=" ml-auto" href="#">
                             <i class="fa-solid fa-book"></i>
                         </a>
                     </li>
@@ -81,7 +84,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         <div class="modal fade" id="navigation">
             <div class="modal-dialog modal-md">
-                <div class="modal-content rounded-none shadow-none  border-t-2 border-t-blue-300 p-2">
+                <div class="modal-content rounded-none shadow-none  border-t-2 border-t-blue-800 p-2">
                     <div class="flex justify-between items-center">
                         <h3 class=" card-title text-blue">
                             <a href="" class=" brand-link flex items-center">
@@ -123,7 +126,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     </a>
                                     @endif
                                 </div>
-                                <div class="mx-2 py-4 border-2 border-green-600 bg-white rounded-full shadow-sm hover:translate-x-1 hover:transition-all">
+                                <div class="mx-2 py-4 border-2 border-blue-50 bg-white rounded-full shadow-sm hover:translate-x-1 hover:transition-all">
 
                                     <ul class="nav  flex-column">
                                         <li class="nav-item active">
@@ -145,14 +148,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         </li>
 
 
-                                        <!-- <li class="nav-item ">
+                                        <li class="nav-item ">
                                             <a href="{{ route('quiz') }}" class="nav-link">
                                                 <i class="fas fa-book" title="Devoirs"></i>
 
-
                                             </a>
                                         </li>
-
+                                        <!--
                                         <li class="nav-item ">
                                             <a href="{{ route('quiz') }}" class="nav-link">
                                                 <i class="fas fa-users" title="Devoirs"></i>
@@ -167,8 +169,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
                                         <li class="nav-item">
-                                            <a href="{{ route('profile.show') }}" class="nav-link">
-                                                <i class="fas fa-user" title="Profil"></i>
+                                            <a href="{{ route('register') }}" class="nav-link">
+                                                <i class="fas fa-users" title="Profil"></i>
                                             </a>
                                         </li>
                                         <li class="nav-item">

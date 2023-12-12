@@ -23,7 +23,7 @@
     <div class="container-fluid">
         <div class="row">
 
-            <div class="col-md-6 p-0">
+            <div class="col-md-8 p-0">
                 <div class="card">
                     <div class="card-header">
                         <div class=" flex items-center justify-between">
@@ -52,20 +52,7 @@
                 </div>
             </div>
 
-            <div class="col-md-5 p-0 mx-5">
-                <div class="card">
-                    <div class="card-header">
-                        <div class=" flex items-center justify-between">
-                            <h2 class="title">Les promotions encours</h2>
-                        </div>
-                    </div>
-                    <div class="mt-3 p-2">
-                        @for($i=1;$i<10;$i++) <p class="my-2"> English l1B</p>
-                            <hr>
-                            @endfor
-                    </div>
-                </div>
-            </div>
+           
         </div>
         <!-- /.row -->
     </div>
