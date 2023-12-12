@@ -1,4 +1,4 @@
-    <div class="card px-3 shadow-none">
+    <div class="card px-1 shadow-none">
         <div class="card-body px-2 shadow-none">
             <div class="card-header">
                 <h3 class="flex title items-center">
@@ -11,30 +11,30 @@
                 </h3>
             </div>
             <ul class="nav  flex-column">
-                <li class="nav-item active">
-                    <a href="{{route('news')}}" class="nav-link">
-                        <i class="fas fa-inbox text-orange-300"></i>Actualité
+                <li class="nav-item">
+                    <a href="{{route('news')}}" class="my-2 text-blue-400 inline-block">
+                        <i class="fas fa-home text-blue-7"></i>Actualité
                     </a>
                 </li>
 
 
                 <li class="nav-item">
-                    <a href="" class="nav-link">
-                        <i class="fa fa-filter text-orange-300"></i> Lab
+                    <a href="" class="my-2 text-blue-400 inline-block">
+                        <i class="fa fa-filter text-blue-7"></i> Lab
                     </a>
                 </li>
-            <h3 class=" font-bold mb-2 mt-3"><i class="fa fa-users text-orange-300"></i> Equipe & Partenaires </h3>
+            <h3 class=" font-bold mb-2 mt-3"><i class="fa fa-users text-blue-7"></i> Equipe & Partenaires </h3>
 
                 <li class="nav-item">
-                    <a href="" class="nav-link">
-                      <i class="far fa-circle text-orange-300"></i>  Equipe
+                    <a href="" class="my-2 text-blue-400 inline-block">
+                      <i class="far fa-circle text-blue-7   00"></i>  Equipe
                     </a>
                 </li>
 
 
                 <li class="nav-item">
-                    <a href="" class="nav-link">
-                      <i class="far fa-circle text-orange-300" ></i> Partenaires
+                    <a href="" class="my-2 text-blue-400 inline-block">
+                      <i class="far fa-circle text-blue-7   00" ></i> Partenaires
                     </a>
                 </li>
             </ul>
@@ -44,31 +44,31 @@
     <!-- /.card -->
     <div class="shadow-none card px-3 py-1">
         <div class="card-header shadow-none">
-            <h3 class=" font-bold"> <i class="fa-solid fa-gear text-orange-300"></i> Paramétre</h3>
+            <h3 class=" font-bold"> <i class="fa-solid fa-gear text-blue-7"></i> Paramétre</h3>
         </div>
         <div class="card-body px-2">
             <ul class="nav nav-pills flex-column">
 
                 <li class="nav-item">
-                    <a href="" class="nav-link">
-                        <i class="far fa-circle text-orange-300"></i> A propos
+                    <a href="" class="my-2 text-blue-400 inline-block">
+                        <i class="far fa-circle text-blue-7 00"></i> A propos
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a href="" class="nav-link">
-                        <i class="far fa-circle text-orange-300"></i>
+                    <a href="" class="my-2 text-blue-400 inline-block">
+                        <i class="far fa-circle text-blue-7 00"></i>
                         Slider
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">
-                        <i class="far fa-circle text-orange-300"></i> Contact
+                    <a href="" class="my-2 text-blue-400 inline-block">
+                        <i class="far fa-circle text-blue-7 00"></i> Contact
                     </a>
                 </li>
-            <h3 class=" font-bold my-2"> <i class="far fa-user text-orange-300"></i> Utilisateur</h3>
+            <h3 class=" font-bold my-2"> <i class="far fa-user text-blue-7"></i> Utilisateur</h3>
                 <li class="nav-item">
-                    <a href="" class="nav-link"> 
+                    <a href="" class="my-2 text-blue-400 inline-block"> 
                        
                     </a>
 
@@ -77,9 +77,9 @@
                 <li class="nav-item">
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <a href="{{ route('logout') }}" class="nav-link"
+                        <a href="{{ route('logout') }}" class="my-2 text-blue-400 inline-block"
                            onclick="event.preventDefault(); this.closest('form').submit();">
-                            <i class="mr-2 fa fa-sign-out-alt text-orange-300"></i>
+                            <i class="mr-2 fa fa-sign-out-alt text-blue-7   00"></i>
                             Se deconnecter
                         </a>
                     </form>

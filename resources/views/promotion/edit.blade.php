@@ -32,7 +32,8 @@
                        
                         <div class="p-4">
                             <h5 class="mb-1 text-lg font-bold"> Description :</h5>
-                            <p class="border p-2 mb-2" style="min-height: 130px; max-height: 330px; overflow: auto;">nventore sed cupiditate cum libero quis delectus, quia alias, odio placeat eum fugit quibusdam aliquam magni modi.
+                            <p class="border p-2 mb-2" style="min-height: 130px; max-height: 330px; overflow: auto;">
+                            {{$promotion->departement->description}}
                             </p>
                             <h5 class="mb-1  flex justify-between">
                                 <a class="bg-blue-400 text-white p-2 ml-auto" data-toggle="modal"
@@ -96,36 +97,56 @@
 
                     </div>
                     <!-- /.card-header -->
-                    <form action="" method="post" enctype="multipart/form-data">
+                    <form action="{{route('promotion.store')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="card-body">
-                           
-                            <div class="form-group">
+
+                              <div class="form-group mb-4">
                                 <label for="">Designation / Titre</label>
                                 <input type="text" class="form-control" name="designation">
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group mb-4">
+                                <label for="">Choisir une extension</label>
+                                <input type="text"  name="extension_id">
+                                <select name="extension_id"  class="form-control"id="">
+                                    <option>---Choisir une extension---</option>
+                                    @foreach($extensions as $extension)
+                                        <option value="{{$extension->id}}">{{$extension->designation}}</option>
+                                    @endforeach
+                                    </select>
+                            </div>
+
+                            <div class="form-group mb-4">
+                                <label for="">Choisir un departement</label>
+                                <input type="text"  name="departement">
+                                <select name="departement_id"  class="form-control"id="">
+                                    <option>---Choisir un departement---</option>
+                                    @foreach($departements as $departement)
+                                        <option value="{{$departement->id}}">{{$departement->title}}</option>
+                                    @endforeach
+                                    </select>
+                            </div>
+
+                            <div class="form-group mb-4">
                                 <label for="">Prix</label>
                                 <input type="text" class="form-control" name="price">
                             </div>
-                           
+
                             <div class="row">
                                 <div class="col-6">
-                                    <div class="form-group">
+                                    <div class="form-group mb-4">
                                         <label for="">Date du début <span class="required"> *</span> </label>
                                         <input type="datetime-local" name="dateBegin" id="" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="">Date de la fin  <span class="required"> *</span> </label>
+                                    <div class="form-group mb-4">
+                                        <label for="">Date de la fin <span class="required"> *</span> </label>
                                         <input type="datetime-local" name="dateEnd" id="" class="form-control">
                                     </div>
                                 </div>
                             </div>
-                    
-                            <input type="hidden" value="" name="departement_id">
                         </div>
                         <!-- /.card-body -->
 

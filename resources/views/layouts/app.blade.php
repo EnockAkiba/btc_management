@@ -44,19 +44,34 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <body class="hold-transition layout-top-nav ">
     <div class="wrapper">
-
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand-md  p-0 border-none">
-            <div class="flex justify-betweens w-full ">
+            <div class="flex justify-between w-full ">
                 <a href="{{ route('home') }}" class="ml-4 brand-link flex items-start">
                     <img src="{{ asset('images/logo.png') }}" alt="Logo" style="height: 40px;">
                     <!-- <span class="title text-sm">BTC</span> -->
                 </a>
-                <li class="ml-auto list-none d-lg-none d-md-none text-dark">
-                    <a class="nav-link text-black ml-auto" data-toggle="modal" data-target="#navigation" href="#" role="button">
-                        <i class="fa-solid fa-bars"></i>
-                    </a>
-                </li>
+                <div class="flex justify-between items-center d-lg-none d-md-none ">
+                    <li class="ml-auto list-none mx-3 text-blue-500 bg-gray-50 p-2 rounded-full">
+
+                        <a class=" ml-auto"  href="#" >
+                            <i class="fa-solid fa-book"></i>
+                        </a>
+                    </li>
+                    <li class="ml-auto list-none mx-3 text-blue-500 bg-gray-50 p-2 rounded-full">
+
+                        <a class=" ml-auto" href="">
+                            <i class="fa-solid fa-message"></i>
+                        </a>
+                    </li>
+                    <li class="ml-auto list-none mx-3 text-blue-500 bg-gray-50 p-2 rounded-full">
+
+                        <a class=" ml-auto" data-toggle="modal" data-target="#navigation" href="#" role="button">
+                            <i class="fa-solid fa-bars"></i>
+                        </a>
+                    </li>
+                </div>
+
 
             </div>
         </nav>
@@ -66,7 +81,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         <div class="modal fade" id="navigation">
             <div class="modal-dialog modal-md">
-                <div class="modal-content rounded-none shadow-none  border-t-2 border-t-green-300 p-2">
+                <div class="modal-content rounded-none shadow-none  border-t-2 border-t-blue-300 p-2">
                     <div class="flex justify-between items-center">
                         <h3 class=" card-title text-blue">
                             <a href="" class=" brand-link flex items-center">
@@ -92,7 +107,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Main content -->
-            <div class="b box-menu" style=" min-height: auto; max-height:92vh; overflow:hidden;">
+            <div class="b box-menu" style=" min-height: auto; max-height:90vh; overflow:hidden;">
 
                 <section class="content bg-white">
                     <div class="row">
@@ -124,7 +139,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         </li> -->
 
                                         <li class="nav-item ">
-                                            <a href="{{ route('extension') }}" class="nav-link">
+                                            <a href="{{ route('promotion') }}" class="nav-link">
                                                 <i class="fas fa-box" title="Extension"></i>
                                             </a>
                                         </li>
@@ -149,7 +164,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 <i class="fas fa-circle" title="Devoirs"></i>
                                             </a>
                                         </li>
-                                     
+
 
                                         <li class="nav-item">
                                             <a href="{{ route('profile.show') }}" class="nav-link">
