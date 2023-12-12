@@ -162,7 +162,7 @@ Route::group(['prefix' => 'user'], function () {
             Route::get("message/create", "create")->name("message.create");
             Route::post("message/store", "store")->name("message.store");
             Route::post("message/store", "store")->name("message.store");
-            Route::get("message/{message:slug}/show", "show")->name("message.show");
+            Route::get("message/show", "show")->name("message.show");
             Route::get("message/{message:slug}/edit", "edit")->name("message.edit");
             Route::put("message/{message:slug}/update", "update")->name("message.update");
             Route::get("message/{message:slug}/destroy", "destroy")->name("message.destroy");
