@@ -21,7 +21,7 @@
 <section class="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-11 p-0 ml-4">
+            <div class="col-md-11 p-0">
                 <div class="card">
                     <div class="card-header">
                         <div class=" flex items-center justify-between">

@@ -9,6 +9,7 @@ use App\Http\Controllers\MessageController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\QuizController;
+use App\Http\Controllers\RegisterController as ControllersRegisterController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -126,6 +127,31 @@ Route::group(['prefix' => 'user'], function () {
             Route::get("promotion/{promotion:slug}/destroy", "destroy")->name("promotion.destroy");
         });
 
+         // QUIZ
+
+         Route::controller(QuizController::class)->group(function () {
+            Route::get("quiz/index", "index")->name("quiz");
+            Route::get("quiz/create", "create")->name("quiz.create");
+            Route::post("quiz/store", "store")->name("quiz.store");
+            Route::get("quiz/{quiz:slug}/show", "show")->name("quiz.show");
+            Route::get("quiz/{quiz:slug}/edit", "edit")->name("quiz.edit");
+            Route::put("quiz/{quiz:slug}/update", "update")->name("quiz.update");
+            Route::get("quiz/{quiz:slug}/destroy", "destroy")->name("quiz.destroy");
+        });
+
+
+          // REGISTER
+
+          Route::controller(ControllersRegisterController::class)->group(function () {
+            Route::get("register/index", "index")->name("register");
+            Route::get("register/create", "create")->name("register.create");
+            Route::post("register/store", "store")->name("register.store");
+            Route::get("register/{register:slug}/show", "show")->name("register.show");
+            Route::get("register/{register:slug}/edit", "edit")->name("register.edit");
+            Route::put("register/{register:slug}/update", "update")->name("register.update");
+            Route::get("register/{register:slug}/destroy", "destroy")->name("register.destroy");
+        });
+
 
 
 
@@ -145,13 +171,13 @@ Route::group(['prefix' => 'user'], function () {
 
         // QUIZ CRUD
 
-        Route::get('/Devoirs', function () {
-            return view('quiz.index');
-        })->name('quiz');
+        // Route::get('/Devoirs', function () {
+        //     return view('quiz.index');
+        // })->name('quiz');
 
-        Route::get('/Devoir/show', function () {
-            return view('quiz.show');
-        })->name('quiz.show');
+        // Route::get('/Devoir/show', function () {
+        //     return view('quiz.show');
+        // })->name('quiz.show');
 
         Route::get('/MesDevoirs', function () {
             return view('quiz.myQuizzes');
@@ -194,17 +220,6 @@ Route::group(['prefix' => 'user'], function () {
 
 
 
-
-        // Route::controller(QuizController::class)->group(function () {
-        //     Route::get("quiz/index", "index")->name("quiz");
-        //     Route::get("quiz/create", "create")->name("quiz.create");
-        //     Route::post("quiz/store", "store")->name("quiz.store");
-        //     Route::post("quiz/store", "store")->name("quiz.store");
-        //     // Route::get("quiz/{quiz:slug}/show", "show")->name("quiz.show");
-        //     Route::get("quiz/{quiz:slug}/edit", "edit")->name("quiz.edit");
-        //     Route::put("quiz/{quiz:slug}/update", "update")->name("quiz.update");
-        //     Route::get("quiz/{quiz:slug}/destroy", "destroy")->name("message.destroy");
-        // });
 
 
 
