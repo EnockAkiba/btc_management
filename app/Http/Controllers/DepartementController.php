@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Departement;
 use App\Models\Extension;
+use App\Models\Promotion;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
 class DepartementController extends Controller
@@ -38,17 +40,19 @@ class DepartementController extends Controller
      */
     public function store(Request $request)
     {
-        $data=$request->validate(
-            [
-                'title'=>'required',
-                'description'=>'required',
-                
-            ]
-        );
+        $validator=Validator::make([
+            'title'=>'required',
+            'description'=>'required',
+        ]);
+
+        if($validator->fails()){
+            return \redirect()->back()->with('error','complètez tous les champs');
+        }
 
         if($request->picture)  $picture=\imageConvert("departement",$request->picture);
         else $picture=NULL;
 
+        $data=$request->only(['title','description']);
         $data['picture']=$picture;
         $data['slug']=\slug('De');
 
@@ -66,8 +70,9 @@ class DepartementController extends Controller
      */
     public function show(Departement $departement)
     {
+        $promotions=Promotion::whereDate('dateEnd','>',NOW())->where('departement_id',$departement->id)->get();
         $extensions=Extension::get();
-        return \view('departement.show',\compact('departement','extensions'));
+        return \view('departement.show',\compact('departement','extensions','promotions'));
     }
 
     /**

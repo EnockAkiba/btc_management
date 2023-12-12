@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Departement;
 use App\Models\Extension;
 use App\Models\Promotion;
+use App\Models\User;
+use Dflydev\DotAccessData\Data;
+// use \Dotenv\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 use function PHPUnit\Framework\returnSelf;
 
@@ -48,14 +52,24 @@ class PromotionController extends Controller
      */
     public function store(Request $request)
     {
-        $data=$request->validate([
+
+        $validator=Validator::make($request->all()
+        ,[
             'departement_id'=>'required',
             'extension_id'=>'required',
             'designation'=>'required',
             'price'=>'required',
             'dateBegin'=>'required|date',
             'dateEnd'=>'required|date|after:dateBegin'
-        ]);
+        ]
+        );
+
+        if($validator->fails()){
+            
+            return redirect()->back()->with('error','Complètez les champs obligatoires');
+        }
+
+        $data=$request->only(['departement_id','extension_id','designation','price','dateBegin','dateEnd']);
         $data['slug']=\slug('pr');
 
         Promotion::create($data);
@@ -71,7 +85,11 @@ class PromotionController extends Controller
      */
     public function show(Promotion $promotion)
     {
-        return \view('promotion.show', \compact('promotion'));
+        $students=User::select('name','lastName','email','sex','phone','picture')
+        ->join('registers','Users.id','user_id')
+        ->where('promotion_id',$promotion->id)
+        ->paginate(8);
+        return \view('promotion.show', \compact('promotion','students'));
     }
 
     /**

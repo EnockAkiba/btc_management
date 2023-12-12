@@ -15,7 +15,8 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $news=News::orderByDesc('id')->paginate(8);
+        // on recupere seulement les news private
+        $news=News::orderByDesc('id')->where('type','0')->paginate(8);
         return view('news.index', compact('news'));
 
     }
@@ -77,7 +78,7 @@ class NewsController extends Controller
      */
     public function show(News $news)
     {
-        $lastNews=News::orderByDesc('id')->take(10)->get();
+        $lastNews=News::orderByDesc('id','DESC')->take(10)->get();
         return \view('news.show', \compact('news','lastNews'));
     }
 
@@ -120,7 +121,7 @@ class NewsController extends Controller
             $data
         ]);
 
-        return \redirect()->back()->with('success','Modifié avec succès');
+        return \redirect()->back()->with('success','Modifié');
     }
 
     /**
@@ -132,7 +133,7 @@ class NewsController extends Controller
     public function destroy(News $news)
     {
         $news->delete();
-        return \redirect()->route('news.create')->with('success','Suppression réussie');
+        return \redirect()->route('news.create')->with('success','Supprimé');
     }
 
     public function setType(News $news){

@@ -47,6 +47,14 @@ class RegisterController extends Controller
             'vacation'=>'required',
         ]);
 
+
+
+        $modele=Register::where('user_id',$request->user_id)
+        ->where('promotion_id',$request->promotion_id)
+        ->first();
+
+        if($modele) return \redirect()->back()->with('error','Apprenant déjà inscit');
+
         if($request->respoName)  $respoName=$request->respoName;
         else $respoName=NULL;
 
