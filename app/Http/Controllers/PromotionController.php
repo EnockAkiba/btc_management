@@ -24,8 +24,8 @@ class PromotionController extends Controller
     {
         $extensions=Extension::get();
         $departements=Departement::get();
-        $promotions=Promotion::orderBy('id','DESC')->paginate(8);
-
+        $promotions=Promotion::whereDate('dateEnd','>=', now())->paginate(8);
+        
         // $promotions=Promotion::whereDate('dateEnd','>=', now())->get();
         
         return view('promotion.index', \compact('extensions','promotions','departements'));
@@ -85,11 +85,14 @@ class PromotionController extends Controller
      */
     public function show(Promotion $promotion)
     {
+
+        $departements=Departement::get();
+        $extensions=Extension::get();
         $students=User::select('name','lastName','email','sex','phone','picture')
-        ->join('registers','Users.id','user_id')
+        ->join('registers','users.id','user_id')
         ->where('promotion_id',$promotion->id)
         ->paginate(8);
-        return \view('promotion.show', \compact('promotion','students'));
+        return \view('promotion.show', \compact('promotion','students','extensions','departements'));
     }
 
     /**

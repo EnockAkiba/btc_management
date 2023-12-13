@@ -10,12 +10,13 @@ class Promotion extends Model
     use HasFactory;
      
     protected $fillable=['departement_id','extension_id','slug','designation','price','dateBegin','dateEnd'];
+    
     public function departement(){
         return $this->belongsTo(Departement::class);
     }
 
     public function register(){
-        return $this->hasMany(Inscrire::class);
+        return $this->hasMany(Register::class);
     }
 
     public function quiz(){

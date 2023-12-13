@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Promotion;
 use App\Models\Quiz;
+use App\Models\Teacher;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,21 +21,25 @@ class QuizController extends Controller
     public function index()
     {
         // $promotion_id=Auth::user()->
-        $promotionId=Auth::user()->register()->orderByDesc('id')->first()->promotion_id;
-        $myQuezzes=Quiz::where('promotion_id', $promotionId)
-        ->where('dateEnd','>', \now())
-        ->get();
+        if(!Auth::user()->teacher){
+            return \redirect()->back()->with('warning','vous n\'êtes pas formateur');
+        }
+
+
+        // $promotionId=Auth::user()->register()->orderByDesc('id')->first()->promotion_id;
+        // $myQuezzes=Quiz::where('promotion_id', $promotionId)
+        // ->where('dateEnd','>', \now())
+        // ->get();
 
         // tp remis dans la dernieres promotion
         // $myQuezzes=Auth::user()->register()->orderByDesc('id')->first()->applay;
 
+        $promotions=Promotion::whereDate('dateEnd','>=', now())->get();
 
-        $myQuezzes=Auth::user()->teacher()->quiz;
-        // orderByDesc('id')->first()->applay;
-
-
-        \dd($myQuezzes);
-        return \view('quiz.index',\compact(''));
+        $myQuezzes=Quiz::join('promotions','promotions.id','Quizzes.promotion_id')
+        ->where('Quizzes.teacher_id',Auth::user()->teacher()->first()->id)
+        ->paginate(8);
+        return \view('quiz.index',\compact('myQuezzes','promotions'));
     }
 
     /**

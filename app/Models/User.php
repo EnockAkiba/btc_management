@@ -58,6 +58,7 @@ class User extends Authenticatable
     public function teacher(){
         return $this->hasMany(Teacher::class);
     }
+    
     public function quizzes(){
         return $this->hasManyThrough(Teacher::class, Quiz::class);
     }
