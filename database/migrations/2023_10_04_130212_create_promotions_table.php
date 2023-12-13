@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('promotions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('departement_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('extension_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->string('slug');
             $table->string('designation');
             $table->string('price');
@@ -34,4 +35,5 @@ return new class extends Migration
     {
         Schema::dropIfExists('promotions');
     }
+    
 };
