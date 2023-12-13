@@ -54,7 +54,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <img src="{{ asset('images/logo.png') }}" alt="Logo" style="height: 40px;">
                     <!-- <span class="title text-sm">BTC</span> -->
                 </a>
-                <div class="flex justify-between items-center d-lg-none d-md-none ">
+                <div class="flex justify-between items-center  ">
                     <li class="ml-auto list-none mx-3 text-blue-500 bg-gray-50 p-2 rounded-full">
 
                         <a class=" ml-auto" href="#">
@@ -64,10 +64,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <li class="ml-auto list-none mx-3 text-blue-500 bg-gray-50 p-2 rounded-full">
 
                         <a class=" ml-auto" href="">
-                            <i class="fa-solid fa-message"></i>
+                            <i class="fa-solid fa-comment"></i>
                         </a>
                     </li>
-                    <li class="ml-auto list-none mx-3 text-blue-500 bg-gray-50 p-2 rounded-full">
+                    <li class="d-lg-none d-md-none ml-auto list-none mx-3 text-blue-500 bg-gray-50 p-2 rounded-full">
 
                         <a class=" ml-auto" data-toggle="modal" data-target="#navigation" href="#" role="button">
                             <i class="fa-solid fa-bars"></i>
@@ -273,7 +273,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         Toastify({
             text: "{{ session('warning') }}",
             close: true,
-            backgroundColor: "#ffeb3b",
+            backgroundColor: "red",
             duration: 3000
         }).showToast();
         @endif
