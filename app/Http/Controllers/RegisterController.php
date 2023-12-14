@@ -26,11 +26,11 @@ class RegisterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(User $user)
     {
-        $users=User::get();
-        $promotions=Promotion::get();
-        return \view('register.create', \compact('users','promotions'));
+        
+        $promotions=Promotion::whereDate('dateEnd','>=', now())->get();
+        return \view('register.create', \compact('user','promotions'));
     }
 
     /**
@@ -78,7 +78,9 @@ class RegisterController extends Controller
      */
     public function show(Register $register)
     {
-        return \view('register.show', \compact('register'));
+        $user=User::where('users.id',$register->user_id)->first();
+        $registers=$user->register;
+        return \view('register.show', \compact('register','registers'));
     }
 
     /**

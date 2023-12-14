@@ -4,33 +4,52 @@ namespace App\Http\Livewire;
 
 use App\Models\User;
 use Livewire\Component;
+use Livewire\WithPagination;
+use PDO;
 
 class RegisterComponent extends Component
 {
-    public $searchTerm;
-    public $users;
+
+    use WithPagination;
+
+    protected $users=[];
+    public $search = '';
+
 
     public function mount(){
-        $users=User::where('roleUser',0) 
+        return $this->users=User::where('roleUser',0) 
         ->whereNotIn('id', function($query) {
             $query->select('user_id')
             ->from('registers');
         })
         ->paginate(8);
-        return $users;
+
     }
 
     public function render()
     {
-        return view('livewire.register-component', [
-            'users' => $this->mount()
+        if($this->search){
+            $this->users = $this->searchUser();
+        }
+        else{
+            $this->users=$this->mount();
+        }
+        
+        return view('livewire.register-component2', [
+            'users' => $this->users
         ]);
     }
 
+
     public function searchUser()
     {
-        $this->users = User::where('name', 'like', '%' . $this->searchTerm . '%')
-        ->orWhere('lastName', 'like', '%' . $this->searchTerm . '%')->orderBy('name')->get();
+        return User::query()
+        ->where('name', 'like', '%' . $this->search . '%')
+        ->orWhere('lastName', 'like', '%' . $this->search . '%')
+        ->orWhere('email', 'like', '%'.$this->search .'%')
+        ->where('id','<>',1)
+        ->orderBy('name')->paginate(8);
+
     }
 
     public function search()
