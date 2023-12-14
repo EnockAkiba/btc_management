@@ -57,13 +57,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="flex justify-between items-center  ">
                     <li class="ml-auto list-none mx-3 text-blue-500 bg-gray-50 p-2 rounded-full">
 
-                        <a class=" ml-auto" href="#">
+                        <a class=" ml-auto" href="{{ route('myQuizzes') }}">
                             <i class="fa-solid fa-book"></i>
                         </a>
                     </li>
                     <li class="ml-auto list-none mx-3 text-blue-500 bg-gray-50 p-2 rounded-full">
 
-                        <a class=" ml-auto" href="">
+                        <a class=" ml-auto" href="{{route('message')}}">
                             <i class="fa-solid fa-comment"></i>
                         </a>
                     </li>
@@ -161,11 +161,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             </a>
                                         </li>    -->
 
-                                        <li class="nav-item ">
-                                            <a href="{{ route('myQuizzes') }}" class="nav-link">
-                                                <i class="fas fa-circle" title="Devoirs"></i>
-                                            </a>
-                                        </li>
 
 
                                         <li class="nav-item">
