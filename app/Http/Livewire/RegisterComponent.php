@@ -52,6 +52,12 @@ class RegisterComponent extends Component
 
     }
 
+    public function register(){
+        // \dd("dwe");
+        echo "colled";
+        return \view('livewire.register');
+    }
+
     public function search()
     {
         $this->resetPage();

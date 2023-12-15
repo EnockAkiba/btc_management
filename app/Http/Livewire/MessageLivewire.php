@@ -14,7 +14,7 @@ class MessageLivewire extends Component
 
     use WithPagination;
 
-    public $listDestinator;
+    protected $listDestinator;
 
     public $conversation;
 
@@ -91,7 +91,7 @@ class MessageLivewire extends Component
                 ->orderBy('lastTimeLog', 'DESC')
                 ->paginate(50);
         }
-        
+        return $this->listDestinator;
     }
 
     public function store()
