@@ -19,7 +19,6 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('promotion_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->string('index');
-            $table->string('extension');
             $table->string('vacation')->nullable();
             $table->string('respoName')->nullable();
             $table->string('respoNumber')->nullable();
