@@ -34,7 +34,7 @@
 
                             <div class=" mb-3">
                                 <div class="flex justify-end pr-3">
-                                    @if (Auth::user()->roleUser == 0)
+                                    @if (Auth::user()->roleUser == 2)
                                     @if ($new->type == 0)
                                     <button class="btn" type="submit" wire:click="setType({{ $new->id }})">
                                         <i class="fa fa-eye cursor-pointer text-green-600 " aria-hidden="true" title="Cette actualité est privée "></i>

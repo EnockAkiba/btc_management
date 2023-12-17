@@ -144,6 +144,7 @@ Route::group(['prefix' => 'user'], function () {
 
           Route::controller(ControllersRegisterController::class)->group(function () {
             Route::get("register/index", "index")->name("register");
+            // Route::get("register/register", "register")->name("register.register");
             Route::get("register/{user:slug}/create", "create")->name("register.create");
             Route::post("register/store", "store")->name("register.store");
             Route::get("register/{user:slug}/show", "show")->name("register.show");
@@ -171,9 +172,9 @@ Route::group(['prefix' => 'user'], function () {
 
         // QUIZ CRUD
 
-        // Route::get('/Devoirs', function () {
-        //     return view('quiz.index');
-        // })->name('quiz');
+        Route::get('/register', function () {
+            return view('register.register');
+        })->name('register.register');
 
         // Route::get('/Devoir/show', function () {
         //     return view('quiz.show');
@@ -206,10 +207,7 @@ Route::group(['prefix' => 'user'], function () {
         //     return view('promotion.show');
         // })->name('promotion.show');
 
-        Route::get('/students', function () {
-            return view('student.index');
-        })->name('student');
-
+      
         Route::get('/student/show', function () {
             return view('student.show');
         })->name('student.show');

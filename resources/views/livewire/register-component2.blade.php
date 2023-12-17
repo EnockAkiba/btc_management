@@ -28,7 +28,7 @@
                         <div class=" flex items-center justify-between">
                             <h2 class="title">Les utilisateurs</h2>
                             <ul>
-                                <li><a href="" class="text-sm p-2 bg-blue">Voir les apprenants</a></li>
+                                <li><a href="{{route('register.register')}}" class="text-sm p-2 bg-blue">Voir les apprenants</a></li>
                             </ul>
                         </div>
                     </div>
@@ -58,10 +58,7 @@
                                     <th>
                                         <a href="{{route('register.create', $user)}}" class="bg-green p-2 text-sm"> <i class="fa fa-user"></i></a>
                                     </th>
-<?php
-    if(!$user->register=="[]") echo "deda".$user->register;
-    else echo "non";
-?>
+
                                     @if(isset($user->regi))
                                     <th>
                                         <a href="{{route('register.create', $user)}}" class="bg-yellow p-2 text-sm"> <i class="fa fa-edit"></i>{{$user->register}}</a>
