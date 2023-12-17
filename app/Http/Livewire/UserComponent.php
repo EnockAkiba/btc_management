@@ -16,9 +16,13 @@ class UserComponent extends Component
 
 
     public function mount(){
-        return $this->users=User::join('registers','registers.user_id','users.id')
-        ->orderBy('name')
+        return $this->users=User::where('roleUser',0) 
+        ->whereNotIn('id', function($query) {
+            $query->select('user_id')
+            ->from('registers');
+        })
         ->paginate(8);
+        
     }
 
     public function render()
@@ -42,7 +46,7 @@ class UserComponent extends Component
         ->where('name', 'like', '%' . $this->search . '%')
         ->orWhere('lastName', 'like', '%' . $this->search . '%')
         ->orWhere('email', 'like', '%'.$this->search .'%')
-        ->join('registers','registers.user_id','users.id')
+        ->where('id','<>',1)
         ->orderBy('name')->paginate(8);
 
     }
