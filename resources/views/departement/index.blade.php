@@ -10,7 +10,7 @@
                     <li class="bg-blue-400 p-1 mx-1 rounded-sm text-white"><a href="{{ route('extension') }}">Extension</a></li>
                     <li class="bg-blue-400 p-1 mx-1 rounded-sm text-white"><a href="{{route('departement')}}">Departement</a> </li>
                     <li class="bg-blue-400 p-1 mx-1 rounded-sm text-white"><a href="{{route('promotion')}}">Promotioin</a></li>
-                   
+
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -22,7 +22,7 @@
 <section class="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-11 p-0">
+            <div class="col-md-12 p-0">
                 <div class="card">
                     <div class="card-header">
                         <div class=" flex items-center justify-between">
@@ -31,7 +31,8 @@
                             </a>
                         </div>
                     </div>
-                    <div class=" overflow-auto py-0">
+                    <div class=" overflow-auto py-0" style="height: 70vh; overflow:auto">
+
                         <table class="table table-hover">
                             <thead class="bg-green-100">
                                 <th>#</th>
@@ -50,7 +51,9 @@
                                 @endforeach
                             </tbody>
                         </table>
-
+                        <div class="flex justify-end my-3">
+                            {{$departements->links()}}
+                        </div>
                     </div>
                 </div>
             </div>

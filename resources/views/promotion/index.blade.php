@@ -18,10 +18,10 @@
 <!-- /.content-header -->
 
 <!-- Main content -->
-<section class="content">
+<section class="content" >
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-11 p-0">
+            <div class="col-md-12 p-0">
                 <div class="card">
                     <div class="card-header">
                         <div class=" flex items-center justify-between">
@@ -30,7 +30,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class=" overflow-auto py-0">
+                    <div class=" overflow-auto py-0" style="max-height: 70vh; overflow:auto">
                         <table class="table table-hover">
                             <thead class="bg-green-100">
                                 <th>#</th>
@@ -56,7 +56,7 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        <div class="flex justify-end">
+                        <div class="flex justify-end m-3">
                             {{$promotions->links()}}
                         </div>
 
@@ -89,7 +89,7 @@
 
                               <div class="form-group mb-4">
                                 <label for="">Designation / Titre</label>
-                                <input type="text" class="form-control" name="designation">
+                                <input type="text" class="form-control" name="designation" value="{{old('designation')}}">
                             </div>
 
                             <div class="form-group mb-4">
@@ -116,20 +116,20 @@
 
                             <div class="form-group mb-4">
                                 <label for="">Prix</label>
-                                <input type="text" class="form-control" name="price">
+                                <input type="text" class="form-control" name="price" value="{{old('price')}}">
                             </div>
 
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group mb-4">
                                         <label for="">Date du début <span class="required"> *</span> </label>
-                                        <input type="datetime-local" name="dateBegin" id="" class="form-control">
+                                        <input type="datetime-local" name="dateBegin" id="" class="form-control" value="{{old('dateBegin')}}">
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group mb-4">
                                         <label for="">Date de la fin <span class="required"> *</span> </label>
-                                        <input type="datetime-local" name="dateEnd" id="" class="form-control">
+                                        <input type="datetime-local" name="dateEnd" id="" class="form-control" value="{{old('dateEnd')}}">
                                     </div>
                                 </div>
                             </div>
