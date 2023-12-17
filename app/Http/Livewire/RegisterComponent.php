@@ -12,16 +12,13 @@ class RegisterComponent extends Component
 
     use WithPagination;
 
-    protected $users=[];
+    protected $registers=[];
     public $search = '';
 
 
     public function mount(){
-        return $this->users=User::where('roleUser',0) 
-        ->whereNotIn('id', function($query) {
-            $query->select('user_id')
-            ->from('registers');
-        })
+        return $this->registers=User::join('registers','registers.user_id','users.id')
+        ->orderBy('name')
         ->paginate(8);
 
     }
@@ -29,14 +26,14 @@ class RegisterComponent extends Component
     public function render()
     {
         if($this->search){
-            $this->users = $this->searchUser();
+            $this->registers = $this->searchUser();
         }
         else{
-            $this->users=$this->mount();
+            $this->registers=$this->mount();
         }
         
         return view('livewire.register-component', [
-            'users' => $this->users
+            'users' => $this->registers
         ]);
     }
 
@@ -47,7 +44,7 @@ class RegisterComponent extends Component
         ->where('name', 'like', '%' . $this->search . '%')
         ->orWhere('lastName', 'like', '%' . $this->search . '%')
         ->orWhere('email', 'like', '%'.$this->search .'%')
-        ->where('id','<>',1)
+        ->join('registers','registers.user_id','users.id')
         ->orderBy('name')->paginate(8);
 
     }
