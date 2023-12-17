@@ -28,7 +28,7 @@
                         <div class=" flex items-center justify-between">
                             <h2 class="title">Les utilisateurs</h2>
                             <ul>
-                                <li><a href="" class="text-sm p-2 bg-blue">Voir les apprenants</a></li>
+                                <li><a href="{{route('register.register')}}" class="text-sm p-2 bg-blue">Voir les apprenants</a></li>
                             </ul>
                         </div>
                     </div>

@@ -56,6 +56,9 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <div class="flex justify-end">
+                            {{$promotions->links()}}
+                        </div>
 
                     </div>
                 </div>
