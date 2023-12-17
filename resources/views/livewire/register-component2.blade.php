@@ -58,10 +58,7 @@
                                     <th>
                                         <a href="{{route('register.create', $user)}}" class="bg-green p-2 text-sm"> <i class="fa fa-user"></i></a>
                                     </th>
-<?php
-    if(!$user->register=="[]") echo "deda".$user->register;
-    else echo "non";
-?>
+
                                     @if(isset($user->regi))
                                     <th>
                                         <a href="{{route('register.create', $user)}}" class="bg-yellow p-2 text-sm"> <i class="fa fa-edit"></i>{{$user->register}}</a>
