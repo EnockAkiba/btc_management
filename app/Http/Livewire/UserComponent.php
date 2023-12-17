@@ -6,8 +6,7 @@ use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-
-class RegisterComponent extends Component
+class UserComponent extends Component
 {
 
     use WithPagination;
@@ -17,13 +16,9 @@ class RegisterComponent extends Component
 
 
     public function mount(){
-        return $this->users=User::where('roleUser',0) 
-        ->whereNotIn('id', function($query) {
-            $query->select('user_id')
-            ->from('registers');
-        })
+        return $this->users=User::join('registers','registers.user_id','users.id')
+        ->orderBy('name')
         ->paginate(8);
-
     }
 
     public function render()
@@ -35,7 +30,7 @@ class RegisterComponent extends Component
             $this->users=$this->mount();
         }
         
-        return view('livewire.register-component', [
+        return view('livewire.user-component', [
             'users' => $this->users
         ]);
     }
@@ -47,16 +42,11 @@ class RegisterComponent extends Component
         ->where('name', 'like', '%' . $this->search . '%')
         ->orWhere('lastName', 'like', '%' . $this->search . '%')
         ->orWhere('email', 'like', '%'.$this->search .'%')
-        ->where('id','<>',1)
+        ->join('registers','registers.user_id','users.id')
         ->orderBy('name')->paginate(8);
 
     }
 
-    public function register(){
-        // \dd("dwe");
-        echo "colled";
-        return \view('livewire.register');
-    }
 
     public function search()
     {
