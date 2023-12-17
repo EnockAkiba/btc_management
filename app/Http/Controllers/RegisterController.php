@@ -7,6 +7,8 @@ use App\Models\Register;
 use App\Models\User;
 use Illuminate\Http\Request;
 
+use function PHPUnit\Framework\returnSelf;
+
 class RegisterController extends Controller
 {
     /**
@@ -19,6 +21,10 @@ class RegisterController extends Controller
         $registers=Register::orderBy('id','DESC')->paginate(8);
         $promotions=Promotion::whereDate('dateEnd','>=', now())->get();
         return view('register.index',\compact('registers'));
+    }
+
+    public function register(){
+    
     }
 
     /**
@@ -44,7 +50,6 @@ class RegisterController extends Controller
         $data=$request->validate([
             'user_id'=>'required',
             'promotion_id'=>'required',
-            'index'=>'required',
             'vacation'=>'required',
         ]);
 
@@ -53,21 +58,28 @@ class RegisterController extends Controller
         $modele=Register::where('user_id',$request->user_id)
         ->where('promotion_id',$request->promotion_id)
         ->first();
+        $index=Register::select('index')->where('user_id',$request->user_id)->first();
 
-        if($modele) return \redirect()->back()->with('error','Apprenant déjà inscit');
+        if(!$index and !$request->index) return \redirect()->back()->with('warning','l\'index est vide ');
+        
+        $index=!empty($index) ? $index->index : $request->index;
+
+        if($modele) return \redirect()->route('register')->with('warning','Apprenant déjà inscit');
 
         if($request->respoName)  $respoName=$request->respoName;
         else $respoName=NULL;
 
         if($request->respoNumber)  $respoNumber=$request->respoNumber;
-        else $respoName=NULL;
+        else $respoNumber=NULL;
 
+        $data['index']=$index;
         $data['respoName']=$respoName;
         $data['respoNumber']=$respoNumber;
         $data['slug']=\slug('Re');
         
         Register::create($data);
-        return \redirect()->back()->with('success','Ajouté');
+
+        return \redirect()->route('register')->with('success','Ajouté');
     }
 
     /**
@@ -76,11 +88,18 @@ class RegisterController extends Controller
      * @param  \App\Models\Register  $register
      * @return \Illuminate\Http\Response
      */
-    public function show(Register $register)
+    public function show(User $user)
     {
-        $user=User::where('users.id',$register->user_id)->first();
-        $registers=$user->register;
-        return \view('register.show', \compact('register','registers'));
+        // $user=User::where('users.id',$register->user_id)->first();
+        // \dd($user->register);
+        if(\collect($user->register)->isNotEmpty()){
+            $registers=$user->register;
+        }
+        else{
+            $registers=[];
+        }
+
+        return \view('register.show', \compact('user','registers'));
     }
 
     /**
@@ -114,11 +133,12 @@ class RegisterController extends Controller
         ]);
 
         if($request->respoName)  $respoName=$request->respoName;
-        else $respoName=NULL;
+        else $respoName=$request->respoNameOld;
 
         if($request->respoNumber)  $respoNumber=$request->respoNumber;
-        else $respoName=NULL;
+        else $respoNumber=$request->respoNumberOld;
         
+
         $data['respoName']=$respoName;
         $data['respoNumber']=$respoNumber;
         $register->update($data);

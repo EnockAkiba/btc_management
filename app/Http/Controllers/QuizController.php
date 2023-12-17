@@ -25,7 +25,6 @@ class QuizController extends Controller
             return \redirect()->back()->with('warning','vous n\'êtes pas formateur');
         }
 
-
         // $promotionId=Auth::user()->register()->orderByDesc('id')->first()->promotion_id;
         // $myQuezzes=Quiz::where('promotion_id', $promotionId)
         // ->where('dateEnd','>', \now())
@@ -36,10 +35,20 @@ class QuizController extends Controller
 
         $promotions=Promotion::whereDate('dateEnd','>=', now())->get();
 
-        $myQuezzes=Quiz::join('promotions','promotions.id','Quizzes.promotion_id')
+        $quezzes=Quiz::join('promotions','promotions.id','Quizzes.promotion_id')
         ->where('Quizzes.teacher_id',Auth::user()->teacher()->first()->id)
         ->paginate(8);
-        return \view('quiz.index',\compact('myQuezzes','promotions'));
+        return \view('quiz.index',\compact('quezzes','promotions'));
+    }
+
+    public function myQuizzes(){
+        if(!Auth::user()->register->promotion_id) return \redirect()->back()->with('warning','Vous n\'êtes apprenant');
+
+        $myQuezzes=Quiz::where('promotion_id',Auth::user()->register->promotion_id)
+        ->where('dateEnd','>',\now())
+        ->paginate(8);
+        // $id=Auth::user()->register()->orderBy('regist');
+        return \view('Quizzes.myQuizzes', \compact('myQuezzes'));
     }
 
     /**
@@ -161,7 +170,5 @@ class QuizController extends Controller
         return \redirect()->back()->with('success','Supprimé');
     }
 
-    public function myQuizzes(){
-        // $id=Auth::user()->register()->orderBy('regist');
-    }
+
 }
