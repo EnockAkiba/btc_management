@@ -11,7 +11,7 @@ class Extension extends Model
 
     protected $fillable=['designation'];
     
-    public function promotion(){
+    public function promotions(){
         return $this->hasMany(Promotion::class);
     }
 }

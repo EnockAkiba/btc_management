@@ -19,6 +19,7 @@ class RegisterComponent extends Component
     public function mount(){
         return $this->registers=User::join('registers','registers.user_id','users.id')
         ->orderBy('name')
+        ->orderBy('registers.id','DESC')
         ->paginate(8);
 
     }
@@ -33,7 +34,7 @@ class RegisterComponent extends Component
         }
         
         return view('livewire.register-component', [
-            'users' => $this->registers
+            'registers' => $this->registers
         ]);
     }
 
@@ -45,6 +46,7 @@ class RegisterComponent extends Component
         ->orWhere('lastName', 'like', '%' . $this->search . '%')
         ->orWhere('email', 'like', '%'.$this->search .'%')
         ->join('registers','registers.user_id','users.id')
+        ->orderBy('registers.id','DESC')
         ->orderBy('name')->paginate(8);
 
     }

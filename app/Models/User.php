@@ -51,7 +51,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function register(){
+    public function registers(){
         return $this->hasMany(Register::class);
     }
 

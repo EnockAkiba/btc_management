@@ -92,8 +92,8 @@ class RegisterController extends Controller
     {
         // $user=User::where('users.id',$register->user_id)->first();
         // \dd($user->register);
-        if(\collect($user->register)->isNotEmpty()){
-            $registers=$user->register;
+        if(\collect($user->registers)->isNotEmpty()){
+            $registers=$user->registers;
         }
         else{
             $registers=[];

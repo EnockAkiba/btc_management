@@ -16,7 +16,7 @@ class Quiz extends Model
     public function promotion(){
         return $this->belongsTo(Promotion::class);
     }
-    public function appley(){
-        return $this->hasMany(Applay::class);
+    public function appleys(){
+        return $this->hasManyThrough(Applay::class, Register::class);
     }
 }

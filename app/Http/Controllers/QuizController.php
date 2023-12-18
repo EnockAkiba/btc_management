@@ -42,9 +42,9 @@ class QuizController extends Controller
     }
 
     public function myQuizzes(){
-        if(!Auth::user()->register->promotion_id) return \redirect()->back()->with('warning','Vous n\'êtes apprenant');
+        if(!Auth::user()->registers->promotion_id) return \redirect()->back()->with('warning','Vous n\'êtes apprenant');
 
-        $myQuezzes=Quiz::where('promotion_id',Auth::user()->register->promotion_id)
+        $myQuezzes=Quiz::where('promotion_id',Auth::user()->registers->promotion_id)
         ->where('dateEnd','>',\now())
         ->paginate(8);
         // $id=Auth::user()->register()->orderBy('regist');
