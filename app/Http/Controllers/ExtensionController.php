@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Extension;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
 class ExtensionController extends Controller
@@ -14,7 +15,7 @@ class ExtensionController extends Controller
      */
     public function index()
     {
-        $extensions=Extension::get();
+        $extensions=Extension::paginate(8);
         return \view('extension.index', \compact('extensions'));
     }
 
@@ -36,12 +37,19 @@ class ExtensionController extends Controller
      */
     public function store(Request $request)
     {
-        $data=$request->validate([
+        $validator=Validator::make(
+            $request->all(),
+
+            [
             'designation'=>'required'
         ]);
+        
+        if($validator->fails()){
+            return \redirect()->back()->with('error','complètez tous les champs');
+        }
 
         // $data['slug']=\slug('Ex');
-        Extension::create($data);
+        Extension::create($validator->validated());
 
         return \redirect()->back()->with('success','Ajouté');
     }
@@ -77,11 +85,14 @@ class ExtensionController extends Controller
      */
     public function update(Request $request, Extension $extension)
     {
-        $data=$request->validate([
+        $validator=Validator::make(
+            $request->all(),
+
+            [
             'designation'=>'required'
         ]);
         
-        $extension->update($data);
+        $extension->update($validator->validated());
 
         return \redirect()->back()->with('success','Modifié');
     }

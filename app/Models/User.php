@@ -55,7 +55,7 @@ class User extends Authenticatable
         return $this->hasMany(Register::class);
     }
 
-    public function teacher(){
+    public function teachers(){
         return $this->hasMany(Teacher::class);
     }
     

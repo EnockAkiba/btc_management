@@ -21,7 +21,7 @@ class QuizController extends Controller
     public function index()
     {
         // $promotion_id=Auth::user()->
-        if(!Auth::user()->teacher){
+        if(!Auth::user()->teachers){
             return \redirect()->back()->with('warning','vous n\'êtes pas formateur');
         }
 
@@ -35,9 +35,9 @@ class QuizController extends Controller
 
         $promotions=Promotion::whereDate('dateEnd','>=', now())->get();
 
-        $quezzes=Quiz::join('promotions','promotions.id','Quizzes.promotion_id')
-        ->where('Quizzes.teacher_id',Auth::user()->teacher()->first()->id)
+        $quezzes=Quiz::where('Quizzes.teacher_id',Auth::user()->teachers()->first()->id)
         ->paginate(8);
+        
         return \view('quiz.index',\compact('quezzes','promotions'));
     }
 
@@ -87,7 +87,7 @@ class QuizController extends Controller
         else $file=null;
 
         $data['slug']=\slug('Qz');
-        $data['teacher_id']= Auth::user()->teacher->id;
+        $data['teacher_id']= Auth::user()->teachers->id;
         $data['content']=$content;
         $data['file']=$file;
 
@@ -148,7 +148,7 @@ class QuizController extends Controller
         if($request->file) $file=$request->file ;
         else $file=$request->fileOld;
         
-        $data['teacher_id']= Auth::user()->teacher->id;
+        $data['teacher_id']= Auth::user()->teachers->id;
         $data['content']=$content;
         $data['file']=$file;
 

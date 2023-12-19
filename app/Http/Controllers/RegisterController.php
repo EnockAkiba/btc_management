@@ -23,9 +23,6 @@ class RegisterController extends Controller
         return view('register.index',\compact('registers'));
     }
 
-    public function register(){
-    
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -53,18 +50,17 @@ class RegisterController extends Controller
             'vacation'=>'required',
         ]);
 
-
-
         $modele=Register::where('user_id',$request->user_id)
         ->where('promotion_id',$request->promotion_id)
         ->first();
+        if($modele) return \redirect()->route('register')->with('warning','Apprenant déjà inscit');
+
         $index=Register::select('index')->where('user_id',$request->user_id)->first();
 
         if(!$index and !$request->index) return \redirect()->back()->with('warning','l\'index est vide ');
         
         $index=!empty($index) ? $index->index : $request->index;
 
-        if($modele) return \redirect()->route('register')->with('warning','Apprenant déjà inscit');
 
         if($request->respoName)  $respoName=$request->respoName;
         else $respoName=NULL;
@@ -88,18 +84,18 @@ class RegisterController extends Controller
      * @param  \App\Models\Register  $register
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(Register $register)
     {
         // $user=User::where('users.id',$register->user_id)->first();
         // \dd($user->register);
-        if(\collect($user->registers)->isNotEmpty()){
-            $registers=$user->registers;
-        }
-        else{
-            $registers=[];
-        }
+        // if(\collect($user->registers)->isNotEmpty()){
+        //     $registers=$user->registers;
+        // }
+        // else{
+        //     $registers=[];
+        // }
 
-        return \view('register.show', \compact('user','registers'));
+        return \view('register.show', \compact('register'));
     }
 
     /**
@@ -110,7 +106,7 @@ class RegisterController extends Controller
      */
     public function edit(Register $register)
     {
-        $users=User::get();
+        $users=User::paginate(8);
         $promotions=Promotion::get();
         return view('register.edit', \compact('register','users','promotions'));
 
@@ -142,7 +138,7 @@ class RegisterController extends Controller
         $data['respoName']=$respoName;
         $data['respoNumber']=$respoNumber;
         $register->update($data);
-        return \redirect()->back()->with('success','Modifié');
+        return \redirect()->route('register')->with('success','Modifié');
     }
 
     /**

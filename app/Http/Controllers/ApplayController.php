@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Applay;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 use function Ramsey\Uuid\v1;
 
@@ -16,7 +17,9 @@ class ApplayController extends Controller
      */
     public function index()
     {
-        $applays=Applay::orderBy('id','DESC')->paginate(8);
+        $applays=Applay::orderBy('id','DESC')
+        ->where('applays.register_id', Auth::user()->registers->id)
+        ->paginate(8);
         return \view('applay.index', \compact('applays'));
     }
 
