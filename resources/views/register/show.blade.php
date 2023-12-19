@@ -8,7 +8,7 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-left">
                     <li class="breadcrumb-item title"><a href="{{ route('register') }}">Les apprenants inscrits</a></li>
-                    <li class="breadcrumb-item active"> </li>
+                    <li class="breadcrumb-item active">{{$register->user->name." ".$register->user->lastName}} </li>
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -22,7 +22,11 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="card">
-                    <img src="{{ asset('/' . Auth::user()->picture) }}" class="rounded-full p-2 mx-auto" style="width:270px; height:270px">
+                    @if($register->user->picture)
+                    <img src="{{ asset('/' .$register->user->picture) }}" class="rounded-full p-2 mx-auto" style="width:270px; height:270px">
+                    @else
+                    <img src="{{asset('/images/user.png')}}" class="rounded-full p-2 mx-auto" style="width:270px; height:270px">
+                    @endif
                 </div>
                 <div class="flex justify-between p-2">
                     <h4 class="bg-white card p-2"><a data-toggle="modal" data-target="#editregister" href="#" role="button"><i class="fa fa-edit"></i> l'inscription</a> </h4>
@@ -35,23 +39,23 @@
                 <div class="card">
                     <!-- Add the bg color to the header using any of the bg-* classes -->
                     <div class="p-3 text-white" style="background: darkblue ;">
-                        <h3 class="font-bold ">Noms complet: Paul </h3>
-                        <h5 class="font-bold ">Genre : </h5>
-                        <h5 class="text-right">Statut : </h5>
+                        <h3 class="font-bold ">Noms complet: {{$register->user->name." ".$register->user->lastName}} </h3>
+                        <h5 class="font-bold ">Genre : {{$register->user->sex}}</h5>
+                        <h5 class="text-right">Statut : <span class="rounded-sm p-1 bg-{{$register->user->statut==1?'success':'danger'}}"> {{$register->user->statut==1?'Actif':'Inactif'}} </span></h5>
                     </div>
                     <div class="px-4 py-3">
-                        <h5 class="mb-1 border p-2">Index number : <span class="title">blabla</span> </h5>
-                        <h5 class="mb-1 border p-2">Date d'inscription : <span class="text-red-400">{{ date('d.M.Y H:i') }}</span> </h5>
-                        <h5 class="mb-1 border p-2">Extension : </h5>
-                        <h5 class="mb-1 border p-2">Departement : </h5>
-                        <h5 class="mb-1 border p-2">promotion : </h5>
-                        <h5 class="mb-1 border p-2">Vacation : </h5>
-                        <h5 class="mb-1 border p-2">Phone number : </h5>
-                        <h5 class="mb-1 border p-2">Email : </h5>
-                        <h5 class="mb-1 border p-2">Adresse : </h5>
+                        <h5 class="mb-1 border p-2">Index number : <span class="title"> {{$register->index}}</span> </h5>
+                        <h5 class="mb-1 border p-2">Date d'inscription : <span class="font-bold">{{ $register->user->created_at->format('d.M.Y H:i') }}</span> </h5>
+                        <h5 class="mb-1 border p-2">Extension :  <span class="font-bold">{{$register->promotion->extension->designation}} </span></h5>
+                        <h5 class="mb-1 border p-2">Departement :  <span class="font-bold">{{$register->index}}</span> </h5>
+                        <h5 class="mb-1 border p-2">promotion : <span class="font-bold"> {{$register->index}} </span></h5>
+                        <h5 class="mb-1 border p-2">Vacation : <span class="font-bold"> </span></h5>
+                        <h5 class="mb-1 border p-2">Phone number :  <span class="font-bold"> {{$register->index}}</span></h5>
+                        <h5 class="mb-1 border p-2">Email :  <span class="font-bold"> {{$register->index}}</span> </h5>
+                        <h5 class="mb-1 border p-2">Adresse :  <span class="font-bold">  {{$register->index}}</span></h5>
                         <h3 class="font-bold"> Responsable</h3>
-                        <h5 class="mb-1 border p-2"> Noms : </h5>
-                        <h5 class="mb-1 border p-2"> Phone number : </h5>
+                        <h5 class="mb-1 border p-2"> Noms :  <span class="font-bold"> {{$register->index}}</span></h5>
+                        <h5 class="mb-1 border p-2"> Phone number :  <span class="font-bold">{{$register->index}}</span></h5>
 
 
                     </div>
@@ -79,7 +83,7 @@
                 <!-- /.card-header -->
                 <form action="{{route('register.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" name="user_id" value="{{$user->id}}">
+                    <input type="hidden" name="user_id" value="">
                     <div class="card-body">
                         <div class="row">
 
