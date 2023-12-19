@@ -41,21 +41,21 @@
                     <div class="p-3 text-white" style="background: darkblue ;">
                         <h3 class="font-bold ">Noms complet: {{$register->user->name." ".$register->user->lastName}} </h3>
                         <h5 class="font-bold ">Genre : {{$register->user->sex}}</h5>
-                        <h5 class="text-right">Statut : <span class="rounded-sm p-1 bg-{{$register->user->statut==1?'success':'danger'}}"> {{$register->user->statut==1?'Actif':'Inactif'}} </span></h5>
+                        <h5 class="text-right">Statut : <span class="rounded-sm p-1 bg-{{$register->promotion->dateEnd <=  date('Y/m/d')?'success':'danger'}}"> {{$register->promotion->dateEnd <=  date('Y/m/d') ?'Actif':'Inactif'}} </span></h5>
                     </div>
                     <div class="px-4 py-3">
                         <h5 class="mb-1 border p-2">Index number : <span class="title"> {{$register->index}}</span> </h5>
                         <h5 class="mb-1 border p-2">Date d'inscription : <span class="font-bold">{{ $register->user->created_at->format('d.M.Y H:i') }}</span> </h5>
                         <h5 class="mb-1 border p-2">Extension :  <span class="font-bold">{{$register->promotion->extension->designation}} </span></h5>
-                        <h5 class="mb-1 border p-2">Departement :  <span class="font-bold">{{$register->index}}</span> </h5>
-                        <h5 class="mb-1 border p-2">promotion : <span class="font-bold"> {{$register->index}} </span></h5>
-                        <h5 class="mb-1 border p-2">Vacation : <span class="font-bold"> </span></h5>
-                        <h5 class="mb-1 border p-2">Phone number :  <span class="font-bold"> {{$register->index}}</span></h5>
-                        <h5 class="mb-1 border p-2">Email :  <span class="font-bold"> {{$register->index}}</span> </h5>
-                        <h5 class="mb-1 border p-2">Adresse :  <span class="font-bold">  {{$register->index}}</span></h5>
+                        <h5 class="mb-1 border p-2">Departement :  <span class="font-bold">{{$register->promotion->departement->title}}</span> </h5>
+                        <h5 class="mb-1 border p-2">promotion : <span class="font-bold"> {{$register->promotion->designation}} </span></h5>
+                        <h5 class="mb-1 border p-2">Vacation : <span class="font-bold"> {{$register->vacation}} </span></h5>
+                        <h5 class="mb-1 border p-2">Phone number :  <span class="font-bold"> {{$register->user->phone}}</span></h5>
+                        <h5 class="mb-1 border p-2">Email :  <span class="font-bold"> {{$register->user->email}}</span> </h5>
+                        <h5 class="mb-1 border p-2">Adresse :  <span class="font-bold">  {{$register->user->adress}}</span></h5>
                         <h3 class="font-bold"> Responsable</h3>
-                        <h5 class="mb-1 border p-2"> Noms :  <span class="font-bold"> {{$register->index}}</span></h5>
-                        <h5 class="mb-1 border p-2"> Phone number :  <span class="font-bold">{{$register->index}}</span></h5>
+                        <h5 class="mb-1 border p-2"> Noms :  <span class="font-bold"> {{$register->respoName}}</span></h5>
+                        <h5 class="mb-1 border p-2"> Phone number :  <span class="font-bold">{{$register->respoNumber}}</span></h5>
 
 
                     </div>
@@ -81,9 +81,9 @@
 
                 </div>
                 <!-- /.card-header -->
-                <form action="{{route('register.store')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('register.update', $register)}}" method="post" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" name="user_id" value="">
+                    <input type="hidden" value="{{$register->user->id}}">
                     <div class="card-body">
                         <div class="row">
 
