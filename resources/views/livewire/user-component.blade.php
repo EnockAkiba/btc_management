@@ -34,7 +34,7 @@
                     </div>
                     <div class=" overflow-auto mt-1 py-0">
                         <table class="table table-hover">
-                            <thead class="bg-green-100">
+                            <thead class="bg-blue-900 text-white">
                                 <th>#</th>
                                 <th>Nom complet</th>
                                 <th>Email</th>

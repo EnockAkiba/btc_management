@@ -19,18 +19,19 @@
 <div class="content " style="max-height: 80vh; overflow:auto">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12 " style="max-height: 80vh; overflow:auto">
+            <div class="col-md-12 ">
                 <div class="content">
-                    <div class="bg-whiterounded-md">
+                    <div class="bg-white">
                         <div class=" flex items-center justify-between">
                             <h2 class="title px-2 py-1 ">Les actualités</h2>
-                            <a class="bg-blue-400 text-white p-2 ml-auto rounded-sm" data-toggle="modal" data-target="#addNew" href="#" role="button">Add News
+                            <a class="bg-blue text-white p-1 ml-auto " data-toggle="modal" data-target="#addNew" href="#" role="button">Add News
                             </a>
                         </div>
                     </div>
-                    <div class="bg-white overflow-auto mt-2 p-0">
+                    <div class="bg-white overflow-auto p-0" style="max-height: 80vh; overflow:auto">
                         <table class="table table-hover">
-                            <thead class="bg-green-100">
+                            <thead class="bg-blue-900 text-white">
+
                                 <th>#</th>
                                 <th>titre d'actualité</th>
                                 <th>Date</th>
@@ -51,6 +52,11 @@
                             </tbody>
                         </table>
                     </div>
+                    <div class="flex flex-end">
+                        <div class="ml-auto my-2">
+                            {{$news->links()}}
+                        </div>
+                    </div>
                 </div>
 
             </div>
@@ -69,7 +75,7 @@
             <div class="">
                 <div class="card-header">
                     <div class="user-block">
-                        <h3 class="text-green-500">Veuilez remplir les informations d'actualité</h3>
+                        <h3 class="text-blue">Veuilez remplir les informations d'actualité</h3>
                     </div>
 
                 </div>
@@ -95,7 +101,7 @@
                             <label for="">Description <span class="required"> *</span></label>
                             <textarea name="description" id="" cols="30" rows="5" class="form-control">
                             {{old('description')}}
-                                    </textarea>
+                            </textarea>
                         </div>
                     </div>
                     <!-- /.card-body -->

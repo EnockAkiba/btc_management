@@ -54,7 +54,8 @@
                     <div class=" overflow-auto py-0" style="max-height: 70vh; overflow:auto">
 
                         <table class="table table-hover">
-                            <thead class="bg-green-100">
+                        <thead class="bg-blue-900 text-white">
+
                                 <th>#</th>
                                 <th>profil </th>
                                 <th>Noms </th>
@@ -95,11 +96,11 @@
 {{--EDIT DEPARTEMENT  --}}
 <div class="modal fade" id="addDepartement">
     <div class="modal-dialog modal-md">
-        <div class="modal-content rounded-none shadow-none  border-t-2 border-t-green-300 p-2">
+        <div class="modal-content rounded-none shadow-none  border-t-2 border-t-blue-300 p-2">
             <div class="">
                 <div class="card-header">
                     <div class="user-block">
-                        <h3 class="text-green-500">Modifier le promotion</h3>
+                        <h3 class="text-blue-500">Modifier le promotion</h3>
                     </div>
 
                 </div>

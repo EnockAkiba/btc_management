@@ -33,7 +33,7 @@ class RegisterComponent extends Component
         }
         
         return view('livewire.register-component', [
-            'users' => $this->registers
+            'registers' => $this->registers
         ]);
     }
 

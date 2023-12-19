@@ -4,7 +4,7 @@
 <!-- Content Header (Page header) -->
 <div class="content-header">
     <div class="container-fluid">
-        <div class="row mb-2">
+        <div class="row mb-0">
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-left">
                     <li class="breadcrumb-item title"><a href="{{ route('news') }}">Actualité</a></li>
@@ -50,16 +50,17 @@
 
             <div class="col-md-7 p-0" style="max-height: 80vh; overflow:auto">
                 <div class="card">
-                    <div class="card-header">
+                    <div class="p-1">
                         <div class=" flex items-center justify-between">
                             <h2 class="title">Promotions</h2>
-                            <a class="bg-blue-400 text-white p-2 ml-auto" data-toggle="modal" data-target="#addPromotion" href="#" role="button">Add promotion
+                            <a class="bg-blue-400 text-white p-1 text-sm ml-auto" data-toggle="modal" data-target="#addPromotion" href="#" role="button">Add promotion
                             </a>
                         </div>
                     </div>
                     <div class=" overflow-auto py-0">
                         <table class="table table-hover">
-                            <thead class="bg-green-100">
+                            <thead class="bg-blue-900 text-white">
+
                                 <th>#</th>
                                 <th>Designation/ </th>
                                 <th>Prix</th>
@@ -89,11 +90,11 @@
 {{--EDIT DEPARTEMENT  --}}
 <div class="modal fade" id="addDepartement">
     <div class="modal-dialog modal-lg">
-        <div class="modal-content rounded-none shadow-none  border-t-2 border-t-green-300 p-2">
+        <div class="modal-content rounded-none shadow-none  border-t-2 border-t-blue-700 p-2">
             <div class="">
                 <div class="card-header">
                     <div class="user-block">
-                        <h3 class="text-green-500">Modifier le departement</h3>
+                        <h3 class="text-blue-700">Modifier le departement</h3>
                     </div>
 
                 </div>

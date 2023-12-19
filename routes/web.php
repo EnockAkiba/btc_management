@@ -146,7 +146,7 @@ Route::group(['prefix' => 'user'], function () {
             Route::get("register/index", "index")->name("register");
             Route::get("register/{user:slug}/create", "create")->name("register.create");
             Route::post("register/store", "store")->name("register.store");
-            Route::get("register/{user:slug}/show", "show")->name("register.show");
+            Route::get("register/{register:slug}/show", "show")->name("register.show");
             Route::get("register/{register:slug}/edit", "edit")->name("register.edit");
             Route::put("register/{register:slug}/update", "update")->name("register.update");
             Route::get("register/{register:slug}/destroy", "destroy")->name("register.destroy");
@@ -207,13 +207,13 @@ Route::group(['prefix' => 'user'], function () {
         // })->name('promotion.show');
 
       
-        Route::get('/student/show', function () {
-            return view('student.show');
-        })->name('student.show');
+        // Route::get('/student/show', function () {
+        //     return view('student.show');
+        // })->name('student.show');
 
-        Route::get('/user/show', function () {
-            return view('users.show');
-        })->name('user.show');
+        // Route::get('/user/show', function () {
+        //     return view('users.show');
+        // })->name('user.show');
 
 
 
