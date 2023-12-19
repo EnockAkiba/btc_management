@@ -2,18 +2,13 @@
 
 @section('content')
 <!-- Content Header (Page header) -->
-<div class="content-header">
-    <div class="container-fluid">
-        <div class="row mb-1">
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-left">
-                    <li class="bg-blue-400 p-1 mx-1 rounded-sm text-white"><a href="{{ route('extension') }}">Extension</a></li>
-                    <li class="bg-blue-400 p-1 mx-1 rounded-sm text-white"><a href="{{route('departement')}}">Departement</a> </li>
-                    <li class="bg-blue-400 p-1 mx-1 rounded-sm text-white"><a href="{{route('promotion')}}">Promotioin</a></li>
-                   
-                </ol>
-            </div><!-- /.col -->
-        </div><!-- /.row -->
+<div class="my-3 p-0 ">
+        <div class="ml-auto">
+            <ol class="flex">
+                <li class="mx-1 px-1 border rounded-md shadow-md hover:bg-blue-700"><a href="{{ route('extension') }}" class="hover:text-white"><i class="fa fa-plus-circle"></i> Extension</a></li>
+                <li class="mx-1 px-1 border rounded-md shadow-md hover:bg-blue-700"><a href="{{route('departement')}}" class="hover:text-white"><i class="fa fa-plus-circle"></i> Departement</a> </li>
+                <li class="mx-1 px-1 border rounded-md shadow-md hover:bg-blue-700"><a href="{{route('promotion')}}" class="hover:text-white"> <i class="fa fa-plus-circle"></i> Promotion</a></li>
+            </ol>
     </div><!-- /.container-fluid -->
 </div>
 <!-- /.content-header -->
@@ -22,7 +17,7 @@
 <section class="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-11 p-0">
+            <div class="col-md-12 p-0">
                 <div class="card">
                     <div class="card-header">
                         <div class=" flex items-center justify-between">
@@ -31,9 +26,11 @@
                             </a>
                         </div>
                     </div>
-                    <div class=" overflow-auto py-0">
-                        <table class="table table-hover">
-                            <thead class="bg-green-100">
+                    <div class=" overflow-auto py-0" style="max-height: 70vh; overflow:auto">
+
+                        <table class="table table-hover text-sm">
+                        <thead class="bg-blue-900 text-white">
+
                                 <th>#</th>
                                 <th>Image</th>
                                 <th>Titre/ Designation</th>
@@ -50,7 +47,9 @@
                                 @endforeach
                             </tbody>
                         </table>
-
+                        <div class="flex justify-end my-3">
+                            {{$departements->links()}}
+                        </div>
                     </div>
                 </div>
             </div>

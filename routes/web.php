@@ -144,10 +144,9 @@ Route::group(['prefix' => 'user'], function () {
 
           Route::controller(ControllersRegisterController::class)->group(function () {
             Route::get("register/index", "index")->name("register");
-            // Route::get("register/register", "register")->name("register.register");
             Route::get("register/{user:slug}/create", "create")->name("register.create");
             Route::post("register/store", "store")->name("register.store");
-            Route::get("register/{user:slug}/show", "show")->name("register.show");
+            Route::get("register/{register:slug}/show", "show")->name("register.show");
             Route::get("register/{register:slug}/edit", "edit")->name("register.edit");
             Route::put("register/{register:slug}/update", "update")->name("register.update");
             Route::get("register/{register:slug}/destroy", "destroy")->name("register.destroy");
@@ -172,9 +171,9 @@ Route::group(['prefix' => 'user'], function () {
 
         // QUIZ CRUD
 
-        Route::get('/register', function () {
-            return view('register.register');
-        })->name('register.register');
+        // Route::get('/register', function () {
+        //     return view('register.register');
+        // })->name('register.register');
 
         // Route::get('/Devoir/show', function () {
         //     return view('quiz.show');
@@ -208,13 +207,13 @@ Route::group(['prefix' => 'user'], function () {
         // })->name('promotion.show');
 
       
-        Route::get('/student/show', function () {
-            return view('student.show');
-        })->name('student.show');
+        // Route::get('/student/show', function () {
+        //     return view('student.show');
+        // })->name('student.show');
 
-        Route::get('/user/show', function () {
-            return view('users.show');
-        })->name('user.show');
+        // Route::get('/user/show', function () {
+        //     return view('users.show');
+        // })->name('user.show');
 
 
 
