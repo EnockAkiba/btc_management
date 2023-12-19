@@ -42,12 +42,11 @@ class ApplayController extends Controller
     public function store(Request $request)
     {
         $data=$request->validate([
-            'quiz_id'=>'required',
-            'register_id'=>'required',
+            'quiz_id'=>'required'
         ]);
 
         if(! $request->file() AND !$request->content){
-            return \redirect()->back()->with('error','Veillez repondre par un fichier pdf/commentaire');
+            return \redirect()->back()->with('error','Reponse vide !');
         }
 
         if($request->file) $file=\docStatement('quiz/applay',$request->file);
@@ -56,6 +55,7 @@ class ApplayController extends Controller
         if($request->content) $content=$request->file;
         else $content=NULL;
         
+        $data['register_id']=Auth::user()->registers()->orderBy('registers.id','DESC')->first()->id;
         $data['content']=$content;
         $data['file']=$file;
         $data['slug']=\slug('Ap');

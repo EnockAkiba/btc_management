@@ -37,7 +37,6 @@ class QuizController extends Controller
 
         $quezzes=Quiz::where('Quizzes.teacher_id',Auth::user()->teachers()->first()->id)
         ->paginate(8);
-        
         return \view('quiz.index',\compact('quezzes','promotions'));
     }
 
