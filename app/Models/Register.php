@@ -19,7 +19,7 @@ class Register extends Model
         return $this->belongsTo(Promotion::class);
     }
 
-    public function applay(){
+    public function applays(){
         return $this->hasMany(Applay::class);
     }
 

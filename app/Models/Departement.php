@@ -11,7 +11,7 @@ class Departement extends Model
 
     protected $fillable=['slug','title','description','picture'];
 
-    public function promotion(){
+    public function promotions(){
         return $this->hasMany(Promotion::class);
     }
 }

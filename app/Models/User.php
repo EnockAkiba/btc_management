@@ -51,11 +51,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function register(){
+    public function registers(){
         return $this->hasMany(Register::class);
     }
 
-    public function teacher(){
+    public function teachers(){
         return $this->hasMany(Teacher::class);
     }
     
