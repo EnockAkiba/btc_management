@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Applay;
+use App\Models\Quiz;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,9 +19,17 @@ class ApplayController extends Controller
     public function index()
     {
         $applays=Applay::orderBy('id','DESC')
-        ->where('applays.register_id', Auth::user()->registers->id)
+        ->where('applays.register_id', Auth::user()->registers->first()->id)
         ->paginate(8);
-        return \view('applay.index', \compact('applays'));
+
+        $quizCurrents=Quiz::where('dateEnd','>',\now())
+        ->where('promotion_id',Auth::user()->registers()->orderBy('id','DESC')->first()->promotion_id)
+        ->paginate(8);
+
+        $quizLoses=Quiz::where('register_id','<>',Auth::user()->registers()->orderBy('id','DESC')->first()->id)
+        ->where('promotion_id',Auth::user()->registers()->orderBy('id','DESC')->first()->promotion_id)
+        ->paginate(8);
+        return \view('applay.index', \compact('applays','quizCurrents','quizLoses'));
     }
 
     /**
@@ -42,12 +51,11 @@ class ApplayController extends Controller
     public function store(Request $request)
     {
         $data=$request->validate([
-            'quiz_id'=>'required',
-            'register_id'=>'required',
+            'quiz_id'=>'required'
         ]);
 
         if(! $request->file() AND !$request->content){
-            return \redirect()->back()->with('error','Veillez repondre par un fichier pdf/commentaire');
+            return \redirect()->back()->with('error','Reponse vide !');
         }
 
         if($request->file) $file=\docStatement('quiz/applay',$request->file);
@@ -56,6 +64,7 @@ class ApplayController extends Controller
         if($request->content) $content=$request->file;
         else $content=NULL;
         
+        $data['register_id']=Auth::user()->registers()->orderBy('registers.id','DESC')->first()->id;
         $data['content']=$content;
         $data['file']=$file;
         $data['slug']=\slug('Ap');
