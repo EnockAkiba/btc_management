@@ -2,18 +2,13 @@
 
 @section('content')
 <!-- Content Header (Page header) -->
-<div class="content-header">
-    <div class="container-fluid">
-        <div class="row mb-1">
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-left">
-                    <li class="bg-blue-400 p-1 mx-1 rounded-sm text-white"><a href="{{ route('extension') }}">Extension</a></li>
-                    <li class="bg-blue-400 p-1 mx-1 rounded-sm text-white"><a href="{{route('departement')}}">Departement</a> </li>
-                    <li class="bg-blue-400 p-1 mx-1 rounded-sm text-white"><a href="{{route('promotion')}}">Promotioin</a></li>
-            
-                </ol>
-            </div><!-- /.col -->
-        </div><!-- /.row -->
+<div class="my-3 p-0 ">
+        <div class="ml-auto">
+            <ol class="flex">
+                <li class="mx-1 px-1 border rounded-md shadow-md hover:bg-blue-700"><a href="{{ route('extension') }}" class="hover:text-white"><i class="fa fa-plus-circle"></i> Extension</a></li>
+                <li class="mx-1 px-1 border rounded-md shadow-md hover:bg-blue-700"><a href="{{route('departement')}}" class="hover:text-white"><i class="fa fa-plus-circle"></i> Departement</a> </li>
+                <li class="mx-1 px-1 border rounded-md shadow-md hover:bg-blue-700"><a href="{{route('promotion')}}" class="hover:text-white"> <i class="fa fa-plus-circle"></i> Promotion</a></li>
+            </ol>
     </div><!-- /.container-fluid -->
 </div>
 <!-- /.content-header -->
@@ -23,18 +18,18 @@
     <div class="container-fluid">
         <div class="row">
 
-            <div class="col-md-8 p-0">
+            <div class="col-md-8 p-2">
                 <div class="card">
-                    <div class="card-header">
+                    <div class="p-1">
                         <div class=" flex items-center justify-between">
                             <h2 class="title">Les Extensions</h2>
-                            <a class="bg-blue-400 text-white p-2 ml-auto" data-toggle="modal" data-target="#addNew" href="#" role="button">Ajouter extension
+                            <a class="bg-blue-400 text-white p-1 text-sm ml-auto" data-toggle="modal" data-target="#addNew" href="#" role="button">Ajouter extension
                             </a>
                         </div>
                     </div>
                     <div class=" overflow-auto mt-1 py-0">
-                        <table class="table table-hover">
-                            <thead class="bg-green-100">
+                        <table class="table table-hover table-striped ">
+                            <thead class="bg-blue-900 text-white">
                                 <th>#</th>
                                 <th>Designation de l'extension</th>
                             </thead>
@@ -52,7 +47,7 @@
                 </div>
             </div>
 
-           
+
         </div>
         <!-- /.row -->
     </div>

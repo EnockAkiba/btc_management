@@ -34,7 +34,7 @@
                     </div>
                     <div class=" overflow-auto mt-1 py-0">
                         <table class="table table-hover">
-                            <thead class="bg-green-100">
+                            <thead class="bg-blue-900 text-white">
                                 <th>#</th>
                                 <th>Nom complet</th>
                                 <th>Email</th>
@@ -58,10 +58,7 @@
                                     <th>
                                         <a href="{{route('register.create', $user)}}" class="bg-green p-2 text-sm"> <i class="fa fa-user"></i></a>
                                     </th>
-<?php
-    if(!$user->register=="[]") echo "deda".$user->register;
-    else echo "non";
-?>
+
                                     @if(isset($user->regi))
                                     <th>
                                         <a href="{{route('register.create', $user)}}" class="bg-yellow p-2 text-sm"> <i class="fa fa-edit"></i>{{$user->register}}</a>

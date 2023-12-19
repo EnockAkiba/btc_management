@@ -44,16 +44,18 @@
                 <!-- /.widget-user -->
             </div>
 
-            <div class="col-md-8 p-0" style="max-height: 80vh; overflow:auto">
+            <div class="col-md-8 p-0">
                 <div class="card">
                     <div class="card-header">
                         <div class=" flex items-center justify-between">
                             <h2 class="title">Les apprenants</h2>
                         </div>
                     </div>
-                    <div class=" overflow-auto py-0">
+                    <div class=" overflow-auto py-0" style="max-height: 70vh; overflow:auto">
+
                         <table class="table table-hover">
-                            <thead class="bg-green-100">
+                        <thead class="bg-blue-900 text-white">
+
                                 <th>#</th>
                                 <th>profil </th>
                                 <th>Noms </th>
@@ -66,12 +68,12 @@
                                     <td>{{$loop->index +1}}</td>
 
                                     <td>
-                                         @if($student->picture)
-                                      <a href="{{asset('/'.$student->picture)}}"> <img src="{{asset('/'.$student->picture)}}" class=" rounded-full w-10 h-10">  </a>    
+                                        @if($student->picture)
+                                        <a href="{{asset('/'.$student->picture)}}"> <img src="{{asset('/'.$student->picture)}}" class=" rounded-full w-10 h-10"> </a>
 
-                                    @else
-                                     <img src="{{asset('/images/user.png')}}" alt="" class=" rounded-full w-10 h-10"> 
-                                    @endif
+                                        @else
+                                        <img src="{{asset('/images/user.png')}}" alt="" class=" rounded-full w-10 h-10">
+                                        @endif
                                     </td>
                                     <td>{{$student->name." ".$student->lastName}}</td>
                                     <td>{{$student->sex}}</td>
@@ -94,11 +96,11 @@
 {{--EDIT DEPARTEMENT  --}}
 <div class="modal fade" id="addDepartement">
     <div class="modal-dialog modal-md">
-        <div class="modal-content rounded-none shadow-none  border-t-2 border-t-green-300 p-2">
+        <div class="modal-content rounded-none shadow-none  border-t-2 border-t-blue-300 p-2">
             <div class="">
                 <div class="card-header">
                     <div class="user-block">
-                        <h3 class="text-green-500">Modifier le promotion</h3>
+                        <h3 class="text-blue-500">Modifier le promotion</h3>
                     </div>
 
                 </div>
@@ -109,14 +111,14 @@
 
                         <div class="form-group mb-4">
                             <label for="">Designation / Titre</label>
-                            <input type="text" class="form-control" name="designation" value="{{$promotion}}">
+                            <input type="text" class="form-control" name="designation" value="{{$promotion->designation}}">
                         </div>
 
                         <div class="form-group mb-4">
                             <label for="">Choisir une extension</label>
                             <input type="text" name="extension_id">
                             <select name="extension_id" class="form-control" id="">
-                                <option>---Choisir une extension---</option>
+                                <option value="{{$promotion->extension_id}}">---Choisir une extension---</option>
                                 @foreach($extensions as $extension)
                                 <option value="{{$extension->id}}">{{$extension->designation}}</option>
                                 @endforeach
@@ -127,7 +129,7 @@
                             <label for="">Choisir un departement</label>
                             <input type="text" name="departement">
                             <select name="departement_id" class="form-control" id="">
-                                <option>---Choisir un departement---</option>
+                                <option value="{{$promotion->departement_id}}">---Choisir un departement---</option>
                                 @foreach($departements as $departement)
                                 <option value="{{$departement->id}}">{{$departement->title}}</option>
                                 @endforeach
@@ -136,20 +138,20 @@
 
                         <div class="form-group mb-4">
                             <label for="">Prix</label>
-                            <input type="text" class="form-control" name="price">
+                            <input type="text" class="form-control" name="price" value="{{$promotion->price}}">
                         </div>
 
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group mb-4">
                                     <label for="">Date du début <span class="required"> *</span> </label>
-                                    <input type="datetime-local" name="dateBegin" id="" class="form-control">
+                                    <input type="datetime-local" name="dateBegin" id="" class="form-control" value="{{$promotion->dateBegin}}">
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group mb-4">
                                     <label for="">Date de la fin <span class="required"> *</span> </label>
-                                    <input type="datetime-local" name="dateEnd" id="" class="form-control">
+                                    <input type="datetime-local" name="dateEnd" id="" class="form-control" value="{{$promotion->dateEnd}}">
                                 </div>
                             </div>
                         </div>
