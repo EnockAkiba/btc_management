@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Applay;
+use App\Models\Quiz;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,9 +19,17 @@ class ApplayController extends Controller
     public function index()
     {
         $applays=Applay::orderBy('id','DESC')
-        ->where('applays.register_id', Auth::user()->registers->id)
+        ->where('applays.register_id', Auth::user()->registers->first()->id)
         ->paginate(8);
-        return \view('applay.index', \compact('applays'));
+
+        $quizCurrents=Quiz::where('dateEnd','>',\now())
+        ->where('promotion_id',Auth::user()->registers()->orderBy('id','DESC')->first()->promotion_id)
+        ->paginate(8);
+
+        $quizLoses=Quiz::where('register_id','<>',Auth::user()->registers()->orderBy('id','DESC')->first()->id)
+        ->where('promotion_id',Auth::user()->registers()->orderBy('id','DESC')->first()->promotion_id)
+        ->paginate(8);
+        return \view('applay.index', \compact('applays','quizCurrents','quizLoses'));
     }
 
     /**

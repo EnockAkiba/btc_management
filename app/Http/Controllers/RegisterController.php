@@ -94,8 +94,9 @@ class RegisterController extends Controller
         // else{
         //     $registers=[];
         // }
+        $promotions=Promotion::whereDate('dateEnd','>=', now())->get();
 
-        return \view('register.show', \compact('register'));
+        return \view('register.show', \compact('register','promotions'));
     }
 
     /**
