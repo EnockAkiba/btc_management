@@ -29,7 +29,7 @@ class MessageController extends Controller
     public function create()
     {
         
-        $data=Auth::user()->register;
+        $data=Auth::user()->registers;
         
         \dd($data);
     }

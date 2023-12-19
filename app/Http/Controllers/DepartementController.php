@@ -40,9 +40,10 @@ class DepartementController extends Controller
      */
     public function store(Request $request)
     {
-        $validator=Validator::make([
+        $validator=Validator::make(
+            $request->all(),[
             'title'=>'required',
-            'description'=>'required',
+            'description'=>'required'
         ]);
 
         if($validator->fails()){
@@ -99,7 +100,7 @@ class DepartementController extends Controller
         $data=$request->validate(
             [
                 'title'=>'required',
-                'description'=>'required',
+                'description'=>'required'
             ]
         );
 

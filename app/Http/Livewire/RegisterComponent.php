@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Register;
 use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -17,8 +18,8 @@ class RegisterComponent extends Component
 
 
     public function mount(){
-        return $this->registers=User::join('registers','registers.user_id','users.id')
-        ->orderBy('name')
+        return $this->registers=Register::
+        orderBy('registers.id','DESC')
         ->paginate(8);
 
     }
@@ -33,26 +34,21 @@ class RegisterComponent extends Component
         }
         
         return view('livewire.register-component', [
-            'users' => $this->registers
+            'registers' => $this->registers
         ]);
     }
 
 
     public function searchUser()
     {
-        return User::query()
+        return Register::query()
+        ->join('users','registers.user_id','users.id')
         ->where('name', 'like', '%' . $this->search . '%')
         ->orWhere('lastName', 'like', '%' . $this->search . '%')
         ->orWhere('email', 'like', '%'.$this->search .'%')
-        ->join('registers','registers.user_id','users.id')
+        ->orderBy('registers.id','DESC')
         ->orderBy('name')->paginate(8);
 
-    }
-
-    public function register(){
-        // \dd("dwe");
-        echo "colled";
-        return \view('livewire.register');
     }
 
     public function search()

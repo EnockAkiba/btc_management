@@ -16,10 +16,10 @@ class Promotion extends Model
     }
 
     public function register(){
-        return $this->hasMany(Register::class);
+        return $this->belongsTo(Register::class);
     }
 
-    public function quiz(){
+    public function quizzes(){
         return $this->hasMany(Quiz::class);
     }
 
