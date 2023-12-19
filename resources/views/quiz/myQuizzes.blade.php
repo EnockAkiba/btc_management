@@ -4,10 +4,9 @@
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
-            <div class="row mb-2">
+            <div class="row mb-1">
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-left">
-                        <li class="breadcrumb-item title"><a href="{{ route('news') }}">Actualité</a></li>
                         <li class="breadcrumb-item active"> Mes devoirs</li>
                     </ol>
                 </div><!-- /.col -->
@@ -17,26 +16,26 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
-    <section class="content">
-        <div class="container-fluid">
+    <section class="content mt-0">
+        <div class="container-fluid mt-0">
             <div class="row">
                 <div class="col-md-12 col-sm-6">
-                    <div class="card  card-tabs">
-                        <div class="card-header p-0 title">
+                    <div class="card-tabs border-none">
+                        <div class="p-0 border-none">
                             <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active" id="custom-tabs-one-home-tab" data-toggle="pill"
+                                    <a class="bg-blue mx-1 rounded-sm p-1 active" id="custom-tabs-one-home-tab" data-toggle="pill"
                                         href="#custom-tabs-one-home" role="tab"
-                                        aria-controls="custom-tabs-one-home" aria-selected="true">Nouveaux devoirs</a>
+                                        aria-controls="custom-tabs-one-home" aria-selected="true">les devoirs</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill"
+                                    <a class="bg-blue mx-1 rounded-sm p-1" id="custom-tabs-one-profile-tab" data-toggle="pill"
                                         href="#custom-tabs-one-profile" role="tab"
                                         aria-controls="custom-tabs-one-profile"
                                         aria-selected="false">Devoirs remis</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill"
+                                    <a class="bg-blue mx-1 rounded-sm p-1" id="custom-tabs-one-messages-tab" data-toggle="pill"
                                         href="#custom-tabs-one-messages" role="tab"
                                         aria-controls="custom-tabs-one-messages"
                                         aria-selected="false">Devoirs Ratés</a>
@@ -44,7 +43,7 @@
                               
                             </ul>
                         </div>
-                        <div class="card-body pb-20" style="height: 80vh; overflow:auto">
+                        <div class="mt-2 pb-10" style="height: 80vh; overflow:auto ">
 
                             <div class="tab-content" id="custom-tabs-one-tabContent">
 
