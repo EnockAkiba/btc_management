@@ -85,7 +85,7 @@ class QuizController extends Controller
         if($request->file) $file=docStatement('quiz',$request->file );
         else $file=null;
 
-        $data['teacher_id']=Auth::user()->registers()->first()->id;
+        $data['teacher_id']=Auth::user()->teachers()->first()->id;
         $data['slug']=\slug('Qz');
         $data['content']=$content;
         $data['file']=$file;

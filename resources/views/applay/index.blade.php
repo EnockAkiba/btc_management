@@ -42,7 +42,7 @@
                             {{-- news quizzes --}}
                             <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
                                 <div class="row">
-                                    @foreach ($quizCurrents as $quizCurrent)
+                                    @forelse ($quizCurrents as $quizCurrent)
                                     <div class="col-md-3">
                                         <!-- Widget: user widget style 1 -->
                                         <div class="">
@@ -59,7 +59,12 @@
                                         </div>
                                         <!-- /.widget-user -->
                                     </div>
-                                    @endforeach
+                                    @empty
+                                    <div class="font-bold mx-auto">
+                                        <img src="{{asset('admin/images/Radar.gif')}}" class="text-center mx-auto w-20">
+                                         <div class="text-center">Aucun devoir soumit</div>
+                                    </div>
+                                    @endforelse
 
 
                                 </div>
@@ -68,7 +73,7 @@
                             {{-- quizzes  success--}}
                             <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
                                 <div class="row">
-                                    @foreach ($applays as $applay)
+                                    @forelse ($applays as $applay)
                                     <div class="col-md-3">
                                         <!-- Widget: user widget style 1 -->
                                         <div class="">
@@ -84,7 +89,9 @@
                                         </div>
                                         <!-- /.widget-user -->
                                     </div>
-                                    @endforeach
+                                    @empty
+                                  
+                                    @endforelse
 
 
                                 </div>
@@ -93,7 +100,7 @@
                             {{-- quizzes non success --}}
                             <div class="tab-pane fade" id="custom-tabs-one-messages" role="tabpanel" aria-labelledby="custom-tabs-one-messages-tab">
                                 <div class="row">
-                                    @foreach ($quizLoses as $quizLose)
+                                    @forelse ($quizLoses as $quizLose)
                                     <div class="col-md-3">
                                         <!-- Widget: user widget style 1 -->
                                         <div class="">
@@ -109,7 +116,11 @@
                                         </div>
                                         <!-- /.widget-user -->
                                     </div>
-                                    @endforeach
+                                    @empty
+                                    <div class="bg-info  font-bold mx-auto text-center">
+                                        <img src="{{asset('admin/images/Radar.gif')}}" alt="">
+                                    </div>
+                                    @endforelse
 
 
                                 </div>

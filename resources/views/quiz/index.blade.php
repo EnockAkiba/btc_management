@@ -44,7 +44,7 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    @foreach($quizzes as $quizze)
+                                    @forelse($quizzes as $quizze)
 
                                     <th>{{$loop->index +1}}</th>
                                     <th>
@@ -65,8 +65,11 @@
                                     </th>
                                     
                                 </tr>
-
-                                @endforeach
+                                @empty
+                                        <div class="bg-info  font-bold mx-auto text-center">
+                                            <span>Aucun devoir soumit</span>
+                                        </div>
+                                @endforelse
                             </tbody>
                         </table>
                         <div class="flex justify-end">
