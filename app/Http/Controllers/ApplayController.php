@@ -69,6 +69,7 @@ class ApplayController extends Controller
 
         if($request->content) $content=$request->file;
         else $content=NULL;
+    
         
         $data['register_id']=Auth::user()->registers()->orderBy('registers.id','DESC')->first()->id;
         $data['content']=$content;

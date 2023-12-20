@@ -136,7 +136,7 @@ function docStatement($folder, $doc){
 
     if($doc){
         
-        $name = $doc->getName();
+        $name = $doc->getClientOriginalName();
         $size = $doc->getSize();
         $error = $doc->getError();
 
