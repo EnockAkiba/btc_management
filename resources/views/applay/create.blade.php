@@ -37,7 +37,7 @@
                     </p>
                         @elseif($quiz->file)
                         <h5 class="mb-1  flex justify-between">
-                            <span class="p-2 bg-blue-400 text-white"><a href="{{asset('/',$quiz->file)}}">{{$quiz->file}} Ouvrir le fichier</a></span>
+                            <span class="p-2 bg-blue-400 text-white    "><a href="{{asset('/',$quiz->file)}}">{{$quiz->file}} Ouvrir le fichier</a></span>
                         </h5>
                         @endif
                     </div>
