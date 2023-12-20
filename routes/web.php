@@ -11,6 +11,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\RegisterController as ControllersRegisterController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -153,6 +154,19 @@ Route::group(['prefix' => 'user'], function () {
             Route::get("register/{register:slug}/destroy", "destroy")->name("register.destroy");
         });
 
+
+          // USER
+
+          Route::controller(UserController::class)->group(function () {
+            Route::get("user/index", "index")->name("user");
+            Route::get("user/{user:slug}/create", "create")->name("user.create");
+            Route::post("user/store", "store")->name("user.store");
+            Route::get("user/{user:slug}/show", "show")->name("user.show");
+            Route::get("user/{user:slug}/edit", "edit")->name("user.edit");
+            Route::put("user/{user:slug}/update", "update")->name("user.update");
+            Route::get("user/{user:slug}/destroy", "destroy")->name("user.destroy");
+        });
+
         // QUIZ
 
         Route::controller(ApplayController::class)->group(function () {
@@ -166,16 +180,13 @@ Route::group(['prefix' => 'user'], function () {
         });
 
 
-
-
-
         // MESSAGES
 
         Route::controller(MessageController::class)->group(function () {
             Route::get("message/index", "index")->name("message");
             Route::get("message/create", "create")->name("message.create");
             Route::post("message/store", "store")->name("message.store");
-            Route::get("message/{user:slug}/show", "show")->name("message.show");
+            Route::get("message/{user}/show", "show")->name("message.show");
             Route::get("message/{message:slug}/edit", "edit")->name("message.edit");
             Route::put("message/{message:slug}/update", "update")->name("message.update");
             Route::get("message/{message:slug}/destroy", "destroy")->name("message.destroy");

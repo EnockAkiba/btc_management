@@ -12,7 +12,7 @@
                     <div class="card-body overflow-auto pb-10" style="max-height:75vh;">
                         @foreach ($destinators as $user)
                         <div class="flex mb-3">
-                            <a href="{{route('message.edit',$user)}}" class="flex">
+                            <a href="{{route('message.show',$user)}}" class="flex">
                                 @if($user->picture)
                                     <img class="img-circle" src="{{ asset('/'.$user->picture) }}" style="width:40px; height:40px">
                                 @else
@@ -26,9 +26,9 @@
                 </div>
             </div>
 
-            <div class="col-md-8" id="messages">
+            <div class="col-md-8 d-none d-lg-block" id="messages">
                 <!-- DIRECT CHAT PRIMARY -->
-                <div class="card  direct-chat" style="height:80vh;  overflow-auto">
+                <div class="card  direct-chat" style="height:80vh">
                     <div id="welcome" class="h-full flex items-center justify-center">
                         <p class="text-center py-4">
                             Soiyez le premier(e) à envoyer un message
