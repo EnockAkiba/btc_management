@@ -26,9 +26,15 @@ class ApplayController extends Controller
         ->where('promotion_id',Auth::user()->registers()->orderBy('id','DESC')->first()->promotion_id)
         ->paginate(8);
 
-        $quizLoses=Quiz::where('register_id','<>',Auth::user()->registers()->orderBy('id','DESC')->first()->id)
+        $quizLoses=Quiz::where('dateEnd','<',\now())
+        ->join('applays','applays.quiz_id','quizzes.id')
+        ->whereNotIn('register_id', function ($query){
+            $query->select('register_id')->from('applays');
+        })
         ->where('promotion_id',Auth::user()->registers()->orderBy('id','DESC')->first()->promotion_id)
+        ->where('register_id',Auth::user()->registers()->first()->id)
         ->paginate(8);
+
         return \view('applay.index', \compact('applays','quizCurrents','quizLoses'));
     }
 
@@ -37,9 +43,9 @@ class ApplayController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Quiz $quiz)
     {
-        // return \view('applay.create', \compact());
+        return \view('applay.create', \compact('quiz'));
     }
 
     /**
