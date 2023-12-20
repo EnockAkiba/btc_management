@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApplayController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DepartementController;
@@ -152,6 +153,19 @@ Route::group(['prefix' => 'user'], function () {
             Route::get("register/{register:slug}/destroy", "destroy")->name("register.destroy");
         });
 
+        // QUIZ
+
+        Route::controller(ApplayController::class)->group(function () {
+            Route::get("applay/index", "index")->name("applay");
+            Route::get("applay/create/{applay:slug}", "create")->name("applay.create");
+            Route::post("applay/store", "store")->name("applay.store");
+            Route::get("applay/{applay:slug}/show", "show")->name("applay.show");
+            Route::get("applay/{applay:slug}/edit", "edit")->name("applay.edit");
+            Route::put("applay/{applay:slug}/update", "update")->name("applay.update");
+            Route::get("applay/{applay:slug}/destroy", "destroy")->name("applay.destroy");
+        });
+
+
 
 
 
@@ -168,52 +182,6 @@ Route::group(['prefix' => 'user'], function () {
             Route::get("message/{message:slug}/destroy", "destroy")->name("message.destroy");
         });
 
-
-        // QUIZ CRUD
-
-        // Route::get('/register', function () {
-        //     return view('register.register');
-        // })->name('register.register');
-
-        // Route::get('/Devoir/show', function () {
-        //     return view('quiz.show');
-        // })->name('quiz.show');
-
-        Route::get('/MesDevoirs', function () {
-            return view('quiz.myQuizzes');
-        })->name('myQuizzes');
-
-        Route::get('/remettre', function () {
-            return view('applay.create');
-        })->name('applay.create');
-
-        Route::get('/reponse', function () {
-            return view('applay.show');
-        })->name('applay.show');
-
-        // // departements
-        // Route::get('/departements', function () {
-        //     return view('departement.index');
-        // })->name('departement');
-
-        // Route::get('/departement/show', function () {
-        //     return view('departement.show');
-        // })->name('departement.show');
-
-
-
-        // Route::get('/promotion/show', function () {
-        //     return view('promotion.show');
-        // })->name('promotion.show');
-
-      
-        // Route::get('/student/show', function () {
-        //     return view('student.show');
-        // })->name('student.show');
-
-        // Route::get('/user/show', function () {
-        //     return view('users.show');
-        // })->name('user.show');
 
 
 

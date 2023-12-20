@@ -26,8 +26,8 @@ class ApplayController extends Controller
         ->where('promotion_id',Auth::user()->registers()->orderBy('id','DESC')->first()->promotion_id)
         ->paginate(8);
 
-        $quizLoses=Quiz::where('register_id','<>',Auth::user()->registers()->orderBy('id','DESC')->first()->id)
-        ->where('promotion_id',Auth::user()->registers()->orderBy('id','DESC')->first()->promotion_id)
+        $quizLoses=Applay::where('register_id','<>',Auth::user()->registers()->orderBy('id','DESC')->first()->id)
+        // ->where('promotion_id',Auth::user()->registers()->orderBy('id','DESC')->first()->promotion_id)
         ->paginate(8);
         return \view('applay.index', \compact('applays','quizCurrents','quizLoses'));
     }
