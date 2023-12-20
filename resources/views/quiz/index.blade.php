@@ -49,7 +49,7 @@
                                     <th>{{$loop->index +1}}</th>
                                     <th>
                                         @if($quizze->file)
-                                        <a href="{{asset('/'.$quizze->file)}}" class="bg-info p-1 text-sm"> Ouvrir</a>
+                                        <a href="{{asset('/'.$quizze->file)}}" target="_blank" class="bg-info p-1 text-sm"> Ouvrir</a>
                                         @else
                                         <span class="bg-info p-1">Null</span>
                                         @endif
