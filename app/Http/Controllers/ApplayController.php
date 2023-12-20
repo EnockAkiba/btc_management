@@ -18,6 +18,8 @@ class ApplayController extends Controller
      */
     public function index()
     {
+        if(!Auth::user()->registers->first()) return \redirect()->back()->with('warning','Vous n\'êtes apprenant');
+
         $applays=Applay::orderBy('id','DESC')
         ->where('applays.register_id', Auth::user()->registers->first()->id)
         ->paginate(8);
@@ -28,13 +30,12 @@ class ApplayController extends Controller
 
         $quizLoses=Quiz::where('dateEnd','<',\now())
         ->join('applays','applays.quiz_id','quizzes.id')
-        ->whereNotIn('register_id', function ($query){
-            $query->select('register_id')->from('applays');
+        ->whereNotIn('quizzes.id', function ($query){
+            $query->select('quiz_id')->from('applays');
         })
         ->where('promotion_id',Auth::user()->registers()->orderBy('id','DESC')->first()->promotion_id)
-        ->where('register_id',Auth::user()->registers()->first()->id)
+        // ->where('register_id',Auth::user()->registers()->first()->id)
         ->paginate(8);
-
         return \view('applay.index', \compact('applays','quizCurrents','quizLoses'));
     }
 

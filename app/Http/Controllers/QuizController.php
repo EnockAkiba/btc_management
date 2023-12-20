@@ -144,7 +144,7 @@ class QuizController extends Controller
         if($request->content) $content=$request->content ;
         else $content=$request->contentOld;
 
-        if($request->file) $file=$request->file ;
+        if($request->file) $file=\docStatement('quiz', $request->file) ;
         else $file=$request->fileOld;
         
         $data['content']=$content;
@@ -152,7 +152,7 @@ class QuizController extends Controller
 
         $quiz->update($data);
 
-        return \redirect()->back()->with('success','Modifié');
+        return \redirect()->route('quiz')->with('success','Modifié');
         
     }
 
