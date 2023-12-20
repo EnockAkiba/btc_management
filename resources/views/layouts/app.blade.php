@@ -57,7 +57,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="flex justify-between items-center  ">
                     <li class="ml-auto list-none mx-3 text-blue-500 bg-gray-50 p-2 rounded-full">
 
-                        <a class=" ml-auto" href="{{ route('myQuizzes') }}">
+                        <a class=" ml-auto" href="{{ route('applay') }}">
                             <i class="fa-solid fa-book"></i>
                         </a>
                     </li>
