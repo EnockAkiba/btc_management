@@ -26,12 +26,9 @@ class MessageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(User $user)
     {
-        
-        $data=Auth::user()->registers;
-        
-        \dd($data);
+        return view('message.create', \compact('user'));
     }
 
     /**

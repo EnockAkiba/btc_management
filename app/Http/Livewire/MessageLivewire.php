@@ -106,25 +106,6 @@ class MessageLivewire extends Component
         return $listDestinator;
     }
 
-    public function store()
-    {
-
-        if (!isset($this->picture) and !isset($this->content)) {
-            \session()->flash('error', 'Le message est vide !');
-        } else {
-
-            if ($this->picture) $this->picture = \imageConvert("chat/", $this->picture);
-
-            Message::create([
-                'destinator' => $this->destinator,
-                'User_id' => Auth::user()->id,
-                'slug' => \slug('MS'),
-                'content' => $this->content,
-                'picture' => $this->picture
-            ]);
-            \session()->flash('success', 'Envoyé');
-        }
-    }
     public function destroy(Message $message){
         $message->delete();
         \session('success','Effacé');
