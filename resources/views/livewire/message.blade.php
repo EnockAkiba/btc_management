@@ -27,7 +27,7 @@
 
         <div class="col-md-8" id="messages">
             <!-- DIRECT CHAT PRIMARY -->
-            <div class="card  direct-chat" style="height:80vh;  overflow-auto">
+            <div class="card  direct-chat" style="height:80vh;">
                 <div id="welcome" class="h-full flex items-center justify-center">
                     <p class="text-center py-4">
                         Soiyez le premier(e) à envoyer un message

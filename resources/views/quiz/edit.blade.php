@@ -29,7 +29,7 @@
                     <div class="card-body">
                         <div class="row">
 
-                            <div class="col-12">
+                            <div class="col-6">
                                 <div class="form-group">
                                     <label for="">Promotion <span class="required"> *</span> </label>
                                     <select name="promotion_id" id="" class="form-control">
@@ -40,12 +40,15 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="">Attachez un fichier pdf/doc</label>
+                                    <input type="file" class="form-control" name="file" accept="pdf/doc" value="{{$quiz->file}}">
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="">Attachez un fichier pdf/doc</label>
-                            <input type="file" class="form-control" name="file" accept="pdf/doc" value="{{$quiz->file}}">
-                        </div>
+
 
                         <div class="row">
                             <div class="col-6">
@@ -66,8 +69,8 @@
                         <div class="form-group">
                             <label for="">Contenues<span class="required"> *</span></label>
                             <textarea name="content" id="" cols="30" rows="5" class="form-control">
-                                    {{$quiz->content}}
-                                    </textarea>
+                            {{$quiz->content}}
+                            </textarea>
                         </div>
                     </div>
                     <!-- /.card-body -->
@@ -75,7 +78,7 @@
                     <!-- /.card-footer -->
                     <div class="m-3 flex justify-between">
                         <button type="submit" class="btn-valid">Valider</button>
-                        <span class="required ml-auto"> * sont obligatoire </span>
+                        <span class="required ml-auto"> * sont obligatoires </span>
                     </div>
                 </form>
                 <!-- /.card-footer -->

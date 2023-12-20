@@ -71,7 +71,11 @@
 
                                 <div class="flex justify-between items-center mb-3">
                                     <div class="image flex items-center">
+                                        @if($comment->user->picture)
                                         <img class="img-circle img-sm mx-2" src="{{ asset('/' . $comment->user->picture) }}" alt="user">
+                                        @else
+                                        <img class="img-circle img-sm mx-2" src="{{asset('/images/user.png')}}" alt="user">
+                                        @endif
                                         <span class="username">
                                             {{ $comment->user->name }}
                                             <span class="text-muted float-right"></span>

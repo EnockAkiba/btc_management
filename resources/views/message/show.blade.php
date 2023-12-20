@@ -23,10 +23,10 @@
             <div class="row" id="row">
                 <div class="col-md-8">
                     <!-- DIRECT CHAT PRIMARY -->
-                    <div class="card  direct-chat " style="height:80vh;  overflow-auto">
+                    <div class="card  direct-chat " style="height:80vh;">
                       
                         <!-- /.card-header -->
-                        <div class="card-body p-3  " style="height:80vh;  overflow-auto" id="messagesContent">
+                        <div class="card-body p-3  " style="height:80vh;" id="messagesContent">
 
                             <!-- Conversations are loaded here -->
                             <div class="direct-chat-messages  h-full">

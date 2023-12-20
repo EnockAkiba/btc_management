@@ -154,18 +154,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                             </a>
                                         </li>
-                                        <!--
                                         <li class="nav-item ">
-                                            <a href="{{ route('quiz') }}" class="nav-link">
-                                                <i class="fas fa-users" title="Devoirs"></i>
+                                            <a href="{{route('user')}}" class="nav-link">
+                                                <i class="fas fa-users" title="users"></i>
                                             </a>
-                                        </li>    -->
-
-
+                                        </li>    
 
                                         <li class="nav-item">
                                             <a href="{{ route('register') }}" class="nav-link">
-                                                <i class="fas fa-users" title="Profil"></i>
+                                                <i class="fas fa-pen" title="register"></i>
                                             </a>
                                         </li>
                                         <li class="nav-item">
