@@ -151,11 +151,12 @@ function docStatement($folder, $doc){
             $uniqueName = uniqid('Eval', true);
             //uniqid génère quelque chose comme ca : 5f586bf96dcd38.73540086
             $file = $uniqueName.".".$extension;
+
             while(file_exists($emplacement.$file)){
                 $file = $uniqueName.".".$extension;
             }
             // le premier argument de move prend la provenances et le second la destination
-            $doc->move($emplacement,$emplacement.$file);
+            $doc->move($emplacement,$file);
             $file='docs/'.$folder.'/'.$file;
             // echo "document bien deplace ";
         }
