@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithPagination;
 
+use function PHPUnit\Framework\isEmpty;
+
 class MessageLivewire extends Component
 {
 
@@ -95,7 +97,7 @@ class MessageLivewire extends Component
             ->paginate(30);
 
         // si jamais la liste est vide on l'affiche les users recement connected
-        if (!$listDestinator->toArray()) {
+        if (isEmpty($listDestinator)) {
 
             $listDestinator = User::select('id', 'picture', DB::raw('concat(name," ", lastName) as names'))
                 ->orderBy('lastTimeLog', 'DESC')

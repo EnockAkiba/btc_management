@@ -44,12 +44,12 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    @foreach($quizzes as $quizze)
+                                    @forelse($quizzes as $quizze)
 
                                     <th>{{$loop->index +1}}</th>
                                     <th>
                                         @if($quizze->file)
-                                        <a href="{{asset('/'.$quizze->file)}}" class="bg-info p-1 text-sm"> Ouvrir</a>
+                                        <a href="{{asset('/'.$quizze->file)}}" target="_blank" class="bg-info p-1 text-sm"> Ouvrir</a>
                                         @else
                                         <span class="bg-info p-1">Null</span>
                                         @endif
@@ -65,8 +65,11 @@
                                     </th>
                                     
                                 </tr>
-
-                                @endforeach
+                                @empty
+                                        <div class="bg-info  font-bold mx-auto text-center">
+                                            <span>Aucun devoir soumit</span>
+                                        </div>
+                                @endforelse
                             </tbody>
                         </table>
                         <div class="flex justify-end">
