@@ -21,7 +21,7 @@
         <div class="container-fluid">
             <div class="row">
                
-                <div class="card col-md-12 p-0" style="max-height: 80vh; overflow:auto">
+                <div class="card col-md-12 p-0" >
                     <div class="p-0">
                         <div class=" flex items-center justify-between">
                             <h2 class="title mx-3">Les devoirs</h2>
@@ -30,7 +30,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class=" overflow-auto mt-1 py-0">
+                    <div class=" overflow-auto mt-1 py-0" style="max-height: 80vh; overflow:auto">
                         <table class="table table-hover">
                             <thead class="bg-blue-900 text-white">
                                 <th>#</th>
@@ -49,7 +49,7 @@
                                     <th>{{$loop->index +1}}</th>
                                     <th>
                                         @if($quizze->file)
-                                        <a href="{{asset('/'.$quizze->file)}}">Ouvrir</a>
+                                        <a href="{{asset('/'.$quizze->file)}}" class="bg-info p-1 text-sm"> Ouvrir</a>
                                         @else
                                         <span class="bg-info p-1">Null</span>
                                         @endif

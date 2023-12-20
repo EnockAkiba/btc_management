@@ -157,7 +157,7 @@ Route::group(['prefix' => 'user'], function () {
 
         Route::controller(ApplayController::class)->group(function () {
             Route::get("applay/index", "index")->name("applay");
-            Route::get("applay/create/{applay:slug}", "create")->name("applay.create");
+            Route::get("applay/create/{quiz:slug}", "create")->name("applay.create");
             Route::post("applay/store", "store")->name("applay.store");
             Route::get("applay/{applay:slug}/show", "show")->name("applay.show");
             Route::get("applay/{applay:slug}/edit", "edit")->name("applay.edit");
