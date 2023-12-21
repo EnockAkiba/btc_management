@@ -38,7 +38,7 @@
                                 <th>Genre</th>
                                 <th>Phone</th>
                                 <th>Inscrire</th>
-                                <th>Editer</th>
+                                <th>Admin</th>
                                 <th>bloquer</th>
                                 <th>Effacer</th>
                             </thead>
@@ -61,7 +61,10 @@
                                         <a href="{{route('register.create', $user)}}" class="bg-yellow p-2 text-sm"> <i class="fa fa-edit"></i>{{$user->register}}</a>
                                     </th>
                                     @endif
-
+                                    <th>
+                                        <button type="button" wire:click="setAdmin({{$user->id}})"> <i class="fa fa-user-slash"></i>     </button>
+                                    </th>
+                        
                                     <th>
                                         <a href="{{route('register.create', $user)}}" class="bg-blue p-2 text-sm"> <i class="fa fa-lock"></i></a>
                                     </th>
