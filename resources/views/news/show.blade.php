@@ -14,7 +14,11 @@
 
                         <div class="my-3 ml-2 pe-3 flex justify-between items-center" style="height: 44px; width:100%">
                             <div class="flex items-center">
+                                @if($news->user->picture)
                                 <img class="img-circle" style="width:45px; height:45px" src="{{ asset('/' . $news->user->picture) }}" alt="User Image">
+                                @else
+                                <img class="img-circle" style="width:45px; height:45px" src="{{ asset('/images/user.png') }}" alt="User Image">
+                                @endif
                                 <span class="text-sm mx-2 d-none d-lg-block d-md-block"><a href="#">{{ $news->user->name }}</a></span>
                             </div>
                             <span class="mx-2 text-blue-500 text-sm"> <i class="fa fa-calendar text-gray-200"></i> Publiee' {{ $news->created_at->format('d.M.Y H:i') }} </span>

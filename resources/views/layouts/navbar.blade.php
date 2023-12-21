@@ -2,11 +2,16 @@
         <div class="card-body px-2 shadow-none">
             <div class="card-header">
                 <h3 class="flex title items-center">
-                    <div class="img relative">
-                        <img src="{{ asset('/' . Auth::user()->picture) }}" class="rounded-full mx-2" style="width:40px; height:40px">
-                        <span class="bg-green-500 w-4 h-4 absolute rounded-full top-0 right-1 border-2 border-white"></span>
-                    </div>
-                    <span> {{ Auth::user()->name }}</span>
+                    @if(Auth::user()->picture)
+                    <a href="{{route('profile.show')}}">
+                        <img src="{{ asset('/' . Auth::user()->picture) }}" class="rounded-full mx-2 border-2 " style="width:40px; height:40px">
+                    </a>
+                    @else
+                    <a href="{{route('profile.show')}}">
+                        <img src="{{ asset('/images/user.png')}}" class="rounded-full mx-2 border-2 " style="width:40px; height:40px">
+                    </a>
+                    @endif
+                    <span> {{ Auth::user()->name." ".Auth::user()->lastName }}</span>
                 </h3>
             </div>
             <ul class="nav  flex-column">
