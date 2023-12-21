@@ -6,6 +6,7 @@ use App\Models\Applay;
 use App\Models\Quiz;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 use function Ramsey\Uuid\v1;
 
@@ -28,13 +29,14 @@ class ApplayController extends Controller
         ->where('promotion_id',Auth::user()->registers()->orderBy('id','DESC')->first()->promotion_id)
         ->paginate(8);
 
-        $quizLoses=Quiz::where('dateEnd','<',\now())
-        ->join('applays','applays.quiz_id','quizzes.id')
-        ->whereNotIn('quizzes.id', function ($query){
-            $query->select('quiz_id')->from('applays');
+        $quizLoses=Quiz::leftJoin('applays', function ($join) {
+            $join->on('quizzes.id', '=', 'applays.quiz_id')
+            ->where('applays.register_id', '=',  Auth::user()->registers()->first()->id);
         })
-        ->where('promotion_id',Auth::user()->registers()->orderBy('id','DESC')->first()->promotion_id)
-        // ->where('register_id',Auth::user()->registers()->first()->id)
+        ->where('quizzes.dateEnd', '<', now())
+        ->where('quizzes.promotion_id', '=', Auth::user()->registers()->orderBy('id','DESC')->first()->promotion_id)
+        ->whereNull('applays.id')
+        ->select('quizzes.*')
         ->paginate(8);
         return \view('applay.index', \compact('applays','quizCurrents','quizLoses'));
     }
