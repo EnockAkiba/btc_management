@@ -12,14 +12,16 @@
                     <div class="card-body overflow-auto pb-10" style="max-height:75vh;">
                         @foreach ($destinators as $user)
                         <div class="flex mb-3">
-                            <a href="{{route('message.show',$user)}}" class="flex">
+                            <div class="flex">
+                                <button class="" wire:click='test({{$user->id}})'>
                                 @if($user->picture)
                                     <img class="img-circle" src="{{ asset('/'.$user->picture) }}" style="width:40px; height:40px">
                                 @else
                                     <img class="img-circle" src="{{asset('/images/user.png')}}" style="width:40px">
                                 @endif
                                 <h5 class="mx-2 mt-2">{{$user->names}}</h5>
-                            </a>
+                                </button>
+                            </div>
                         </div>
                         @endforeach
                     </div>
