@@ -16,13 +16,8 @@ class UserComponent extends Component
 
 
     public function mount(){
-        return $this->users=User::where('roleUser',0) 
-        ->whereNotIn('id', function($query) {
-            $query->select('user_id')
-            ->from('registers');
-        })
-        ->paginate(8);
-        
+        return $this->users=User::orderBy('name')
+        ->paginate(8);   
     }
 
     public function render()
@@ -53,22 +48,21 @@ class UserComponent extends Component
 
     public function setAdmin(User $user){
 
-        $role=($user->roleUser===2)	? 0:2;
+        $role=($user->roleUser==='2')	? 0:2;
         $user->update(['roleUser'=>$role]);
 
-        return \redirect()->back()>\with('success','Success');
     }
 
     public function setApparitor(User $user){
 
-        $role=($user->roleUser===1)	? 0:1;
+        $role=($user->roleUser==='1')	? 0:1;
         $user->update(['roleUser'=>$role]);
 
     }
 
     public function setBlocked(User $user){
 
-        $role=($user->statut===2)	? 0:2;
+        $role=($user->statut==='2')	? 0:2;
         $user->update(['statut'=>$role]);
     }
 
