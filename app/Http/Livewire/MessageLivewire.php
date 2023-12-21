@@ -76,10 +76,12 @@ class MessageLivewire extends Component
 
     public function searchUser()
     {
-        return User::where('name', 'like', '%' . $this->search . '%')
+        return User::select('id', 'picture','slug', DB::raw('concat(name," ", lastName) as names'))
+            ->where('name', 'like', '%' . $this->search . '%')
             ->orWhere('email', 'like', '%' . $this->search . '$')
             ->orWhere('lastName', 'like', '%' . $this->search . '%')
             ->where('id', '<>', 1)
+            ->where('id','!=',Auth::user()->id)
             ->orderBy('name')->paginate(30);
     }
 
@@ -105,14 +107,14 @@ class MessageLivewire extends Component
 
         $merge = array_merge($messagesSend->toArray(), $messagesReceived->toArray());
 
-        $listDestinator = User::select('id', 'picture', DB::raw('concat(name," ", lastName) as names'))
+        $listDestinator = User::select('id', 'picture','slug', DB::raw('concat(name," ", lastName) as names'))
             ->whereIn('id',  $merge)
             ->paginate(30);
 
         // si jamais la liste est vide on l'affiche les users recement connected
         if (isEmpty($listDestinator)) {
 
-            $listDestinator = User::select('id', 'picture', DB::raw('concat(name," ", lastName) as names'))
+            $listDestinator = User::select('id', 'picture','slug', DB::raw('concat(name," ", lastName) as names'))
                 ->orderBy('lastTimeLog', 'DESC')
                 ->paginate(30);
         }

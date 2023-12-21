@@ -51,6 +51,32 @@ class UserComponent extends Component
 
     }
 
+    public function setAdmin(User $user){
+
+        $role=($user->roleUser===2)	? 0:2;
+        $user->update(['roleUser'=>$role]);
+
+        return \redirect()->back()>\with('success','Success');
+    }
+
+    public function setApparitor(User $user){
+
+        $role=($user->roleUser===1)	? 0:1;
+        $user->update(['roleUser'=>$role]);
+
+    }
+
+    public function setBlocked(User $user){
+
+        $role=($user->statut===2)	? 0:2;
+        $user->update(['statut'=>$role]);
+    }
+
+    public function destroy(User $user){
+
+        $user->delete();
+
+    }
 
     public function search()
     {
