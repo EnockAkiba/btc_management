@@ -33,7 +33,7 @@
                         <table class="table table-hover">
                             <thead class="bg-blue-900 text-white">
                                 <th>#</th>
-                                <th>Nom complet</th>
+                                <th colspan="3">Nom complet</th>
                                 <th>Email</th>
                                 <th>Genre</th>
                                 <th>Phone</th>
@@ -48,7 +48,7 @@
 
 
                                     <th>{{$loop->index +1}}</th>
-                                    <th><a href="{{route('register.show',$user)}}" class="text-blue-500"> {{$user->name ." ".$user->lastName}}</a></th>
+                                    <th colspan="3"><a href="{{route('register.show',$user)}}" class="text-blue-500"> {{$user->name ." ".$user->lastName}}</a></th>
                                     <th>{{$user->email}}</th>
                                     <th>{{$user->sex}}</th>
                                     <th>{{$user->phone}}</th>

@@ -20,8 +20,12 @@
 
                             <div class="mb-1 ml-2 pe-3 flex justify-between items-center" style="height: 50px; width:100%">
                                 <div class="flex items-center">
+                                    @if($new->user->picture)
                                     <img class=" rounded-full" style="width:45px; height:45px" src="{{ asset('/' . $new->user->picture) }}" alt="User Image">
-                                </div>
+                                    @else
+                                        <img class=" rounded-full" style="width:45px; height:45px" src="{{asset('/images/user.png')}}">
+                                    @endif
+                                  </div>
                                 <span class="mx-2 date"><i class="fa fa-calendar text-gray-200"></i> {{ $new->created_at->format('d.M.Y H:i') }} </span>
                             </div>
 

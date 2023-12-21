@@ -20,7 +20,7 @@
 <section class="content" style="max-height: 80vh; overflow:auto">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
 
                 <!-- Profile Image -->
                 <div class="card border-t-2 border-t-blue-500">
@@ -28,13 +28,16 @@
                         <form action="{{route('setProfilePicture')}}" method="post" enctype="multipart/form-data" class="p-1">
                             @csrf
                             <div class="text-center w-full">
+                                @if(Auth::user()->picture)
                                 <label for="img-input" id="photoShow"> <img class="rounded-3xl shadow-sm border-2 w-full" src="{{asset('/'.Auth::user()->picture)}}" style="max-width: 250px;" alt="Add picture" id='file-preview'></label>
+                                @else
+                                <label for="img-input" id="photoShow"> <img class="rounded-3xl shadow-sm border-2 w-full" src="{{asset('/images/user.png')}}" style="max-width: 250px;" alt="Add picture" id='file-preview'></label>
+                
+                                @endif
                                 <input type="file" class="form-control photo d-none" name="picture" accept="image/*" id="img-input" onchange="showFile(event)" onclick="showBtn()">
                             </div>
 
-                            <h3 class="profile-username text-center">{{ Auth::user()->name }}</h3>
-
-                            <p class="text-muted text-center"> Student</p>
+                            <h3 class="profile-username text-center">{{ Auth::user()->name." ".Auth::user()->lastName }}</h3>
 
                             <div class="flex justify-center mt-4">
                                 <button type="submit" class="bg-blue-400 p-2 mx-auto text-white" id="btn">Modifier la
