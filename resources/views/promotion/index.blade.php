@@ -93,7 +93,6 @@
 
                         <div class="form-group mb-4">
                             <label for="">Choisir une extension</label>
-                            <input type="text" name="extension_id">
                             <select name="extension_id" class="form-control" id="">
                                 <option>---Choisir une extension---</option>
                                 @foreach($extensions as $extension)

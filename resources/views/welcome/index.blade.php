@@ -504,7 +504,7 @@
                                                         <div class="hr-divider hr-divider-layout-1 accent-color"></div>
 
                                                         <div class="section-title-content">
-                                                            <p>De 2001 à nos jours, l'école BTC a été un facteur contributif majeur à l'accès à l'emploi de milliers d'étudiants ayant terminé avec succès leur formation.</p>
+                                                            <p style="text-align: left;">De 2001 à nos jours, l'école BTC a été un facteur contributif majeur à l'accès à l'emploi de milliers d'étudiants ayant terminé avec succès leur formation.</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -565,7 +565,7 @@
                                                         <div class="hr-divider hr-divider-layout-1 accent-color"></div>
 
                                                         <div class="section-title-content">
-                                                            <p>
+                                                            <p style="text-align: left;">
                                                                 Enseignants très qualifiés, expérimentés et certains au Standing des Nations Unies et ou fruits des ISP, de de Southern New Hampshire University (USA), De "International University of East Africa"(Kampala)
                                                             </p>
                                                         </div>

@@ -1,11 +1,11 @@
 @extends('layouts.guest')
 
 @section('content')
-    <div class="row p-2 justify">
-        <div class="col-md-3 col-12 flex justify-center items-center">
+    <div class="row p-2">
+        <div class="col-md-3 flex justify-center items-center">
             <img src="{{ asset('images/logo.png') }}" alt="Logo" class="brand-image " style="width:100% "> </a>
         </div>
-        <div class="col-md-9 col-12">
+        <div class="col-md-9">
             <div class="card-body login-card-body">
                 <p class="text-3xl  text-blue-400 font-bold my-4 ">S'inscrire</p>
                 <hr>

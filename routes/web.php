@@ -52,6 +52,10 @@ Route::get('/home', [HomeController::class, 'index'])->middleware(['auth', 'veri
 
 Route::get('account/verify/{slug}', [RegisterController::class, 'verifyAccount'])->name('user.verify');
 
+Route::get('/test', function () {
+    return view('mails.emailVerificationEmail');
+});
+
 
 Route::group(['prefix' => 'user'], function () {
 
@@ -145,7 +149,7 @@ Route::group(['prefix' => 'user'], function () {
           // REGISTER
 
           Route::controller(ControllersRegisterController::class)->group(function () {
-            Route::get("register/index", "index")->name("register");
+            Route::get("register/index", "index")->name("register_user");
             Route::get("register/{user:slug}/create", "create")->name("register.create");
             Route::post("register/store", "store")->name("register.store");
             Route::get("register/{register:slug}/show", "show")->name("register.show");
