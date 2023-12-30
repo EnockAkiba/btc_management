@@ -50,10 +50,10 @@
                                 <tr>
                                     @foreach($users as $user)
 
-                                    @if($user->id !=1)
+                                  
 
-                                    <th>{{$loop->index}}</th>
-                                    <th colspan="3"><a href="{{route('user.show',$user)}}" class="text-blue-500"> {{$user->name ." ".$user->lastName}}</a></th>
+                                    <th>{{$loop->index+1}}</th>
+                                    <th colspan="3"><a href="{{route('register.show',$user)}}" class="text-blue-500"> {{$user->name ." ".$user->lastName}}</a></th>
                                     <th>{{$user->email}}</th>
                                     <th>{{$user->sex}}</th>
                                     <th>{{$user->phone}}</th>
@@ -61,14 +61,14 @@
                                         <a href="{{route('register.create', $user)}}" class="bg-success p-1 text-sm rounded-sm"> <i class="fa fa-layer-group"></i> </a>
                                     </th>
                                     @if (Auth::user()->roleUser == 2)
-
+                                    
                                     <th class="mx-0">
                                         <button type="button" wire:click="setAdmin({{$user->id}})" class="bg-{{$user->roleUser==2?'red':'yellow'}}  p-1 text-sm rounded-sm"> <i class="fa {{$user->roleUser==2?'fa-shield-halved':'fa fa-user-slash'}}"></i> </button>
                                     </th>
                                     <th class="mx-0">
                                         <button type="button" wire:click="setTeaecher({{$user->id}})" class="bg-{{collect($user->teachers)->isNotEmpty()?'green':'blue'}}  p-1 text-sm rounded-sm"> <i class="fa {{collect($user->teachers)->isNotEmpty()?'fa-user':'fa fa-user-slash'}}"></i> </button>
                                     </th>
-
+                                    
                                     <th>
                                         <button type="button" wire:click="setBlocked({{$user->id}})" class="bg-{{$user->statut==2?'red':'yellow'}}  p-1 text-sm rounded-sm"> <i class="fa {{$user->statut==2?'fa-user-slash':'fa fa-user'}}"></i> </button>
                                     </th>
@@ -82,7 +82,7 @@
                                     @endif
                                 </tr>
 
-                                @endif
+                             
 
                                 @endforeach
                             </tbody>
@@ -98,52 +98,59 @@
     <!-- /.content -->
 </div>
 <style>
+   
     .table th:nth-child(1),
-    .table td:nth-child(1) {
+    .table td:nth-child(1)
+    {
         width: 3%;
     }
-
     .table th:nth-child(2),
-    .table td:nth-child(2) {
+    .table td:nth-child(2)
+    {
         width: 30%;
     }
 
     .table th:nth-child(3),
-    .table td:nth-child(3) {
+    .table td:nth-child(3)
+    {
         width: 30%;
     }
 
     .table th:nth-child(4),
-    .table td:nth-child(4) {
+    .table td:nth-child(4)
+    {
         width: 2%;
     }
-
     .table th:nth-child(5),
-    .table td:nth-child(5) {
+    .table td:nth-child(5)
+    {
         width: 10%;
         text-align: center;
     }
 
     .table th:nth-child(6),
-    .table td:nth-child(6) {
+    .table td:nth-child(6)
+    {
         width: 10%;
         text-align: center;
     }
-
     .table th:nth-child(7),
-    .table td:nth-child(7) {
+    .table td:nth-child(7)
+    {
         width: 10%;
         text-align: center;
     }
 
     .table th:nth-child(8),
-    .table td:nth-child(8) {
+    .table td:nth-child(8)
+    {
         width: 10%;
         text-align: center;
     }
 
     .table th:nth-child(9),
-    .table td:nth-child(9) {
+    .table td:nth-child(9)
+    {
         width: 10%;
         text-align: center;
     }

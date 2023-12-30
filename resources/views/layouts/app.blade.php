@@ -305,7 +305,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         Toastify({
             text: "{{ session('warning') }}",
             close: true,
-            backgroundColor: "red",
+            backgroundColor: "#edc45a",
             duration: 3000
         }).showToast();
         @endif

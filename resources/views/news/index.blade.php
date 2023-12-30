@@ -41,7 +41,7 @@ collect(Auth::user()->registers)->isNotEmpty()
     <div class="container">
         <div class="row">
             <div class="col-sm-12 text-center">
-                    <h1>Brotherly Training Center </h1>
+                    <h1 class="">Brotherly Training Center </h1>
                     <p class="text-red text-md my-4">Vous n'étez pas inscrit </p>
                     <p>
                      Veuillez passer au bureau de BTC pour prendre l'inscription, en fin de profiter  toutes fonctionaliés de notre plateforme

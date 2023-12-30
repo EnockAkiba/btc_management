@@ -133,9 +133,9 @@ Route::group(['prefix' => 'user'], function () {
             Route::get("promotion/{promotion:slug}/destroy", "destroy")->name("promotion.destroy");
         });
 
-         // QUIZ
+        // QUIZ
 
-         Route::controller(QuizController::class)->group(function () {
+        Route::controller(QuizController::class)->group(function () {
             Route::get("quiz/index", "index")->name("quiz");
             Route::get("quiz/create", "create")->name("quiz.create");
             Route::post("quiz/store", "store")->name("quiz.store");
@@ -146,30 +146,34 @@ Route::group(['prefix' => 'user'], function () {
         });
 
 
-          // REGISTER
+        // REGISTER
+        Route::group(['middleware' => ['checkAdmin']], function () {
 
-          Route::controller(ControllersRegisterController::class)->group(function () {
-            Route::get("register/index", "index")->name("register_user");
-            Route::get("register/{user:slug}/create", "create")->name("register.create");
-            Route::post("register/store", "store")->name("register.store");
-            Route::get("register/{register:slug}/show", "show")->name("register.show");
-            Route::get("register/{register:slug}/edit", "edit")->name("register.edit");
-            Route::put("register/{register:slug}/update", "update")->name("register.update");
-            Route::get("register/{register:slug}/destroy", "destroy")->name("register.destroy");
+            Route::controller(ControllersRegisterController::class)->group(function () {
+                Route::get("register/index", "index")->name("register_user");
+                Route::get("register/{user:slug}/create", "create")->name("register.create");
+                Route::post("register/store", "store")->name("register.store");
+                Route::get("register/{register:slug}/show", "show")->name("register.show");
+                Route::get("register/{register:slug}/edit", "edit")->name("register.edit");
+                Route::put("register/{register:slug}/update", "update")->name("register.update");
+                Route::get("register/{register:slug}/destroy", "destroy")->name("register.destroy");
+            });
+
+            // USER
+
+            Route::controller(UserController::class)->group(function () {
+                Route::get("user/index", "index")->name("user");
+                Route::get("user/{user:slug}/create", "create")->name("user.create");
+                Route::post("user/store", "store")->name("user.store");
+                Route::get("user/{user:slug}/show", "show")->name("user.show");
+                Route::get("user/{user:slug}/edit", "edit")->name("user.edit");
+                Route::put("user/{user:slug}/update", "update")->name("user.update");
+                Route::get("user/{user:slug}/destroy", "destroy")->name("user.destroy");
+            });
         });
 
 
-          // USER
 
-          Route::controller(UserController::class)->group(function () {
-            Route::get("user/index", "index")->name("user");
-            Route::get("user/{user:slug}/create", "create")->name("user.create");
-            Route::post("user/store", "store")->name("user.store");
-            Route::get("user/{user:slug}/show", "show")->name("user.show");
-            Route::get("user/{user:slug}/edit", "edit")->name("user.edit");
-            Route::put("user/{user:slug}/update", "update")->name("user.update");
-            Route::get("user/{user:slug}/destroy", "destroy")->name("user.destroy");
-        });
 
         // QUIZ
 
@@ -195,12 +199,5 @@ Route::group(['prefix' => 'user'], function () {
             Route::put("message/{message:slug}/update", "update")->name("message.update");
             Route::get("message/{message:slug}/destroy", "destroy")->name("message.destroy");
         });
-
-
-
-
-
-
-
     });
 });
