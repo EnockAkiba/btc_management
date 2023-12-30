@@ -925,31 +925,31 @@
                                             <div class="social-networks social-networks-xs social-networks-layout-1 social-networks-layout-transparent">
                                                 <ul>
                                                     <li>
-                                                        <a href="#" title="Facebook">
+                                                        <a href="https://www.facebook.com/btcgomadrc" title="Facebook">
                                                             <i class="fab fa-facebook-f"></i>
                                                             <i class="fab fa-facebook-f"></i>
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a href="#" title="Twitter">
+                                                        <a href="https://twitter.com/login" title="Twitter">
                                                             <i class="fab fa-twitter"></i>
                                                             <i class="fab fa-twitter"></i>
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a href="#" title="youtube">
+                                                        <a href="https://www.youtube.com/?app" title="youtube">
                                                             <i class="fab fa-youtube"></i>
                                                             <i class="fab fa-youtube"></i>
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a href="#" title="Behance">
+                                                        <a href="https://www.behance.com" title="Behance">
                                                             <i class="fab fa-behance"></i>
                                                             <i class="fab fa-behance"></i>
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a href="#" title="Dribbble">
+                                                        <a href="https://www.dribbble.com" title="Dribbble">
                                                             <i class="fab fa-dribbble"></i>
                                                             <i class="fab fa-dribbble"></i>
                                                         </a>

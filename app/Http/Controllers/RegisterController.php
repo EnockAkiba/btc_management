@@ -53,7 +53,7 @@ class RegisterController extends Controller
         $modele=Register::where('user_id',$request->user_id)
         ->where('promotion_id',$request->promotion_id)
         ->first();
-        if($modele) return \redirect()->route('register')->with('warning','Apprenant déjà inscit');
+        if($modele) return \redirect()->route('register_user')->with('warning','Apprenant déjà inscit');
 
         $index=Register::select('index')->where('user_id',$request->user_id)->first();
 
@@ -86,14 +86,7 @@ class RegisterController extends Controller
      */
     public function show(Register $register)
     {
-        // $user=User::where('users.id',$register->user_id)->first();
-        // \dd($user->register);
-        // if(\collect($user->registers)->isNotEmpty()){
-        //     $registers=$user->registers;
-        // }
-        // else{
-        //     $registers=[];
-        // }
+        
         $promotions=Promotion::whereDate('dateEnd','>=', now())->get();
 
         return \view('register.show', \compact('register','promotions'));
@@ -125,7 +118,6 @@ class RegisterController extends Controller
         $data=$request->validate([
             'user_id'=>'required',
             'promotion_id'=>'required',
-            'index'=>'required',
             'vacation'=>'required',
         ]);
 
@@ -139,7 +131,7 @@ class RegisterController extends Controller
         $data['respoName']=$respoName;
         $data['respoNumber']=$respoNumber;
         $register->update($data);
-        return \redirect()->route('register')->with('success','Modifié');
+        return \redirect()->route('register_user')->with('success','Modifié');
     }
 
     /**

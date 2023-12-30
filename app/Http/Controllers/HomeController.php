@@ -29,7 +29,7 @@ class HomeController extends Controller
 
     public function welcome(){
 
-        $promotions=Promotion::get();
+        $promotions=Promotion::whereDate('dateEnd','>=', now())->get();
         $news=News::where('type','1')->orderBy('id','DESC')->take(10)->get();
         return \view('welcome.index', \compact('news','promotions'));
     }
