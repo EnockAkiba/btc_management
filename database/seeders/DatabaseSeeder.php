@@ -30,13 +30,16 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         DB::table('users')->insert([
-            'name' => 'paul',
+            'name' => 'BTC ADMIN',
             'lastName'=> 'BTC',
             'slug'=>'User01',
-            'phone'=>'4894734',
-            'sex'=>'H',
-            'email' => 'paul@gmail.com',
-            'password' => Hash::make('paul@gmail.com'),
+            'phone'=>'0973111973',
+            'sex'=>'M',
+            'email_verified_at'=>now(),
+            'email' => 'btcagapd-drc@btcagaped.com',
+            'roleUser'=>'2',
+            'remember_token'=>'1',
+            'password' => Hash::make('AdminBtc@2001'),
         ]);
 
     }

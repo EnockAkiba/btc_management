@@ -184,7 +184,7 @@
                                     <div class="col-lg-6">
 
                                         <div class="footer-section-copyright-content light-color text-center text-lg-start">
-                                            <p>&copy; <span class="current-year">2021</span> designed &amp; developed by <a href="#" title="Graphicfort">Graphicfort</a>, all rights reserved.</p>
+                                            <p>&copy; <span class="current-year"></span> designed &amp; btc agapd all rights reserved.</p>
                                         </div>
                                     </div>
 

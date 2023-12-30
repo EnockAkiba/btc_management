@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade')->onPdate('cascade');
             $table->string('picture')->nullable();
             $table->text('biography')->nullable();
-            $table->string('gmail');
+            $table->string('gmail')->nullable();
             $table->string('slug');
             $table->timestamps();
         });

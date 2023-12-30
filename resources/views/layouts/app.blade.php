@@ -55,12 +55,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <!-- <span class="title text-sm">BTC</span> -->
                 </a>
                 <div class="flex justify-between items-center  ">
+                   
+                @if(collect(Auth::user()->registers)->isNotEmpty())
                     <li class="ml-auto list-none mx-3 text-blue-500 bg-gray-50 p-2 rounded-full">
 
                         <a class=" ml-auto" href="{{ route('applay') }}">
                             <i class="fa-solid fa-book"></i>
                         </a>
                     </li>
+                @endif
                     <li class="ml-auto list-none mx-3 text-blue-500 bg-gray-50 p-2 rounded-full">
 
                         <a class=" ml-auto" href="{{route('message')}}">
@@ -140,11 +143,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             </a>
                                         </li>
 
-                                        <!-- <li class="nav-item">
-                                            <a href="{{ route('message') }}" class="nav-link">
-                                                <i class="fa fa-comment" title="messages"></i>
+                                       
+                                                
+                                        @if(Auth::user()->teachers)
+                                        <li class="nav-item ">
+                                            <a href="{{ route('quiz') }}" class="nav-link">
+                                                <i class="fas fa-book" title="Devoirs"></i>
+
                                             </a>
-                                        </li> -->
+                                        </li>
+                                        @endif
+
+                                        @if (Auth::user()->roleUser == 2)
 
                                         <li class="nav-item ">
                                             <a href="{{ route('promotion') }}" class="nav-link">
@@ -152,24 +162,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             </a>
                                         </li>
 
-
-                                        <li class="nav-item ">
-                                            <a href="{{ route('quiz') }}" class="nav-link">
-                                                <i class="fas fa-book" title="Devoirs"></i>
-
-                                            </a>
-                                        </li>
                                         <li class="nav-item ">
                                             <a href="{{route('user')}}" class="nav-link">
                                                 <i class="fas fa-users" title="users"></i>
                                             </a>
-                                        </li>    
+                                        </li>  
 
                                         <li class="nav-item">
                                             <a href="{{ route('register') }}" class="nav-link">
                                                 <i class="fas fa-pen" title="register"></i>
                                             </a>
+                                        </li> 
+                                        
+                                        @elseif(Auth::user()->roleUser == 1)
+                                        <li class="nav-item">
+                                            <a href="{{ route('register') }}" class="nav-link">
+                                                <i class="fas fa-pen" title="register"></i>
+                                            </a>
                                         </li>
+                                        @endif
                                         <li class="nav-item">
                                             <form method="POST" action="{{ route('logout') }}">
                                                 @csrf
