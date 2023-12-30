@@ -513,24 +513,27 @@
                                             <div class="gap gap-36"></div>
                                         </div>
                                         @foreach($promotions as $promotion)
+                                        
                                         <div class="col-lg-3 col-md-6">
 
                                             <div class="p-0 main-block image-block image-block-layout-3 boxed-block-2y white-color-bg grey-2-color-border text-center" data-animation="animate__zoomIn">
 
                                                 <div class="main-block-container image-block-container">
 
-                                                    <div class="main-block-header image-block-header">
+                                                    <div class="main-block-header image-block-header position-relative">
                                                         <a href="#">
-                                                            <img src="{{asset('images/defense.jpg')}}" alt="Image">
+                                                            <img src="{{asset('/'.$promotion->departement->picture)}}" alt="Image">
                                                         </a>
+                                                        <h6 class=" position-absolute pt-2 rounded-circle" style="background: darkblue; color:white; height:38px; width:40px ; bottom:-10%">${{$promotion->price}}</h6>
                                                     </div>
 
-                                                    <div class="main-block-body image-block-body p-3">
-
-                                                        <div class="main-block-heading image-block-heading">
-                                                            <h5>Haircuts &amp; blow dry</h5>
-                                                            <h6 class="body-color font-weight-400 primary-font-family">Start from $100</h6>
-                                                        </div>
+                                                    <div class="content p-2">
+                                                            <span class="d-block m-2" style="text-align: left;">Promotion : <span style="font-weight: bold;">{{$promotion->designation}}</span></span>
+                                                            <span class="d-block m-2" style="text-align: left;">Departement : <span style="font-weight: bold;">{{$promotion->departement->title}}</span></span>
+                                                            <span class="d-block m-2" style="text-align: left;">Debut : <span style="font-weight: bold;">{{date_format(date_create($promotion->dateBegin),'d.M.Y')}}</span></span>
+                                                            <span class="d-block m-2" style="text-align: left;">Finie : <span style="font-weight: bold;">{{date_format(date_create($promotion->dateEnd),'d.M.Y')}}</span></span>
+                                                            <span class="d-block m-2" style="text-align: left;">Extension : <span style="font-weight: bold;">{{$promotion->extension->designation}}</span></span>
+                                                                                          
                                                     </div>
                                                 </div>
                                             </div>
@@ -847,7 +850,8 @@
                                         <div class="col-lg-8 offset-lg-2" id="contact">
                                             <div class="form-block form-block-validation form-block-contact">
                                                 <div class="form-block-container">
-                                                    <form method="post" action="assets/php/contact/contact.php" class="row">
+                                                    <form method="post" action="{{route('sendMail')}}" class="row">\
+                                                        @csrf
                                                         <div class="col-md-6">
                                                             <label class="label">
                                                                 Nom <span class="red-color">*</span>
