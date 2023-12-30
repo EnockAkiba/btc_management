@@ -41,13 +41,13 @@ collect(Auth::user()->registers)->isNotEmpty()
     <div class="container">
         <div class="row">
             <div class="col-sm-12 text-center">
-                    <h1>Brotherly training center </h1>
-                    <p class="text-red text-md my-4">Vous étez pas inscrit </p>
+                    <h1>Brotherly Training Center </h1>
+                    <p class="text-red text-md my-4">Vous n'étez pas inscrit </p>
                     <p>
-                        Stp! Veuillez passer au bureau de btc pour prendre l'inscription, en fin de profiter les toutes fonctionaliés de notre plateforme
+                     Veuillez passer au bureau de BTC pour prendre l'inscription, en fin de profiter  toutes fonctionaliés de notre plateforme
                     </p>
                     <p class="my-3">
-                        Pour plus d'information contact l'administateur <a href="tel:098765431" class="text-blue">  en cliquant ici</a>
+                        Pour plus d'information contact l'administration <a href="tel:+243973111973" class="text-blue">  en cliquant ici</a>
                     </p>
             </div>
             <!-- /.col -->

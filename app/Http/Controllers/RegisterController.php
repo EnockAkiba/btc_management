@@ -75,7 +75,7 @@ class RegisterController extends Controller
         
         Register::create($data);
 
-        return \redirect()->route('register')->with('success','Ajouté');
+        return \redirect()->route('register_user')->with('success','Ajouté');
     }
 
     /**

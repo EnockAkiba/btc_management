@@ -194,6 +194,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         </li>
 
                                         @elseif(Auth::user()->roleUser == 1)
+                                        <li class="nav-item ">
+                                            <a href="{{route('user')}}" class="nav-link">
+                                                <i class="fas fa-users" title="users"></i>
+                                            </a>
+                                        </li>
                                         <li class="nav-item">
                                             <a href="{{ route('register_user') }}" class="nav-link">
                                                 <i class="fas fa-pen" title="register"></i>
