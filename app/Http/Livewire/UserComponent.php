@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Teacher;
 use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -64,6 +65,16 @@ class UserComponent extends Component
 
         $role=($user->statut==='2')	? 0:2;
         $user->update(['statut'=>$role]);
+    }
+
+    public function setTeaecher(User $user){
+        
+        $data['slug']=\slug('TEA');
+
+        Teacher::updateOrCreate(
+            ['user_id'=>$user->id],
+            $data
+        );
     }
 
     public function destroy(User $user){

@@ -35,7 +35,7 @@ use Illuminate\Support\Facades\Route;
 Route::controller(HomeController::class)->group(function () {
     Route::get("/", "welcome")->name("welcome");
     Route::get("/actualites", "blog")->name("blog");
-    Route::get("/actualite/{new:slug}", "show")->name("blog.show");
+    Route::get("/actualite/{news:slug}", "show")->name("blog.show");
     Route::get("/equipes", "teachers")->name("teachers");
 });
 

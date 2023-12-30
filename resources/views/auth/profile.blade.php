@@ -120,7 +120,7 @@
                                     <div class="col-12 col-md-6">
                                         <div class="form-group">
                                             <label for="" class="text-blue-400">Email</label>
-                                            <input type="text" name="phone" class="form-control" value="{{Auth::user()->email}}">
+                                            <input type="text" name="email" class="form-control" value="{{Auth::user()->email}}">
                                         </div>
                                     </div>
                                 </div>

@@ -51,6 +51,7 @@
                                     @endif
                                     @endif
                                     <div class=" cursor-pointer text-center  p-2 rounded-full" wire:click="like({{ $new->id }})">
+                                        
                                         <span>{{ count($new->like) }} <i class="fa fa-heart text-red-300" aria-hidden="true"></i></span>
                                     </div>
                                     <a href="{{ route('news.show', $new) }}" class=" text-center p-2 ml-2 rounded-full">

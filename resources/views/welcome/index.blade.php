@@ -35,35 +35,8 @@
 </head>
 
 <body>
-    <!-- 
-	<div id="graphicfort-elements" class="notification-block graphicfort-notification-block notification-block-layout-2" data-cookie-name="graphicfort-elements" data-cookie-expire="0">
-
-		<div class="notification-block-container">
-
-			<div class="notification-block-body white-color-bg">
-
-				<div class="notification-block-content">
-					<p class="notification-image">
-						<a href="https://1.envato.market/c/3850903/298927/4662" target="_blank">
-							<img src="../assets/images/misc/notification-envato-elements.jpg" alt="envato elements" width="348" height="182">
-						</a>
-					</p>
-					<p>Complete your website with millions of creative photos, icons, graphics, and much more...</p>
-					<p>
-						<a class="btn btn-block btn-lg btn-danger" href="https://1.envato.market/c/3850903/298927/4662" target="_blank">
-							<span class="btn-text">Get unlimited downloads</span>
-						</a>
-					</p>
-				</div>
-
-				<div class="notification-block-footer notification-block-footer-x-close">
-					<button class="btn-notification-dismiss">&times;</button>
-				</div>
-			</div>
-		</div>
-	</div> -->
-
-    <div id="main-wrapper">
+  
+  <div id="main-wrapper">
 
         <div id="main-container">
 
@@ -116,7 +89,7 @@
                                             <li class="nav-item">
                                                 <a class="nav-link" href="/user/login"><span>Se connecter</span></a>
                                             </li>
-                                            <li class="nav-item nav-item-languages">
+                                            <!-- <li class="nav-item nav-item-languages">
                                                 <a class="nav-link" href="#"><span>EN</span></a>
                                                 <ul>
                                                     <li class="nav-item">
@@ -135,7 +108,7 @@
                                                         </a>
                                                     </li>
                                                 </ul>
-                                            </li>
+                                            </li> -->
                                         </ul>
                                     </div>
                                 </div>
@@ -185,7 +158,7 @@
                                                                                 <div class="section-title-heading">
                                                                                     <h4 class="h3 font-weight-500">BROTHERLY TRAINING CENTER</h4>
                                                                                 </div>
-                                                                                <p style="font-size: 1rem;text-align:justify">
+                                                                                <p style="font-size: 1rem;text-align:left">
                                                                                     Brotherly Training Center/B.T.C est le programme Education de l'ASBL Action Généreuse d'Appui Pérenne au Développent AGAPD/ Asbl, BTC est une grande école de langues traitant de la logistique humanitaire, de l'informatique, de la conduite, de l'art culinaire, des enseignements d'allemand, de français, d'anglais, de swahili et d'espagnol L'école est opérationnelle à Katindo afia bora /Goma depuis plus de 20 ans.
                                                                                 </p>
                                                                             </div>
@@ -218,7 +191,7 @@
                                                                                 <div class="section-title-heading">
                                                                                     <h4 class="h3 font-weight-500">NOS VISIONS</h4>
                                                                                 </div>
-                                                                                <p style="font-size: 1rem;text-align:justify">
+                                                                                <p style="font-size: 1rem;text-align:left">
                                                                                     Notre vision est de former des personnes autonomes qui sont économiquement indépendantes pour toute la vie ; Nous rêvons d'étendre nos activités à travers des formations professionnelles
                                                                                 </p>
                                                                             </div>
@@ -262,7 +235,7 @@
                                                                                 <div class="section-title-heading">
                                                                                     <h3 class="h3 font-weight-500"> NOTRE ADRESSE</h3>
                                                                                 </div>
-                                                                                <p style="font-size: 1rem;text-align:justify">
+                                                                                <p style="font-size: 1rem;text-align:left">
                                                                                     DRC/GOMA: BTC AFIA BORA, BTC MUGUNGA, BTC KATOYI, BTC MINOVA
                                                                                     Si vous orientez quelqu'un pour étudier chez BTC Afia Bora, veuillez toujours attirer son attention sur la présence de deux centres de langues dans le même bâtiment. Dites lui que nous c'est BTC-AGAPD/Asbl
                                                                                 </p>
@@ -316,17 +289,17 @@
                                                         </div>
 
                                                         <div class="main-block-content icon-block-content">
-                                                            <p style="text-align: justify;">
+                                                            <p style="text-align: left;">
                                                                 Actions humanitaires en éducation pour orphelins et enfants vulnérables à Goma et Nord/Sud Kivu, formation accélérée en langues (anglais, français, chinois), niveau-3 chez BTC pour préparer à la vie professionnelle via méthodes d'enseignement endragogique, traduction/interprétation, entrepreneuriat, gestion de projets, leadership, composition avancée, homilétique.
 
                                                             </p>
                                                             <hr>
-                                                            <p style="text-align: justify;">
+                                                            <p style="text-align: left;">
                                                                 Niveau-2 et 3 : défense publique ou réussite test niveau 60% en grammaire, conjugaison, composition, dictée, exposé, listening et dialogue. GONGS (vacations) : 6-7h30, 8-9h30, 10-12 et 16-17h30 pour élèves et enseignants vacanciers.
 
                                                             </p>
                                                             <hr>
-                                                            <p style="text-align: justify;">
+                                                            <p style="text-align: left;">
                                                                 Formation intensive, cours de 90 minutes/jour du lundi au samedi. Débat obligatoire (English Club) de 1h chaque dimanche matin ou après-midi. Culte d'anglais facultatif de 14h à 15h. Participation gratuite indispensable.
                                                             </p>
 
@@ -358,24 +331,24 @@
                                                         </div>
 
                                                         <div class="main-block-content icon-block-content">
-                                                            <p style="text-align: justify;">
+                                                            <p style="text-align: left;">
                                                                 BTC est opérationnel depuis 2001 (sans interruption) .
                                                             </p>
                                                             <hr>
-                                                            <p style="text-align: justify;">
+                                                            <p style="text-align: left;">
 
                                                                 Utilisation de tableaux blancs et autre matériels de support comme syllabus, autres imprimés et projection des certaines leÇons
                                                             </p>
                                                             <hr>
-                                                            <p style="text-align: justify;">
+                                                            <p style="text-align: left;">
                                                                 BUn Enseignant du Chinois qui a étudié en Chine pendant 4ans.
                                                             </p>
                                                             <hr>
-                                                            <p style="text-align: justify;">
+                                                            <p style="text-align: left;">
                                                                 Une discipline dans la formation, évaluation objective et souci des étudiants.
                                                             </p>
                                                             <hr>
-                                                            <p style="text-align: justify;">
+                                                            <p style="text-align: left;">
                                                                 Intégration spirituelle sans ségrégation religieuse et une vie en fraternité au centre BTC.
 
                                                                 Formation en music.
@@ -405,7 +378,7 @@
                                                         </div>
 
                                                         <div class="main-block-content icon-block-content">
-                                                            <p style="text-align:justify">
+                                                            <p style="text-align:left">
                                                                 Syllabus de 150pages level-1(7$) si vous payez les frais de 3mois d'un coup, vous l'acheterez à 4$ au lieu de 7$..
 
                                                                 Au terme de chaque niveau il ya soutenance publique dont le dépôt de travaux+coaching est 16$ au level-1 et 25$ au level-2.
@@ -749,10 +722,10 @@
 
 
                             {{-- contact  --}}
-                            <div class="main-section" id="contact">
+                            <!-- <div class="main-section" id="contact">
                                 <div class="container gx-4">
                                     <div class="row gx-36">
-                                        <div class="col-lg-4">
+                                         <div class="col-lg-4">
                                             <div class="main-block icon-block text-center">
                                                 <div class="main-block-container icon-block-container">
                                                     <div class="main-block-header icon-block-header accent-color">
@@ -778,7 +751,7 @@
                                             </div>
 
                                             <div class="gap gap-18 d-lg-none"></div>
-                                        </div>
+                                        </div> 
 
                                         <div class="col-lg-4">
                                             <div class="main-block icon-block text-center">
@@ -833,7 +806,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <div class="main-section section-fullwidth pt-0 pb-0">
                                 <div class="container-fluid gx-0">
@@ -854,20 +827,15 @@
                                                     <div class="section-title-body">
                                                         <div class="section-title-heading">
                                                             <h6 class="font-weight-500 accent-color">
-                                                                Contact us
+                                                                Contactez-nous
                                                             </h6>
-                                                            <h2>Get in touch</h2>
+                                                            <h2>Laisez-nous un message </h2>
                                                         </div>
 
                                                         <div class="hr-divider hr-divider-layout-1 accent-color"></div>
 
                                                         <div class="section-title-content">
-                                                            <p>
-                                                                Praesent dignissim nibh quis ante dignissim,
-                                                                in posuere dui feugiat. duis elit dui,
-                                                                vestibulum nec ipsum id, finibus sollicitudin
-                                                                elit. cras et purus sagittis, volutpat est id.
-                                                            </p>
+                                                           
                                                         </div>
                                                     </div>
                                                 </div>
@@ -876,27 +844,27 @@
                                             <div class="gap gap-36"></div>
                                         </div>
 
-                                        <div class="col-lg-8 offset-lg-2">
+                                        <div class="col-lg-8 offset-lg-2" id="contact">
                                             <div class="form-block form-block-validation form-block-contact">
                                                 <div class="form-block-container">
                                                     <form method="post" action="assets/php/contact/contact.php" class="row">
                                                         <div class="col-md-6">
                                                             <label class="label">
-                                                                Name <span class="red-color">*</span>
+                                                                Nom <span class="red-color">*</span>
                                                                 <input class="form-control" type="text" name="form_name" />
                                                             </label>
                                                         </div>
 
                                                         <div class="col-md-6">
                                                             <label class="label">
-                                                                Email address <span class="red-color">*</span>
+                                                                Email <span class="red-color">*</span>
                                                                 <input class="form-control" type="email" name="form_email" />
                                                             </label>
                                                         </div>
 
                                                         <div class="col-lg-12">
                                                             <label class="label">
-                                                                Subject <span class="red-color">*</span>
+                                                                Sujet <span class="red-color">*</span>
                                                                 <input class="form-control" type="text" name="form_subject" />
                                                             </label>
                                                         </div>
@@ -908,19 +876,12 @@
                                                             </label>
                                                         </div>
 
-                                                        <div class="col-lg-12">
-                                                            <label class="label input-type-checkbox">
-                                                                <input class="form-control form-check-must-accept" type="checkbox" name="form_terms" />
-                                                                I have read and agree to Bason
-                                                                <a href="#" title="terms and conditions">terms and conditions</a>.
-                                                            </label>
-                                                        </div>
-
+                                                    
                                                         <input class="g-recaptcha-response" type="hidden" name="g-recaptcha-response" />
 
                                                         <div class="col-lg-12">
                                                             <button type="submit" class="btn btn-accent btn-block">
-                                                                <span>SEND</span>
+                                                                <span>Envoyer</span>
                                                             </button>
                                                         </div>
                                                     </form>
@@ -930,30 +891,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="main-section pt-0 pb-0">
-                                <div class="container-fluid gx-0">
-                                    <div class="row gx-36">
-                                        <div class="col-lg-12">
-                                            <div class="main-block gmap-block mb-0">
-                                                <div class="map" data-map-zoom="18" data-map-latitude="48.8628277" data-map-longitude="2.3523733" data-map-height="300" data-map-style="silver"></div>
-
-                                                <div class="marker" data-marker-latitude="48.8628277" data-marker-longitude="2.3523733" data-marker-image="assets/images/google-map/marker.png">
-                                                    <p><strong>Graphicfort main branch</strong></p>
-                                                    <p>
-                                                        6 rue Saint-Martin
-                                                        <br />
-                                                        12345 Paris
-                                                        <br />
-                                                        France
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
 
                         </main>
                     </div>
@@ -977,7 +914,7 @@
                                     <div class="col-lg-6">
 
                                         <div class="footer-section-copyright-content light-color text-center text-lg-start">
-                                            <p>&copy; <span class="current-year">2021</span> designed &amp; developed by <a href="#" title="Graphicfort">Graphicfort</a>, all rights reserved.</p>
+                                            <p>&copy; <span class="current-year"></span> designed &amp; btc agapd all rights reserved.</p>
                                         </div>
                                     </div>
 

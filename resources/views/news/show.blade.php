@@ -61,8 +61,8 @@
 
                     <div class="flex items-end my-6">
                         <div class="ml-auto flex mr-4">
-                            <h2 class="text-md mx-1 bg-slate-100 p-2 rounded-full">{{count($news->comment)}} <i class="fa fa-comment text-green-500"></i> </h2>
-                            <h2 class="text-md bg-slate-100 p-2 rounded-full"><i class="fa fa-heart text-red-300"></i> {{$news->liker}}</h2>
+                            <h2 class="text-md mx-1 shadow-md rounded-md p-2">{{count($news->comment)}} <i class="fa fa-comment text-green-500"></i> </h2>
+                            <h2 class="text-md shadow-md rounded-md p-2 ">{{ count($news->like) }}<i class="fa fa-heart text-red-300"></i> </h2>
                         </div>
                     </div>
 
