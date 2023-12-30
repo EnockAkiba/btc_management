@@ -1,43 +1,51 @@
-<div class="content pb-10" style="max-height: 81vh; overflow:hidden">
+<div class="content pb-10">
+
+    <div class="container-fluid ">
+        <h4 class="flex items-center my-2">
+            @if($destinator->picture)
+            <img class="direct-chat-img mx-2" src="{{ asset('/' . $destinator->picture) }}">
+            @else
+            <img class="img-circle" src="{{asset('/images/user.png')}}" style="width:40px">
+            @endif
+            <span class="mx-2">
+                {{$destinator->name." ".$destinator->lastName}}
+            </span>
+        </h4>
+
+    </div>
+
     <div class="container-fluid">
         <div class="row" id="row">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <!-- DIRECT CHAT PRIMARY -->
-                <div class="card  direct-chat " style="height:80vh;">
-
+                <div class="card  direct-chat ">
                     <!-- /.card-header -->
-                    <div class="card-body p-3  " style="height:80vh;" id="messagesContent">
+                    <div class="card-body" id="messagesContent" style="height: 70vh;">
 
                         <!-- Conversations are loaded here -->
 
-                        <div class="direct-chat-messages  h-full">
+                        <div class="direct-chat-messages h-full bg-yellow-200">
                             @forelse ($conversations as $conversation
                             )
                             <!-- Message. Default to the left -->
-                            <div class="direct-chat-msg w-3/4 {{($conversation->user_id=== Auth::user()->id)?'ml-auto':'mr-auto' }}">
-                                <div class="direct-chat-infos clearfix">
-                                    <span class="direct-chat-name  {{($conversation->user_id=== Auth::user()->id)?'float-right':'float-left' }} ">{{
-                                                ($conversation->user_id=== Auth::user()->id)?'Moi':$destinator->name." ".$destinator->lastName
-                                                 
-                                                }}</span>
-                                    <span class="direct-chat-timestamp  float-right">{{$conversation->created_at}}</span>
-                                </div>
-                                <!-- /.direct-chat-infos -->
-                                @if($destinator->picture)
-                                <img class="direct-chat-img" src="{{ asset('/' . $destinator->picture) }}">
-                                @else
-                                <img class="img-circle" src="{{asset('/images/user.png')}}" style="width:40px">
-                                @endif
+                            <div class="direct-chat-msg w-3/4 {{($conversation->user_id=== Auth::user()->id)?'ml-auto':'mr-auto ' }}">
+
                                 <!-- /.direct-chat-img -->
-                                <div class="direct-chat-text {{($conversation->user_id=== Auth::user()->id)?'bg-blue-300':'bg-green-300' }}  text-black">
+                                <div class="direct-chat-text {{($conversation->user_id=== Auth::user()->id)?'bg-blue-100':'bg-green-100' }}  text-black m-0" style="max-width:max-content">
                                     {{$conversation->content}}
+                                    @if($conversation->picture)
+                                    <a href="{{ asset('/' . $conversation->picture) }}"><img class="" src="{{ asset('/' . $conversation->picture) }}"></a>
+                                    @endif
+
+                                </div>
+                                <div class="direct-chat-infos clearfix">
+                                    <span class="block direct-chat-timestamp text-sm">{{date_format(date_create($conversation->created_at), 'd.M.Y H:i') }}</span>
                                 </div>
                                 <!-- /.direct-chat-text -->
                             </div>
                             @empty
                             <p>Aucun message envoye'</p>
                             @endforelse
-
 
                             <!-- $conversations->onEachSide(1)->links('pagination::simple-bootstrap-4') -->
 
@@ -46,14 +54,14 @@
                         <!--/.direct-chat-messages-->
                     </div>
                     <!-- /.card-body -->
-                    <div class="bg-green-100 p-2" id="formSend">
+                    <div class="bg-gray-100 p-2" id="formSend">
                         <div class="input-group">
                             <div class="flex w-full">
-                                <form wire:submit.prevent="store" enctype="multipart/form-data">
-                                        <label for="img-input" id="photoShow" class="mx-2">
-                                            <img class="rounded-3xl shadow-sm " src="" style="max-height: 40px; max-width:40px" id='file-preview'>
-                                            <i class="fa fa-image" id="icone"></i> </label>
-                                        <input type="file" class="d-none" wire:model='picture' name="picture" accept="image/*" id="img-input" onchange="showFile(event)">
+                                <form wire:submit.prevent="store" enctype="multipart/form-data" class="flex w-full">
+                                    <label for="img-input" id="photoShow" class="mx-2">
+                                        <img class="rounded-3xl shadow-sm " src="" style="max-height: 40px; max-width:40px" id='file-preview'>
+                                        <i class="fa fa-image" id="icone"></i> </label>
+                                    <input type="file" class="d-none" wire:model='picture' name="picture" accept="image/*" id="img-input" onchange="showFile(event)">
                                     <input type="text" name="message" wire:model='content' placeholder="Type Message ..." class="form-control w-full">
                                     <span class="input-group-append">
                                         <button type="submit" class="p-2 bg-blue-600 text-white">Send</button>
@@ -69,7 +77,7 @@
                 {{-- end div --}}
             </div>
 
-            <div class="col-md-4 ">
+            <!-- <div class="col-md-4 ">
                 <div class="card">
                     <div class="card-header">
                         <form action="" method="post" class="flex items-center bg-gray-100 border rounded-xl">
@@ -88,7 +96,7 @@
                     </div>
                     @endfor
                 </div>
-            </div>
+            </div> -->
         </div>
 
 

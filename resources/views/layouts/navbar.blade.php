@@ -15,6 +15,13 @@
                 </h3>
             </div>
             <ul class="nav  flex-column">
+                @if(
+                collect(Auth::user()->teachers)->isNotEmpty() or
+                Auth::user()->roleUser == 2 or
+                Auth::user()->roleUser == 1 or
+                collect(Auth::user()->registers)->isNotEmpty()
+
+                )
                 <li class="nav-item active">
                     <a href="{{ route('news') }}" class="mx-auto inline-block my-2">
                         <i class="fas fa-home" title="Actualités"></i> Actualités
@@ -26,20 +33,15 @@
                         <i class="fa fa-comment" title="messages"></i> messages
                     </a>
                 </li>
-
+                @endif
+                
+                @if (Auth::user()->roleUser == 2)
                 <li class="nav-item ">
                     <a href="{{ route('promotion') }}" class="mx-auto inline-block my-2">
                         <i class="fas fa-box" title="Extension"></i> Extension
                     </a>
                 </li>
 
-
-                <li class="nav-item ">
-                    <a href="{{ route('quiz') }}" class="mx-auto inline-block my-2">
-                        <i class="fas fa-book" title="Devoirs"></i> Devoirs
-
-                    </a>
-                </li>
                 <li class="nav-item ">
                     <a href="{{route('user')}}" class="mx-auto inline-block my-2">
                         <i class="fas fa-users" title="users"></i> Utilisateurs
@@ -51,6 +53,24 @@
                         <i class="fas fa-pen" title="register"></i> Inscription
                     </a>
                 </li>
+                @elseif(Auth::user()->roleUser == 1)
+                <li class="nav-item">
+                    <a href="{{ route('register') }}" class="nav-link">
+                        <i class="fas fa-pen" title="register"></i>
+                    </a>
+                </li>
+                @endif
+
+                @if(collect(Auth::user()->teachers)->isNotEmpty())
+
+                <li class="nav-item ">
+                    <a href="{{ route('quiz') }}" class="mx-auto inline-block my-2">
+                        <i class="fas fa-book" title="Devoirs"></i> Devoirs
+
+                    </a>
+                </li>
+                @endif
+
                 <li class="nav-item">
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf

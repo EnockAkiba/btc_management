@@ -40,7 +40,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     a {
         text-decoration: none;
     }
-    .nav-link{
+
+    .nav-link {
         color: darkblue;
     }
 </style>
@@ -55,21 +56,30 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <!-- <span class="title text-sm">BTC</span> -->
                 </a>
                 <div class="flex justify-between items-center  ">
-                   
-                @if(collect(Auth::user()->registers)->isNotEmpty())
+
+                    @if(collect(Auth::user()->registers)->isNotEmpty())
                     <li class="ml-auto list-none mx-3 text-blue-500 bg-gray-50 p-2 rounded-full">
 
                         <a class=" ml-auto" href="{{ route('applay') }}">
                             <i class="fa-solid fa-book"></i>
                         </a>
                     </li>
-                @endif
+                    @endif
+
+                    @if(
+                    collect(Auth::user()->teachers)->isNotEmpty() or
+                    Auth::user()->roleUser == 2 or
+                    Auth::user()->roleUser == 1 or
+                    collect(Auth::user()->registers)->isNotEmpty()
+
+                    )
                     <li class="ml-auto list-none mx-3 text-blue-500 bg-gray-50 p-2 rounded-full">
 
                         <a class=" ml-auto" href="{{route('message')}}">
                             <i class="fa-solid fa-comment"></i>
                         </a>
                     </li>
+                    @endif
                     <li class="d-lg-none d-md-none ml-auto list-none mx-3 text-blue-500 bg-gray-50 p-2 rounded-full">
 
                         <a class=" ml-auto" data-toggle="modal" data-target="#navigation" href="#" role="button">
@@ -137,15 +147,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <div class="mx-2 py-4 border-2 border-blue-50 bg-white rounded-full shadow-sm hover:translate-x-1 hover:transition-all">
 
                                     <ul class="nav  flex-column">
+
+                                        @if(
+                                        collect(Auth::user()->teachers)->isNotEmpty() or
+                                        Auth::user()->roleUser == 2 or
+                                        Auth::user()->roleUser == 1 or
+                                        collect(Auth::user()->registers)->isNotEmpty()
+
+                                        )
                                         <li class="nav-item active">
                                             <a href="{{ route('news') }}" class="nav-link">
                                                 <i class="fas fa-home" title="Actualités"></i>
                                             </a>
                                         </li>
+                                        @endif
 
-                                       
-                                                
-                                        @if(Auth::user()->teachers)
+
+
+                                        @if(collect(Auth::user()->teachers)->isNotEmpty())
                                         <li class="nav-item ">
                                             <a href="{{ route('quiz') }}" class="nav-link">
                                                 <i class="fas fa-book" title="Devoirs"></i>
@@ -166,17 +185,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             <a href="{{route('user')}}" class="nav-link">
                                                 <i class="fas fa-users" title="users"></i>
                                             </a>
-                                        </li>  
+                                        </li>
 
                                         <li class="nav-item">
-                                            <a href="{{ route('register') }}" class="nav-link">
+                                            <a href="{{ route('register_user') }}" class="nav-link">
                                                 <i class="fas fa-pen" title="register"></i>
                                             </a>
-                                        </li> 
-                                        
+                                        </li>
+
                                         @elseif(Auth::user()->roleUser == 1)
                                         <li class="nav-item">
-                                            <a href="{{ route('register') }}" class="nav-link">
+                                            <a href="{{ route('register_user') }}" class="nav-link">
                                                 <i class="fas fa-pen" title="register"></i>
                                             </a>
                                         </li>

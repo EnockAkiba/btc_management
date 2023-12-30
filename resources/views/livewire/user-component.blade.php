@@ -48,8 +48,9 @@
                                 <tr>
                                     @foreach($users as $user)
 
+                                    @if($user->id !=1)
 
-                                    <th>{{$loop->index +1}}</th>
+                                    <th>{{$loop->index}}</th>
                                     <th colspan="3"><a href="{{route('register.show',$user)}}" class="text-blue-500"> {{$user->name ." ".$user->lastName}}</a></th>
                                     <th>{{$user->email}}</th>
                                     <th>{{$user->sex}}</th>
@@ -76,6 +77,8 @@
                                         <button type="button" wire:click="destroy({{$user->id}})" class="bg-red  p-1 text-sm rounded-sm"> <i class="fa fa-trash"></i> </button>
                                     </th>
                                 </tr>
+
+                                @endif
 
                                 @endforeach
                             </tbody>
