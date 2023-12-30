@@ -15,8 +15,7 @@ class NewsController extends Controller
      */
     public function index()
     {
-        // on recupere seulement les news private
-        $news=News::orderByDesc('id')->where('type','0')->paginate(8);
+        $news=News::orderByDesc('id')->paginate(8);
         return view('news.index', compact('news'));
 
     }
@@ -28,7 +27,7 @@ class NewsController extends Controller
      */
     public function create()
     {
-        $news=News::paginate(8);
+        $news=News::orderByDesc('id')->paginate(8);
         return \view('news.create', \compact('news'));
     }
 
