@@ -7,7 +7,7 @@
         <div class="row ">
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-left">
-                    <li class="breadcrumb-item title"><a href="{{ route('register') }}">Les apprenants inscrits</a></li>
+                    <li class="breadcrumb-item title"><a href="{{ route('register_user') }}">Les apprenants inscrits</a></li>
                     <li class="breadcrumb-item active">{{$register->user->name." ".$register->user->lastName}} </li>
                 </ol>
             </div><!-- /.col -->
@@ -41,21 +41,20 @@
                     <div class="p-3 text-white" style="background: darkblue ;">
                         <h3 class="font-bold ">Noms complet: {{$register->user->name." ".$register->user->lastName}} </h3>
                         <h5 class="font-bold ">Genre : {{$register->user->sex}}</h5>
-                        <h5 class="text-right">Statut : <span class="rounded-sm p-1 bg-{{$register->promotion->dateEnd <=  date('Y/m/d')?'success':'danger'}}"> {{$register->promotion->dateEnd <=  date('Y/m/d') ?'Actif':'Inactif'}} </span></h5>
                     </div>
                     <div class="px-4 py-3">
                         <h5 class="mb-1 border p-2">Index number : <span class="title"> {{$register->index}}</span> </h5>
                         <h5 class="mb-1 border p-2">Date d'inscription : <span class="font-bold">{{ $register->user->created_at->format('d.M.Y H:i') }}</span> </h5>
-                        <h5 class="mb-1 border p-2">Extension :  <span class="font-bold">{{$register->promotion->extension->designation}} </span></h5>
-                        <h5 class="mb-1 border p-2">Departement :  <span class="font-bold">{{$register->promotion->departement->title}}</span> </h5>
+                        <h5 class="mb-1 border p-2">Extension : <span class="font-bold">{{$register->promotion->extension->designation}} </span></h5>
+                        <h5 class="mb-1 border p-2">Departement : <span class="font-bold">{{$register->promotion->departement->title}}</span> </h5>
                         <h5 class="mb-1 border p-2">promotion : <span class="font-bold"> {{$register->promotion->designation}} </span></h5>
                         <h5 class="mb-1 border p-2">Vacation : <span class="font-bold"> {{$register->vacation}} </span></h5>
-                        <h5 class="mb-1 border p-2">Phone number :  <span class="font-bold"> {{$register->user->phone}}</span></h5>
-                        <h5 class="mb-1 border p-2">Email :  <span class="font-bold"> {{$register->user->email}}</span> </h5>
-                        <h5 class="mb-1 border p-2">Adresse :  <span class="font-bold">  {{$register->user->adress}}</span></h5>
+                        <h5 class="mb-1 border p-2">Phone number : <span class="font-bold"> {{$register->user->phone}}</span></h5>
+                        <h5 class="mb-1 border p-2">Email : <span class="font-bold"> {{$register->user->email}}</span> </h5>
+                        <h5 class="mb-1 border p-2">Adresse : <span class="font-bold"> {{$register->user->adress}}</span></h5>
                         <h3 class="font-bold"> Responsable</h3>
-                        <h5 class="mb-1 border p-2"> Noms :  <span class="font-bold"> {{$register->respoName}}</span></h5>
-                        <h5 class="mb-1 border p-2"> Phone number :  <span class="font-bold">{{$register->respoNumber}}</span></h5>
+                        <h5 class="mb-1 border p-2"> Noms : <span class="font-bold"> {{$register->respoName}}</span></h5>
+                        <h5 class="mb-1 border p-2"> Phone number : <span class="font-bold">{{$register->respoNumber}}</span></h5>
 
 
                     </div>
@@ -66,7 +65,8 @@
         </div>
         <!-- /.row -->
     </div>
-</section><!-- /.container-fluid -->
+</section>
+<!-- /.container-fluid -->
 <!-- /.content -->
 
 {{-- NAVIGATION MODAL   EDIT REGISTER--}}
@@ -83,7 +83,9 @@
                 <!-- /.card-header -->
                 <form action="{{route('register.update', $register)}}" method="post" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" value="{{$register->user->id}}">
+                    @method('put')
+                    <input type="hidden" name="user_id" value="{{$register->user->id}}">
+
                     <div class="card-body">
                         <div class="row">
 
@@ -91,8 +93,11 @@
                                 <div class="form-group">
                                     <label for="">Promotion <span class="required"> *</span> </label>
                                     <select name="promotion_id" id="" class="form-control" value="{{old('promotion_id')}}">
-                                        <option>---Choisir une promotion--</option>
-                                       
+                                        <option value="{{$register->promotion->id}}">{{$register->promotion->designation}}</option>
+                                        <option></option>
+                                        @foreach($promotions as $promotion)
+                                        <option value="{{$promotion->id}}">{{$promotion->designation}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -100,7 +105,7 @@
 
                         <div class="form-group">
                             <label for="">Index number <span class="required"> *</span></label>
-                            <input type="text" class="form-control" name="index" value="{{old('index')}}">
+                            <input type="text" class="form-control" name="index" value="{{$register->index}}">
                         </div>
 
                         <div class="row">
@@ -108,7 +113,7 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <label for="">Vacation <span class="required"> *</span> </label>
-                                    <input type="text" class="form-control" name="vacation" value="{{old('vacation')}}">
+                                    <input type="text" class="form-control" name="vacation" value="{{$register->vacation}}">
                                 </div>
                             </div>
                         </div>
@@ -118,13 +123,13 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="">Responsable </label>
-                                    <input type="text" class="form-control" name="respoName" value="{{old('respoName')}}">
+                                    <input type="text" class="form-control" name="respoName" value="{{$register->respoName}}">
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="">Contact </label>
-                                    <input type="text" class="form-control" name="respoNumber" value="{{old('respoNumber')}}">
+                                    <input type="text" class="form-control" name="respoNumber" value="{{$register->respoNumber}}">
                                 </div>
                             </div>
                         </div>

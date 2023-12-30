@@ -54,21 +54,32 @@
                     </a>
                 </li>
                 @elseif(Auth::user()->roleUser == 1)
+
+                <li class="nav-item ">
+                    <a href="{{route('user')}}" class="mx-auto inline-block my-2">
+                        <i class="fas fa-users" title="users"></i> Utilisateurs
+                    </a>
+                </li>
+
                 <li class="nav-item">
                     <a href="{{ route('register') }}" class="nav-link">
                         <i class="fas fa-pen" title="register"></i>
                     </a>
                 </li>
+                
                 @endif
 
                 @if(collect(Auth::user()->teachers)->isNotEmpty())
-
+                
+                
                 <li class="nav-item ">
                     <a href="{{ route('quiz') }}" class="mx-auto inline-block my-2">
                         <i class="fas fa-book" title="Devoirs"></i> Devoirs
 
                     </a>
                 </li>
+
+                
                 @endif
 
                 <li class="nav-item">

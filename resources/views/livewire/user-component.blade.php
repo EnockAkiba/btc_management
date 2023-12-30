@@ -38,19 +38,21 @@
                                 <th>Genre</th>
                                 <th>Phone</th>
                                 <th>Inscrire</th>
+                                @if (Auth::user()->roleUser == 2)
                                 <th>Admin</th>
                                 <th>Formateur</th>
                                 <th>bloquer</th>
                                 <th>Appariteur</th>
                                 <th></th>
+                                @endif
                             </thead>
                             <tbody>
                                 <tr>
                                     @foreach($users as $user)
 
-                                    @if($user->id !=1)
+                                  
 
-                                    <th>{{$loop->index}}</th>
+                                    <th>{{$loop->index+1}}</th>
                                     <th colspan="3"><a href="{{route('register.show',$user)}}" class="text-blue-500"> {{$user->name ." ".$user->lastName}}</a></th>
                                     <th>{{$user->email}}</th>
                                     <th>{{$user->sex}}</th>
@@ -58,7 +60,8 @@
                                     <th>
                                         <a href="{{route('register.create', $user)}}" class="bg-success p-1 text-sm rounded-sm"> <i class="fa fa-layer-group"></i> </a>
                                     </th>
-
+                                    @if (Auth::user()->roleUser == 2)
+                                    
                                     <th class="mx-0">
                                         <button type="button" wire:click="setAdmin({{$user->id}})" class="bg-{{$user->roleUser==2?'red':'yellow'}}  p-1 text-sm rounded-sm"> <i class="fa {{$user->roleUser==2?'fa-shield-halved':'fa fa-user-slash'}}"></i> </button>
                                     </th>
@@ -76,9 +79,10 @@
                                     <th>
                                         <button type="button" wire:click="destroy({{$user->id}})" class="bg-red  p-1 text-sm rounded-sm"> <i class="fa fa-trash"></i> </button>
                                     </th>
+                                    @endif
                                 </tr>
 
-                                @endif
+                             
 
                                 @endforeach
                             </tbody>
