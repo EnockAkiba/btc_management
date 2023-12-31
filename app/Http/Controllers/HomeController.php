@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\News;
 use App\Models\Promotion;
 use App\Models\Teacher;
+use Illuminate\Support\Facades\Validator;
+use GuzzleHttp\Psr7\Request;
 
 class HomeController extends Controller
 {
@@ -47,5 +49,21 @@ class HomeController extends Controller
     public function teachers(){
         $teachers=Teacher::paginate(8);
         return \view('welcome.teachers',\compact('teachers'));
+    }
+
+    public function sendMail(Request $request){
+        $validator=Validator::make(
+            $request->all(),[
+            'form_email'=>'required|email',
+            'form_message'=>'required',
+            'form_name'=>'required',
+            'form_subject'=>'required'
+            ]
+        );
+        if($validator->fails()) return back()->with('warning','complètez tous les champs');
+        
+        $destinator=$validator->validated()['form_email'];
+
+        \mail('btcagapd-drc@btcagaped.com',$validator->validated()['form_subject'],$validator->validated()['form_message'],"From: $destinator \r\n Reply-To:$destinator  \r\n Content-Type: text/html\r\n");
     }
 }
